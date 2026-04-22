@@ -438,8 +438,20 @@ h3, .h3 { font-size: 15px; font-weight: 600; line-height: 1.35; }
   margin-bottom: 14px;
   position: relative;
   transition: all .15s;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 .log-card:hover { border-color: var(--border-hi); }
+.log-card .detail-link {
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.log-card:hover .detail-link { color: var(--accent-hi); }
 .log-card::before {
   content: ''; position: absolute; left: 0; top: 0; bottom: 0;
   width: 3px; background: var(--accent);
