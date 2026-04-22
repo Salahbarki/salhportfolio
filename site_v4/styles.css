@@ -1014,6 +1014,24 @@ a:active, .btn:active, .side-cta:active, .back-link:active,
   .sec-label { font-size: 9px; }
 
   .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 14px; }
+  /* Dernières interventions → horizontal slider on mobile */
+  .grid-2 {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .grid-2 > article {
+    min-width: 82vw;
+    max-width: 320px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  .grid-2::-webkit-scrollbar { height: 4px; }
+  .grid-2::-webkit-scrollbar-track { background: var(--panel-2); border-radius: 2px; }
+  .grid-2::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
   .skill-card { padding: 18px; }
   .skill-card h3 { font-size: 15px; margin-top: 20px; }
   .skill-card p { font-size: 12px; }
