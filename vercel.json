@@ -1,8 +1,15 @@
 {
+  "version": 2,
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "site_v4/:path*"
+      "source": "/",
+      "destination": "/site_v4/index.html"
+    },
+    {
+      "source": "/:path(.+)",
+      "destination": "/site_v4/:path"
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
