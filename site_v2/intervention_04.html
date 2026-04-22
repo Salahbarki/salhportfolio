@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analyse cause racine — Banc de test électrique — TechMaintenance Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-container": "#eceeee",
+                    "primary-container": "#1b4f72",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#3a4856",
+                    "primary-fixed": "#cce5ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "surface-dim": "#d8dada",
+                    "on-surface-variant": "#41474e",
+                    "on-secondary-fixed": "#0f172a",
+                    "tertiary": "#283643",
+                    "on-secondary-container": "#ffffff",
+                    "on-primary-fixed-variant": "#154b6d",
+                    "outline": "#72787f",
+                    "surface": "#f8fafa",
+                    "surface-container-high": "#e6e8e8",
+                    "surface-bright": "#f8fafa",
+                    "primary": "#003857",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f4",
+                    "secondary": "#334155",
+                    "surface-tint": "#326286",
+                    "inverse-primary": "#9dcbf4",
+                    "on-primary-fixed": "#001e31",
+                    "tertiary-container": "#3e4d5a",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#9dcbf4",
+                    "on-tertiary-container": "#aebdcd",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-fixed-variant": "#1e293b",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e1e3e3",
+                    "tertiary-fixed": "#d5e4f5",
+                    "on-error": "#ffffff",
+                    "background": "#f8fafa",
+                    "on-primary-container": "#92c0e9",
+                    "surface-container-highest": "#e1e3e3",
+                    "secondary-fixed-dim": "#94a3b8",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#475569",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0e1d29",
+                    "inverse-on-surface": "#eff1f1",
+                    "secondary-fixed": "#e2e8f0",
+                    "tertiary-fixed-dim": "#b9c8d8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "margin": "40px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1200px",
+                    "stack-lg": "32px"
+                },
+                "fontFamily": {
+                    "h2": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "data-mono": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "h3": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "label-caps": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "body-md": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "body-lg": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "h1": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
+                },
+                "fontSize": {
+                    "h2": ["22px", {"lineHeight": "1.3", "letterSpacing": "-0.005em", "fontWeight": "500"}],
+                    "data-mono": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "h3": ["17px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.015em", "fontWeight": "500"}]
+                }
+            }
+        }
+    }
+</script>
+<style>body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif !important;}</style>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+    
+<header class="bg-slate-50 dark:bg-slate-950 font-sans tracking-tight uppercase font-bold text-xs docked full-width top-0 border-b border-slate-300 dark:border-slate-800 flex justify-between items-center w-full px-10 h-16 fixed z-50 pl-64">
+    <div class="flex items-center gap-6">
+        <span class="text-xl font-black text-sky-900 dark:text-sky-100 uppercase tracking-widest">TechMaintenance Pro</span>
+        <nav class="hidden md:flex items-center gap-6 ml-8">
+            <a class="text-sky-900 dark:text-sky-400 border-b-2 border-sky-900 dark:border-sky-400 pb-1 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors opacity-80 duration-75" href="journal.html">Journal</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="contact.html">CV & Contact</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html">Accueil</a>
+        </nav>
+    </div>
+</header>
+
+    
+<aside class="bg-slate-100 dark:bg-slate-900 font-sans text-sm font-medium tracking-wide fixed left-0 top-0 h-screen border-r w-64 border-slate-300 dark:border-slate-800 flex flex-col py-6 z-40 pt-20">
+    <div class="px-6 pb-6 border-b border-slate-300 dark:border-slate-800 mb-4 flex flex-col gap-2">
+        <span class="text-lg font-bold text-sky-900 dark:text-sky-100">Salah Eddine Barki</span>
+        <span class="text-xs text-slate-500">Technicien de Maintenance Industrielle</span>
+    </div>
+    <nav class="flex flex-col flex-grow">
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="index.html"><span class="material-symbols-outlined">dashboard</span> Overview</a>
+        <a class="bg-sky-900 text-white dark:bg-sky-400 dark:text-slate-950 rounded-none border-l-4 border-slate-500 font-bold scale-95 duration-100 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="journal.html"><span class="material-symbols-outlined">build</span> Interventions</a>
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="contact.html"><span class="material-symbols-outlined">contact_mail</span> Contact</a>
+    </nav>
+    <div class="px-4 py-4">
+        <a href="contact.html" class="block w-full bg-slate-200 text-sky-900 py-2 text-xs font-bold uppercase tracking-wider hover:bg-slate-300 transition-colors border border-slate-300 text-center">Download CV</a>
+    </div>
+</aside>
+
+    <main class="ml-64 mt-16 flex-grow p-margin bg-surface">
+        <!-- Back link -->
+        <div class="mb-stack-lg">
+            <a href="journal.html" class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary hover:text-secondary transition-colors border border-outline px-3 py-2 bg-surface-container-lowest">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                RETOUR AUX INTERVENTIONS
+            </a>
+        </div>
+        <!-- Page Header -->
+        <div class="border-b border-outline pb-stack-md mb-stack-lg flex flex-col md:flex-row md:justify-between md:items-end gap-stack-md">
+            <div>
+                <div class="font-label-caps text-label-caps text-secondary mb-stack-sm flex items-center gap-2">
+                    <span class="w-2 h-2 bg-secondary block"></span> RCA & QUALITÉ
+                </div>
+                <h1 class="font-h1 text-h1 text-primary">Analyse cause racine — Banc de test électrique</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mt-unit">Rapport d'intervention technique #INT-2022-017</p>
+            </div>
+            <div class="flex flex-col md:text-right gap-unit">
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">calendar_today</span> Nov 2022
+                </div>
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">timer</span> Durée: 01j 00h
+                </div>
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">engineering</span> Tech: 4882-MT
+                </div>
+            </div>
+        </div>
+        <!-- 12-Col Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+            <!-- Left Column -->
+            <div class="lg:col-span-8 space-y-gutter">
+                <!-- Problème -->
+                <section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-error border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">warning</span> Le Problème
+                        </h2>
+                        <p class="font-body-md text-body-md text-on-surface mb-stack-md">Taux de rejet test continuité anormal : 12% sur une même référence produite depuis plusieurs jours sans changement d'outillage. Normalement stable autour de 1–2%. Conséquence : 240+ pièces rebutées/jour. Risque blocage ligne client.</p>
+                        <div class="bg-surface p-stack-md border border-outline flex gap-4 items-center">
+                            <span class="material-symbols-outlined text-error text-[32px]">sensors</span>
+                            <div class="flex-1">
+                                <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Contexte Opérationnel</div>
+                                <div class="flex justify-between items-center border-b border-outline-variant pb-1">
+                                    <span class="font-data-mono text-data-mono">Équipement</span>
+                                    <span class="font-data-mono text-data-mono text-error font-bold">Banc de test électrique (continuité...</span>
+                                </div>
+                                <div class="flex justify-between items-center pt-1">
+                                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Site</span>
+                                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Kénitra (Maroc)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Diagnostic -->
+                <section class="bg-surface-container-lowest border border-outline rounded">
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">troubleshoot</span> Diagnostic
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md mb-stack-md">
+                            <div>
+                                <p class="font-body-md text-body-md text-on-surface">Analyse des données de test des 15 derniers jours (extraites du système informatique du banc) : dérive lente et progressive de la résistance mesurée au test de continuité. Tolérance : <10 mΩ. Valeurs de départ 3–5 mΩ → dérive progressive 8–12 mΩ → dépassement du seuil = rebut.<br><br>Pareto des causes de rebut sur 342 pièces rebutées : ~2/3 liés aux broches de contact du connecteur adaptateur du banc (pins), 1/4 liés aux câbles de piquage usés, le reste divers.<br><br>Inspection visuelle des pins : 14 des 32 pins présentent une oxydation noire visible (couche de CuO). Cause probable : absence de nettoyage régulier des pins dans la gamme de maintenance (le dernier nettoyage n'était pas documenté, probablement >6 mois).<br><br>Hotte d'extraction des fumées de soudure au poste amont : filtre saturé, débit d'aspiration faible (mesuré au débitmètre : 80 m³/h au lieu des ~120 m³/h nécessaires). Les fumées de soudure contenant des résidus de flux dérivent vers le banc de test et contaminent progressivement les contacts.<br><br>Mesure au micro-ohmètre : pins oxydés = 15–45 mΩ. Pins nettoyés à la brosse + alcool = <2 mΩ.</p>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;">
+                                <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:160px;">
+                                    <img src="../img_04a_overview.png" alt="Technical photo" style="width:100%;height:100%;object-fit:cover;" />
+                                </div>
+                                <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:160px;">
+                                    <img src="../img_04b_connecteur.png" alt="Technical photo" style="width:100%;height:100%;object-fit:cover;" />
+                                </div>
+                                <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:160px;">
+                                    <img src="../img_04c_ohmmetre.png" alt="Technical photo" style="width:100%;height:100%;object-fit:cover;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Solution -->
+                <section class="bg-surface-container-lowest border border-outline rounded">
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">build</span> Solution Apportée
+                        </h2>
+                        <div class="space-y-stack-sm">
+                            <div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">01.</span>
+            <p class="font-body-md text-body-md text-on-surface">ARRÊT & TRI : Arrêt immédiat du banc de test. Consignation électrique 24V + 500V isolation. Signalisation. Récupération du batch produit depuis la dernière validation qualité OK : retri manuel complet. 94% des pièces déclarées bonnes après contrôle visuel + test au micro-ohmètre portable, 6% rebut confirmé.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">02.</span>
+            <p class="font-body-md text-body-md text-on-surface">REMPLACEMENT CONNECTEUR : Dépose du jeu de pins oxydés. Pose d'un connecteur adaptateur neuf (référence constructeur du banc). Serrage des bagues de verrouillage.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">03.</span>
+            <p class="font-body-md text-body-md text-on-surface">RÉGLAGE MÉCANIQUE : Vérin de mise en position du banc : réglage de la pression d'air de 3,2 bar à 4,0 bar (lu sur le manomètre intégré). Vérification à la jauge analogique : 4,0 bar ±0,1. Test de 50 insertions/retraits : aucune marque sur le plastique (pas de déformation des broches).</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">04.</span>
+            <p class="font-body-md text-body-md text-on-surface">MAINTENANCE EXTRACTION : Remplacement du filtre charbon de la hotte d'aspiration. Nettoyage de la roue du ventilateur. Graissage des paliers. Mesure post-intervention : débit remonté à 130 m³/h (>120 requis). Ajout d'une hotte aspirante mobile en renfort ponctuel sur le poste de soudure amont pour réduire la dérive à la source.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">05.</span>
+            <p class="font-body-md text-body-md text-on-surface">MODIFICATION PROCÉDURE & GMAO : Modification de la gamme de maintenance préventive : ajout d'un nettoyage des pins de test à la brosse fibre de verre + alcool isopropylique toutes les 2 semaines (au lieu de jamais/non documenté). Ajout d'un contrôle qualité mensuel : mesure au micro-ohmètre sur 5 pins choisies au hasard. Seuil d'alerte <5 mΩ.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">06.</span>
+            <p class="font-body-md text-body-md text-on-surface">FORMATION : Création fiche réflexe opérateur : si dérive >6 mΩ sur 3 tests consécutifs → arrêt immédiat + appel maintenance. Formation de 2 opérateurs + 1 technicien à la nouvelle procédure.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">07.</span>
+            <p class="font-body-md text-body-md text-on-surface">CONTRÔLE RÉGULIER : Mise en place d'un test gabarit 32/32 pins tous les matins avant démarrage de la ligne (détection précoce oxydation ou déformation mécanique).</p>
+        </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Résultat -->
+                <section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">verified</span> Résultat
+                        </h2>
+                        <p class="font-body-md text-body-md text-on-surface mb-stack-md">Taux de rejet test continuité : 12,3% → 1,1% moyenne sur 30 jours (stable sous le seuil client 2%). Économie : ~220 pièces/jour sauvées. Procédure RCA formalisée (diagramme Ishikawa + 5 pourquoi) partagée aux 4 lignes test du site et aux sous-traitants internes. Temps de contrôle qualité départ réduit de 25 min/batch à 10 min/batch.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-unit">
+                            <div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">warning</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Rejet Avant</div>
+            <div class="font-h3 text-h3 text-primary">12.3%</div>
+        </div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">check_circle</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Rejet Après</div>
+            <div class="font-h3 text-h3 text-primary">1.1%</div>
+        </div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">trending_up</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Pièces/jour</div>
+            <div class="font-h3 text-h3 text-primary">+220</div>
+        </div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">timer</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Temps QC</div>
+            <div class="font-h3 text-h3 text-primary">-60%</div>
+        </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Right Column -->
+            <aside class="lg:col-span-4 space-y-gutter">
+                <!-- Équipement Info -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Spécifications Équipement</h3>
+                    <ul class="space-y-stack-sm">
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Système</span>
+                            <span class="font-data-mono text-data-mono text-on-surface">Banc de test électrique (continuité, iso...</span>
+                        </li>
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Localisation</span>
+                            <span class="font-data-mono text-data-mono text-on-surface">Kénitra (Maroc)</span>
+                        </li>
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Entreprise</span>
+                            <span class="font-data-mono text-data-mono text-on-surface">Kromberg & Schubert</span>
+                        </li>
+                        <li class="flex justify-between pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Indice Criticité</span>
+                            <span class="font-data-mono text-data-mono text-error font-bold bg-error-container px-2 py-0.5 border border-error">Tier 1 - Vital</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Pièces -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Inventaire Pièces</h3>
+                    <div class="space-y-unit">
+                        <div class="bg-surface-container-lowest border border-outline p-stack-sm flex items-start gap-3">
+            <div class="bg-surface p-1.5 border border-outline-variant mt-0.5">
+                <span class="material-symbols-outlined text-on-surface-variant text-[18px]">settings</span>
+            </div>
+            <div>
+                <div class="font-body-md text-body-md font-bold text-on-surface leading-tight mb-1">Connecteur adaptateur 32 voies</div>
+                <div class="flex justify-between items-center w-full gap-4">
+                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Réf: Constructeur banc</span>
+                    <span class="font-data-mono text-data-mono text-on-surface text-sm">Qté: 1</span>
+                </div>
+            </div>
+        </div>
+<div class="bg-surface-container-lowest border border-outline p-stack-sm flex items-start gap-3">
+            <div class="bg-surface p-1.5 border border-outline-variant mt-0.5">
+                <span class="material-symbols-outlined text-on-surface-variant text-[18px]">settings</span>
+            </div>
+            <div>
+                <div class="font-body-md text-body-md font-bold text-on-surface leading-tight mb-1">Filtre charbon hotte</div>
+                <div class="flex justify-between items-center w-full gap-4">
+                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Réf: 500×300×50 mm F7</span>
+                    <span class="font-data-mono text-data-mono text-on-surface text-sm">Qté: 1</span>
+                </div>
+            </div>
+        </div>
+                    </div>
+                </div>
+                <!-- Outillage -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Matériel Déployé</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">Micro-ohmètre</span>
+        </div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">Débitmètre</span>
+        </div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">Brosse fibre de verre</span>
+        </div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">Manomètre</span>
+        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    
+<footer class="bg-slate-50 dark:bg-slate-950 font-sans text-[10px] uppercase tracking-tighter text-slate-500 w-full border-t border-slate-300 dark:border-slate-800 py-8 px-10 flex flex-col md:flex-row justify-between items-center gap-4 ml-64 mt-auto">
+    <span>© 2024 Salah Eddine Barki — Technicien Maintenance Industrielle | Portfolio Interactif</span>
+    <div class="flex items-center gap-4">
+        <a class="text-slate-500 hover:text-sky-900 dark:hover:text-sky-300 transition-colors" href="index.html">Accueil</a>
+        <a class="text-slate-500 hover:text-sky-900 dark:hover:text-sky-300 transition-colors" href="journal.html">Journal</a>
+        <a class="text-slate-500 hover:text-sky-900 dark:hover:text-sky-300 transition-colors" href="contact.html">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>

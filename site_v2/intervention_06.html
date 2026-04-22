@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Planification maintenance annuelle & pilotage GMAO — TechMaintenance Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-container": "#eceeee",
+                    "primary-container": "#1b4f72",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#3a4856",
+                    "primary-fixed": "#cce5ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "surface-dim": "#d8dada",
+                    "on-surface-variant": "#41474e",
+                    "on-secondary-fixed": "#0f172a",
+                    "tertiary": "#283643",
+                    "on-secondary-container": "#ffffff",
+                    "on-primary-fixed-variant": "#154b6d",
+                    "outline": "#72787f",
+                    "surface": "#f8fafa",
+                    "surface-container-high": "#e6e8e8",
+                    "surface-bright": "#f8fafa",
+                    "primary": "#003857",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f4",
+                    "secondary": "#334155",
+                    "surface-tint": "#326286",
+                    "inverse-primary": "#9dcbf4",
+                    "on-primary-fixed": "#001e31",
+                    "tertiary-container": "#3e4d5a",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#9dcbf4",
+                    "on-tertiary-container": "#aebdcd",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-fixed-variant": "#1e293b",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e1e3e3",
+                    "tertiary-fixed": "#d5e4f5",
+                    "on-error": "#ffffff",
+                    "background": "#f8fafa",
+                    "on-primary-container": "#92c0e9",
+                    "surface-container-highest": "#e1e3e3",
+                    "secondary-fixed-dim": "#94a3b8",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#475569",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0e1d29",
+                    "inverse-on-surface": "#eff1f1",
+                    "secondary-fixed": "#e2e8f0",
+                    "tertiary-fixed-dim": "#b9c8d8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "margin": "40px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1200px",
+                    "stack-lg": "32px"
+                },
+                "fontFamily": {
+                    "h2": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "data-mono": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "h3": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "label-caps": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "body-md": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "body-lg": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "h1": ["ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
+                },
+                "fontSize": {
+                    "h2": ["22px", {"lineHeight": "1.3", "letterSpacing": "-0.005em", "fontWeight": "500"}],
+                    "data-mono": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "h3": ["17px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.015em", "fontWeight": "500"}]
+                }
+            }
+        }
+    }
+</script>
+<style>body{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif !important;}</style>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+    
+<header class="bg-slate-50 dark:bg-slate-950 font-sans tracking-tight uppercase font-bold text-xs docked full-width top-0 border-b border-slate-300 dark:border-slate-800 flex justify-between items-center w-full px-10 h-16 fixed z-50 pl-64">
+    <div class="flex items-center gap-6">
+        <span class="text-xl font-black text-sky-900 dark:text-sky-100 uppercase tracking-widest">TechMaintenance Pro</span>
+        <nav class="hidden md:flex items-center gap-6 ml-8">
+            <a class="text-sky-900 dark:text-sky-400 border-b-2 border-sky-900 dark:border-sky-400 pb-1 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors opacity-80 duration-75" href="journal.html">Journal</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="contact.html">CV & Contact</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html">Accueil</a>
+        </nav>
+    </div>
+</header>
+
+    
+<aside class="bg-slate-100 dark:bg-slate-900 font-sans text-sm font-medium tracking-wide fixed left-0 top-0 h-screen border-r w-64 border-slate-300 dark:border-slate-800 flex flex-col py-6 z-40 pt-20">
+    <div class="px-6 pb-6 border-b border-slate-300 dark:border-slate-800 mb-4 flex flex-col gap-2">
+        <span class="text-lg font-bold text-sky-900 dark:text-sky-100">Salah Eddine Barki</span>
+        <span class="text-xs text-slate-500">Technicien de Maintenance Industrielle</span>
+    </div>
+    <nav class="flex flex-col flex-grow">
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="index.html"><span class="material-symbols-outlined">dashboard</span> Overview</a>
+        <a class="bg-sky-900 text-white dark:bg-sky-400 dark:text-slate-950 rounded-none border-l-4 border-slate-500 font-bold scale-95 duration-100 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="journal.html"><span class="material-symbols-outlined">build</span> Interventions</a>
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="contact.html"><span class="material-symbols-outlined">contact_mail</span> Contact</a>
+    </nav>
+    <div class="px-4 py-4">
+        <a href="contact.html" class="block w-full bg-slate-200 text-sky-900 py-2 text-xs font-bold uppercase tracking-wider hover:bg-slate-300 transition-colors border border-slate-300 text-center">Download CV</a>
+    </div>
+</aside>
+
+    <main class="ml-64 mt-16 flex-grow p-margin bg-surface">
+        <!-- Back link -->
+        <div class="mb-stack-lg">
+            <a href="journal.html" class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary hover:text-secondary transition-colors border border-outline px-3 py-2 bg-surface-container-lowest">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                RETOUR AUX INTERVENTIONS
+            </a>
+        </div>
+        <!-- Page Header -->
+        <div class="border-b border-outline pb-stack-md mb-stack-lg flex flex-col md:flex-row md:justify-between md:items-end gap-stack-md">
+            <div>
+                <div class="font-label-caps text-label-caps text-secondary mb-stack-sm flex items-center gap-2">
+                    <span class="w-2 h-2 bg-secondary block"></span> PLANIFICATION
+                </div>
+                <h1 class="font-h1 text-h1 text-primary">Planification maintenance annuelle & pilotage GMAO</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mt-unit">Rapport d'intervention technique #INT-2023-015</p>
+            </div>
+            <div class="flex flex-col md:text-right gap-unit">
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">calendar_today</span> Jan–Déc 2023
+                </div>
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">timer</span> Durée: 12 mois
+                </div>
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">engineering</span> Tech: 4882-MT
+                </div>
+            </div>
+        </div>
+        <!-- 12-Col Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+            <!-- Left Column -->
+            <div class="lg:col-span-8 space-y-gutter">
+                <!-- Problème -->
+                <section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-error border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">warning</span> Le Problème
+                        </h2>
+                        <p class="font-body-md text-body-md text-on-surface mb-stack-md">Taux réalisation maintenance préventive année N : 68% (233 ordres de travail réalisés sur 342 planifiés). Les arrêts imprévus représentent 23% du temps de production disponible. Coût maintenance en croissance +12% par rapport au budget. MTBF moyen site : 420 heures (benchmark industrie connectique ~650 h).</p>
+                        <div class="bg-surface p-stack-md border border-outline flex gap-4 items-center">
+                            <span class="material-symbols-outlined text-error text-[32px]">sensors</span>
+                            <div class="flex-1">
+                                <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Contexte Opérationnel</div>
+                                <div class="flex justify-between items-center border-b border-outline-variant pb-1">
+                                    <span class="font-data-mono text-data-mono">Équipement</span>
+                                    <span class="font-data-mono text-data-mono text-error font-bold">Site industriel complet : 142 équip...</span>
+                                </div>
+                                <div class="flex justify-between items-center pt-1">
+                                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Site</span>
+                                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Tanger (Maroc)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Diagnostic -->
+                <section class="bg-surface-container-lowest border border-outline rounded">
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">troubleshoot</span> Diagnostic
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md mb-stack-md">
+                            <div>
+                                <p class="font-body-md text-body-md text-on-surface">Analyse des données de la GMAO et de la supervision des 12 derniers mois :<br>- 342 ordres de travail préventifs planifiés, 233 réalisés (68%), 109 reportés.<br>- Pareto des causes de report : ~45% = conflit avec production (pas de fenêtre machine disponible), ~30% = pièces détachées non disponibles (délai d'approvisionnement 5–7 jours), ~15% = sous-traitant spécialisé indisponible.<br><br>Absence de classification des équipements par criticité : tous traités avec la même priorité. Exemple : le compresseur d'air 8 bar (critique, arrêt = arrêt tout le site) et un éclairage de bureau avaient la même fréquence de préventif. Le temps de maintenance était mal réparti.<br><br>Analyse MTBF par famille d'équipements : presses injection 380 h (faible), bancs test 620 h (moyen), utilités 850 h (bon). Aucun plan d'action spécifique sur les presses.</p>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;">
+                                <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:160px;">
+                                    <img src="../img_06a_room.png" alt="Technical photo" style="width:100%;height:100%;object-fit:cover;" />
+                                </div>
+                                <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:160px;">
+                                    <img src="../img_06b_kpi.png" alt="Technical photo" style="width:100%;height:100%;object-fit:cover;" />
+                                </div>
+                                <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;height:160px;">
+                                    <img src="../img_06c_planning.png" alt="Technical photo" style="width:100%;height:100%;object-fit:cover;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Solution -->
+                <section class="bg-surface-container-lowest border border-outline rounded">
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">build</span> Solution Apportée
+                        </h2>
+                        <div class="space-y-stack-sm">
+                            <div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">01.</span>
+            <p class="font-body-md text-body-md text-on-surface">COLLECTE & ANALYSE : Export des données GMAO (ordres réalisés, reports, coûts). Export des données supervision (arrêts, codes défauts, durées). Croisement dans Excel avec tableau de bord simplifié (graphiques tendance, top 5 pannes du mois).</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">02.</span>
+            <p class="font-body-md text-body-md text-on-surface">CLASSIFICATION CRITICITÉ ABC (méthode RCM simplifiée) : Classe A (14% des équipements, ~20 machines) = critique production + sécurité + environnement. → Préventif mensuel ou bimestriel. Stock de pièces critiques en local (capteurs de rechange, vannes, joints courants). Ex : presses injection, compresseur air principal, tour aéroréfrigérant principal. Classe B (32%, ~45 machines) = important mais remplaçable ou redondant. → Préventif trimestriel. Approvisionnement pièces sous 48 h. Classe C (54%, ~77 machines) = standard / non critique. → Préventif semestriel ou annuel. Curatif à la demande.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">03.</span>
+            <p class="font-body-md text-body-md text-on-surface">PLANNING ANNUEL INTÉGRÉ : Création du planning 12 mois dans la GMAO avec fenêtres fixes négociées avec le chef de production : samedi matin (4 h pour A), arrêts planifiés trimestriels (8 h pour grandes révisions), périodes de vacances (révisions lourdes). Les conflits production ont chuté de 45% à 8%.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">04.</span>
+            <p class="font-body-md text-body-md text-on-surface">APPROVISIONNEMENT : Négociation avec fournisseurs locaux pour réduire les délais. Création d'un stock de sécurité classe A (capteurs inductifs et photoélectriques de remplacement, vannes 5/2, joints toriques standards). Délai moyen pièces critiques : 5 j → 2 j.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">05.</span>
+            <p class="font-body-md text-body-md text-on-surface">SOUS-TRAITANCE : Regroupement des interventions par lots (ex: thermographie annuelle, étalonnage des instruments, révision des pompes spécialisées). Appel d'offres 3 fournisseurs. Réduction des coûts sous-traitance : –18%.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">06.</span>
+            <p class="font-body-md text-body-md text-on-surface">PILOTAGE KPI : Création d'un tableau de bord mensuel affiché au local maintenance et partagé avec la production : taux de réalisation du préventif (%), MTBF (heures) et MTTR (minutes) par classe d'équipement, coût maintenance par tonne produite, top 3 pannes du mois + actions en cours.</p>
+        </div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+            <span class="font-data-mono text-data-mono text-secondary shrink-0">07.</span>
+            <p class="font-body-md text-body-md text-on-surface">PROJETS D'AMÉLIORATION : Élaboration et soumission de 5 projets d'amélioration : remplacement de 2 variateurs obsolètes, mise en place d'un suivi vibration sur 3 groupes critiques, formation interne automatisme pour 3 techniciens. 3 projets sur 5 validés par la direction et réalisés en interne.</p>
+        </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Résultat -->
+                <section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">verified</span> Résultat
+                        </h2>
+                        <p class="font-body-md text-body-md text-on-surface mb-stack-md">Taux de réalisation préventif : 68% → 94% (année N+1), objectif groupe 90% dépassé. Arrêts imprévus : –28% vs année N (production gagne ~340 heures/an de disponibilité). MTBF site : 420 h → 610 h (+45%), rapproché du benchmark industrie. Coûts maintenance : –15% sous-traitance (achats groupés) et –8% pièces (stock optimisé + négociation). 3 projets amélioration réalisés en interne avec retour sur investissement <18 mois.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-unit">
+                            <div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">check_circle</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Préventif</div>
+            <div class="font-h3 text-h3 text-primary">68%→94%</div>
+        </div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">trending_down</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Arrêts</div>
+            <div class="font-h3 text-h3 text-primary">-28%</div>
+        </div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">speed</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">MTBF</div>
+            <div class="font-h3 text-h3 text-primary">+45%</div>
+        </div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+            <span class="material-symbols-outlined text-primary mb-1">savings</span>
+            <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Coûts</div>
+            <div class="font-h3 text-h3 text-primary">-15%</div>
+        </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Right Column -->
+            <aside class="lg:col-span-4 space-y-gutter">
+                <!-- Équipement Info -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Spécifications Équipement</h3>
+                    <ul class="space-y-stack-sm">
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Système</span>
+                            <span class="font-data-mono text-data-mono text-on-surface">Site industriel complet : 142 équipement...</span>
+                        </li>
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Localisation</span>
+                            <span class="font-data-mono text-data-mono text-on-surface">Tanger (Maroc)</span>
+                        </li>
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Entreprise</span>
+                            <span class="font-data-mono text-data-mono text-on-surface">TE Connectivity</span>
+                        </li>
+                        <li class="flex justify-between pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Indice Criticité</span>
+                            <span class="font-data-mono text-data-mono text-error font-bold bg-error-container px-2 py-0.5 border border-error">Tier 1 - Vital</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Pièces -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Inventaire Pièces</h3>
+                    <div class="space-y-unit">
+                        <div class="font-data-mono text-data-mono text-on-surface-variant">Aucune pièce remplacée pour cette intervention.</div>
+                    </div>
+                </div>
+                <!-- Outillage -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Matériel Déployé</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">Excel</span>
+        </div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">GMAO SAP PM</span>
+        </div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">Power BI</span>
+        </div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-primary">build</span>
+            <span class="font-label-caps text-label-caps text-primary">Tableau de bord KPI</span>
+        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    
+<footer class="bg-slate-50 dark:bg-slate-950 font-sans text-[10px] uppercase tracking-tighter text-slate-500 w-full border-t border-slate-300 dark:border-slate-800 py-8 px-10 flex flex-col md:flex-row justify-between items-center gap-4 ml-64 mt-auto">
+    <span>© 2024 Salah Eddine Barki — Technicien Maintenance Industrielle | Portfolio Interactif</span>
+    <div class="flex items-center gap-4">
+        <a class="text-slate-500 hover:text-sky-900 dark:hover:text-sky-300 transition-colors" href="index.html">Accueil</a>
+        <a class="text-slate-500 hover:text-sky-900 dark:hover:text-sky-300 transition-colors" href="journal.html">Journal</a>
+        <a class="text-slate-500 hover:text-sky-900 dark:hover:text-sky-300 transition-colors" href="contact.html">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>

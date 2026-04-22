@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2024-091 · Panne variateur convoyeur — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2024-091</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge crit">◆ CURATIF URGENT · TIER 1</div>
+      <h1>Panne résolution variateur de fréquence — Convoyeur principal</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2024-091</strong></span>
+        <span>DATE <strong>2024.09.12</strong></span>
+        <span>DURATION <strong>02h 15m</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>GRIGNY · 91</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+
+        <div>
+
+          <!-- PROBLEM -->
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Contexte :</strong> Ligne de production agroalimentaire fonctionnant 20 h/jour. Convoyeur principal de 45 m alimentant 3 lignes d'embouteillage secondaires. Arrêt total de la production sur les 3 lignes.</p>
+              <p><strong>Symptôme :</strong> Défaut variateur de fréquence F0001 <span class="mono" style="color:var(--red);">'Overcurrent'</span> au démarrage du convoyeur principal. Tentative de redémarrage automatique échoue après 3 essais. Moteur 37 kW triphasé ne tourne pas. LED variateur clignote rouge F0001. Production arrêtée depuis 1 h 30.</p>
+            </div>
+          </div>
+
+          <!-- DIAGNOSTIC -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Électrique :</strong> mesure résistance stator entre phases U-V, V-W, W-U = 0,8 Ω stable (valeur nominale 0,75 Ω). Isolation phase-terre &gt; 500 MΩ. Moteur non défectueux électriquement.</p>
+              <p><strong>Mécanique :</strong> roue libre du réducteur bloquée en rotation manuelle. Démontage carter : roulement à rouleaux coniques de sortie brûlé (température &gt; 120 °C). Graisse complètement noircie et desséchée. Engrenage secondaire avec micro-piqûres sur les flancs de denture.</p>
+              <p><strong>Variateur :</strong> paramètre P0640 (limite courant) réglé à 150 % du nominal. Au démarrage, le moteur tente d'accélérer mais le réducteur bloqué provoque un appel de courant immédiat &gt; limite → F0001. Historique : 47 occurrences F0001 sur les 30 derniers jours, jamais investiguées (redémarrages manuels répétés).</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_07a_overview.png" alt="Vue d'ensemble — Convoyeur principal 45 m ligne PET"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Convoyeur principal 45 m ligne PET</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_07b_variateur.png" alt="Variateur Siemens G120 — diagnostic StarterSoft"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Variateur Siemens G120 — diagnostic StarterSoft</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_07c_reducteur.png" alt="Réducteur moteur — roulement SKF 30217 + graissage"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Réducteur moteur — roulement SKF 30217 + graissage</span></figcaption>
+            </figure>
+          </div>
+
+          <!-- SOLUTION -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>CONSIGNATION</strong> — arrêt électrique général ligne. Condamnateur cadenas sur sectionneur moteur. Signalisation de zone maintenance. Vérification tension 0 V aux bornes moteur.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>DÉMONTAGE</strong> — dépose du moteur 37 kW + réducteur complet du convoyeur. Manutention palan 500 kg. Pose sur banc de travail mécanique.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>RÉPARATION RÉDUCTEUR</strong> — remplacement roulement à rouleaux coniques de sortie (SKF 30217). Nettoyage complet carters et engrenages. Regraissage graisse haute température SKF LGHP 2. Contrôle jeu d'engrenages avec cales : 0,15 mm (tolérance OK).</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>RÉINSTALLATION</strong> — remontage moteur + réducteur. Alignement laser moteur-réducteur-convoyeur. Tolérance angulaire &lt; 0,05 mm/m. Serrage pieds au couple avec clé dynamométrique 85 Nm.</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>RÉGLAGE VARIATEUR</strong> — réinitialisation défauts. Vérification paramètres : rampes accélération/décélération rallongées de 5 s à 8 s. Activation <em>Flying restart</em> pour redémarrage en rotation libre. Activation <em>Motor holding brake</em> pour freinage contrôlé à l'arrêt.</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>ESSAIS</strong> — démarrage à vide convoyeur. Vitesse nominale 1,2 m/s atteinte en 8 s. Courant moteur 42 A nominal (mesuré 38 A stable). Marche en charge 2 h sans défaut. Monitoring température réducteur : 48 °C stable.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>GMAO</strong> — création OT préventif 'Graissage réducteur convoyeur principal' tous les 6 mois. Mise à jour documentation technique site. Formation opérateurs sur signification F0001 (ne plus redémarrer aveuglément).</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Production redémarrée après 2 h 15 d'arrêt. Zéro redémarrage forcé depuis la réparation. Température réducteur stable à 45–50 °C en fonctionnement continu. Courant moteur nominal respecté. Durée de vie réducteur estimée rétablie à nominale (10+ ans).</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Arrêt Total</div><div class="metric-value">2h15</div></div>
+                <div class="metric"><div class="metric-label">Temp. Réducteur</div><div class="metric-value">48°C</div></div>
+                <div class="metric"><div class="metric-label">Courant Moteur</div><div class="metric-value">38A</div></div>
+                <div class="metric"><div class="metric-label">Dispo.</div><div class="metric-value">+100%</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDE PANEL -->
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">Variateur G120 + Moteur 37 kW</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">Grigny (91)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">Coca-Cola EP</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Roulement SKF 30217</div><div class="ipart-ref">REF · rouleaux coniques · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Graisse SKF LGHP 2</div><div class="ipart-ref">REF · haute température · Qté 1 kg</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Joint SPI carter réducteur</div><div class="ipart-ref">REF · standard industriel · Qté 2</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">Clé dynamo.</span>
+              <span class="tag">Multimètre</span>
+              <span class="tag">Palan 500 kg</span>
+              <span class="tag">Laser alignment</span>
+              <span class="tag">StarterSoft</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

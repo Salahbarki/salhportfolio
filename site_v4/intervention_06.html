@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2023-015 · Planification GMAO — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2023-015</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge">◆ PLANIFICATION · PILOTAGE 12 MOIS</div>
+      <h1>Planification maintenance annuelle &amp; pilotage GMAO</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2023-015</strong></span>
+        <span>PERIOD <strong>2023.01 – 12</strong></span>
+        <span>DURATION <strong>12 mois</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>TANGER · MA</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+        <div>
+
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>État initial :</strong> Taux de réalisation préventif <span class="mono" style="color:var(--red);">68 %</span> (233 OT réalisés sur 342 planifiés). Arrêts imprévus = 23 % du temps de production. Coût maintenance +12 % vs budget. MTBF site 420 h (benchmark industrie connectique ~650 h).</p>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Analyse GMAO + supervision 12 mois :</strong> 109 ordres de travail reportés. Causes Pareto : 45 % conflit production, 30 % pièces indisponibles (délai 5–7 j), 15 % sous-traitant indisponible.</p>
+              <p><strong>Classification :</strong> absente. Tous équipements traités avec la même priorité — le compresseur d'air 8 bar critique et un éclairage de bureau ont le même préventif.</p>
+              <p><strong>MTBF par famille :</strong> presses injection 380 h (faible), bancs test 620 h (moyen), utilités 850 h (bon). Aucun plan d'action ciblé sur les presses.</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_06a_room.png" alt="Vue d'ensemble — Salle contrôle maintenance"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Salle contrôle maintenance</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_06b_kpi.png" alt="Tableau KPI — MTBF / MTTR / Disponibilité"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Tableau KPI — MTBF / MTTR / Disponibilité</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_06c_planning.png" alt="Planning préventif annuel — 142 équipts"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Planning préventif annuel — 142 équipts</span></figcaption>
+            </figure>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Plan d'action 12 mois</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>DATA</strong> — export GMAO (OT, coûts) + supervision (arrêts, codes). Tableau de bord Excel : tendances, top 5 pannes / mois.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>CLASSIFICATION ABC (RCM simplifié)</strong> — Classe A (14 %, ~20 machines) critiques : préventif mensuel/bimestriel + stock local. Classe B (32 %, ~45) : trimestriel. Classe C (54 %, ~77) : semestriel/annuel.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>PLANNING INTÉGRÉ</strong> — fenêtres fixes négociées avec production : samedi matin (A), arrêts trimestriels 8 h, vacances (révisions lourdes). Conflits production 45 % → 8 %.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>APPRO</strong> — négociation fournisseurs locaux, stock sécurité classe A (capteurs, vannes 5/2, joints). Délai critique 5 j → 2 j.</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>SOUS-TRAITANCE</strong> — regroupement par lots (thermographie, étalonnage, pompes spé). Appel d'offres 3 fournisseurs. –18 % coûts.</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>KPI</strong> — tableau de bord mensuel affiché : % préventif, MTBF / MTTR par classe, coût par tonne produite, top 3 pannes.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>PROJETS</strong> — 5 projets soumis : 2 variateurs obsolètes, suivi vibration 3 groupes critiques, formation auto 3 techniciens. 3/5 validés et réalisés en interne.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré (année N+1)</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Taux de réalisation préventif : 68 % → 94 % (objectif groupe 90 % dépassé). Arrêts imprévus –28 % (production gagne ~340 h/an de disponibilité). MTBF : 420 → 610 h (+45 %). Coûts : –15 % sous-traitance, –8 % pièces. 3 projets amélioration ROI &lt; 18 mois.</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Préventif</div><div class="metric-value">68→94%</div></div>
+                <div class="metric"><div class="metric-label">Arrêts</div><div class="metric-value">–28%</div></div>
+                <div class="metric"><div class="metric-label">MTBF</div><div class="metric-value">+45%</div></div>
+                <div class="metric"><div class="metric-label">Coûts</div><div class="metric-value">–15%</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <aside>
+          <div class="ispec">
+            <h4>// Périmètre</h4>
+            <div class="ispec-row"><span class="ispec-label">Site</span><span class="ispec-val">Tanger (MA)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Équipements</span><span class="ispec-val">142</span></div>
+            <div class="ispec-row"><span class="ispec-label">Classe A</span><span class="ispec-val">20</span></div>
+            <div class="ispec-row"><span class="ispec-label">Classe B</span><span class="ispec-val">45</span></div>
+            <div class="ispec-row"><span class="ispec-label">Classe C</span><span class="ispec-val">77</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">SITE COMPLET</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Livrables</h4>
+            <div class="ipart"><div class="ipart-mk">◆</div><div><div class="ipart-name">Planning 12 mois GMAO</div><div class="ipart-ref">342 OT · classes ABC</div></div></div>
+            <div class="ipart"><div class="ipart-mk">◆</div><div><div class="ipart-name">Tableau de bord KPI</div><div class="ipart-ref">Mensuel · affiché atelier</div></div></div>
+            <div class="ipart"><div class="ipart-mk">◆</div><div><div class="ipart-name">Stock sécurité classe A</div><div class="ipart-ref">Capteurs · vannes · joints</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Méthodes</h4>
+            <div class="itools">
+              <span class="tag">RCM simplifié</span>
+              <span class="tag">ABC</span>
+              <span class="tag">GMAO</span>
+              <span class="tag">Excel</span>
+              <span class="tag">KPI</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

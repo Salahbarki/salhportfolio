@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact & CV — TechMaintenance Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-container": "#eceeee",
+                    "primary-container": "#1b4f72",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#3a4856",
+                    "primary-fixed": "#cce5ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "surface-dim": "#d8dada",
+                    "on-surface-variant": "#41474e",
+                    "on-secondary-fixed": "#351000",
+                    "tertiary": "#283643",
+                    "on-secondary-container": "#5c2000",
+                    "on-primary-fixed-variant": "#154b6d",
+                    "outline": "#72787f",
+                    "surface": "#f8fafa",
+                    "surface-container-high": "#e6e8e8",
+                    "surface-bright": "#f8fafa",
+                    "primary": "#003857",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f4",
+                    "secondary": "#a23f00",
+                    "surface-tint": "#326286",
+                    "inverse-primary": "#9dcbf4",
+                    "on-primary-fixed": "#001e31",
+                    "tertiary-container": "#3e4d5a",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#9dcbf4",
+                    "on-tertiary-container": "#aebdcd",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-fixed-variant": "#7c2e00",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e1e3e3",
+                    "tertiary-fixed": "#d5e4f5",
+                    "on-error": "#ffffff",
+                    "background": "#f8fafa",
+                    "on-primary-container": "#92c0e9",
+                    "surface-container-highest": "#e1e3e3",
+                    "secondary-fixed-dim": "#ffb595",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#fc7127",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0e1d29",
+                    "inverse-on-surface": "#eff1f1",
+                    "secondary-fixed": "#ffdbcd",
+                    "tertiary-fixed-dim": "#b9c8d8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "margin": "40px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1200px",
+                    "stack-lg": "32px"
+                },
+                "fontFamily": {
+                    "h2": ["Inter"],
+                    "data-mono": ["Inter"],
+                    "h3": ["Inter"],
+                    "label-caps": ["Work Sans"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"]
+                },
+                "fontSize": {
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                }
+            }
+        }
+    }
+</script>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+    
+<!-- TopAppBar -->
+<header class="bg-slate-50 dark:bg-slate-950 font-sans tracking-tight uppercase font-bold text-xs docked full-width top-0 border-b border-slate-300 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-10 h-16 fixed z-50 pl-64">
+    <div class="flex items-center gap-6">
+        <span class="text-xl font-black text-sky-900 dark:text-sky-100 uppercase tracking-widest">TechMaintenance Pro</span>
+        <nav class="hidden md:flex items-center gap-6 ml-8">
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors opacity-80 duration-75" href="journal.html">Journal</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html#certifications">Certifications</a>
+            <a class="text-sky-900 dark:text-sky-400 border-b-2 border-sky-900 dark:border-sky-400 pb-1 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="contact.html">CV & Contact</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html">Accueil</a>
+        </nav>
+    </div>
+    <div class="flex items-center gap-4 text-sky-900 dark:text-sky-400">
+        <button class="hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-2 rounded-DEFAULT"><span class="material-symbols-outlined">settings</span></button>
+        <button class="hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-2 rounded-DEFAULT"><span class="material-symbols-outlined">account_circle</span></button>
+    </div>
+</header>
+
+    
+<!-- SideNavBar -->
+<aside class="bg-slate-100 dark:bg-slate-900 font-sans text-sm font-medium tracking-wide fixed left-0 top-0 h-screen border-r w-64 border-slate-300 dark:border-slate-800 flat no shadows flex flex-col h-full py-6 z-40 pt-20">
+    <div class="px-6 pb-6 border-b border-slate-300 dark:border-slate-800 mb-4 flex flex-col gap-2">
+        <span class="text-lg font-bold text-sky-900 dark:text-sky-100">Salah Eddine Barki</span>
+        <span class="text-xs text-slate-500">ID: 4882-MT</span>
+        <div class="w-12 h-12 rounded-full border-2 border-sky-900 dark:border-sky-400 mt-2 bg-sky-100 flex items-center justify-center text-sky-900 font-bold text-lg">SB</div>
+    </div>
+    <nav class="flex flex-col flex-grow">
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="index.html"><span class="material-symbols-outlined">dashboard</span> Overview</a>
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="journal.html"><span class="material-symbols-outlined">build</span> Interventions</a>
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="#"><span class="material-symbols-outlined">architecture</span> Schematics</a>
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="#"><span class="material-symbols-outlined">description</span> Documentation</a>
+    </nav>
+    <div class="px-4 py-4">
+        <a href="contact.html" class="block w-full bg-slate-200 text-sky-900 py-2 text-xs font-bold uppercase tracking-wider hover:bg-slate-300 transition-colors border border-slate-300 text-center">Download CV</a>
+    </div>
+    <div class="border-t border-slate-300 dark:border-slate-800 mt-auto pt-4 flex flex-col">
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="contact.html"><span class="material-symbols-outlined">settings_input_component</span> Contact</a>
+        <span class="px-4 py-3 flex items-center gap-3 text-slate-400"><span class="material-symbols-outlined">logout</span> Logout</span>
+    </div>
+</aside>
+
+    <main class="flex-grow w-full max-w-container-max mx-auto px-margin py-stack-lg flex flex-col md:flex-row gap-gutter ml-64 mt-16">
+        <!-- Left Column: Context & CV -->
+        <div class="w-full md:w-1/3 flex flex-col gap-stack-lg">
+            <div>
+                <h1 class="font-h1 text-h1 text-primary mb-stack-sm">Connect</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Ready to discuss structural integrity and precision maintenance.</p>
+            </div>
+            <!-- CV Download Card -->
+            <div class="bg-surface-container-low border border-outline-variant p-stack-md rounded-DEFAULT flex flex-col items-center justify-center text-center gap-stack-sm relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-unit bg-secondary-container"></div>
+                <span class="material-symbols-outlined text-4xl text-primary mb-2">description</span>
+                <h3 class="font-h3 text-h3 text-primary">Technical Blueprint</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">Comprehensive overview of methodologies, certifications, and operational history.</p>
+                <a href="../Portfolio_Salah_Barki_v4.pdf" download class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-6 py-3 rounded-DEFAULT hover:bg-surface-tint transition-colors w-full flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm">download</span>
+                    Télécharger mon CV
+                </a>
+            </div>
+            <!-- Contact Info -->
+            <div class="flex flex-col gap-unit">
+                <div class="flex items-center gap-3 p-3 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest">
+                    <span class="material-symbols-outlined text-primary">phone</span>
+                    <span class="font-data-mono text-data-mono text-on-surface">+33 6 88 69 07 04</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest">
+                    <span class="material-symbols-outlined text-primary">mail</span>
+                    <span class="font-data-mono text-data-mono text-on-surface">salahbarki.seb@gmail.com</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 border border-outline-variant rounded-DEFAULT bg-surface-container-lowest">
+                    <span class="material-symbols-outlined text-primary">location_on</span>
+                    <span class="font-data-mono text-data-mono text-on-surface">Amiens, France</span>
+                </div>
+            </div>
+            <!-- Certifications Reinforcement -->
+            <div class="mt-auto pt-stack-md">
+                <h4 class="font-label-caps text-label-caps text-outline uppercase mb-stack-sm">Verified Credentials</h4>
+                <div class="flex flex-wrap gap-unit">
+                    <span class="bg-surface border border-outline-variant px-2 py-1 font-label-caps text-label-caps text-primary uppercase">ISO 9001</span>
+                    <span class="bg-surface border border-outline-variant px-2 py-1 font-label-caps text-label-caps text-primary uppercase">PLC Adv.</span>
+                    <span class="bg-surface border border-outline-variant px-2 py-1 font-label-caps text-label-caps text-primary uppercase">Hydraulics II</span>
+                    <span class="bg-surface border border-outline-variant px-2 py-1 font-label-caps text-label-caps text-primary uppercase">LOTO</span>
+                </div>
+            </div>
+        </div>
+        <!-- Right Column: Contact Form -->
+        <div class="w-full md:w-2/3">
+            <div class="bg-surface border border-outline-variant rounded-DEFAULT p-stack-lg h-full">
+                <div class="flex items-center gap-2 mb-stack-md border-b border-outline-variant pb-stack-sm">
+                    <span class="w-3 h-3 bg-secondary-container"></span>
+                    <h2 class="font-h2 text-h2 text-primary">Initiate Contact</h2>
+                </div>
+                <form class="flex flex-col gap-stack-md" onsubmit="event.preventDefault(); alert('Message envoyé ! Je vous recontacte rapidement.');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+                        <div class="flex flex-col gap-1">
+                            <label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="id_name">Nom / Société</label>
+                            <input class="border border-outline-variant bg-surface-container-lowest p-3 rounded-DEFAULT focus:outline-none focus:border-2 focus:border-primary font-data-mono text-data-mono text-on-surface transition-all" id="id_name" placeholder="Votre nom..." type="text"/>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="id_email">Email</label>
+                            <input class="border border-outline-variant bg-surface-container-lowest p-3 rounded-DEFAULT focus:outline-none focus:border-2 focus:border-primary font-data-mono text-data-mono text-on-surface transition-all" id="id_email" placeholder="votre@email.com" type="email"/>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="id_subject">Sujet</label>
+                        <select class="border border-outline-variant bg-surface-container-lowest p-3 rounded-DEFAULT focus:outline-none focus:border-2 focus:border-primary font-data-mono text-data-mono text-on-surface transition-all appearance-none cursor-pointer" id="id_subject">
+                            <option>Proposition d'emploi</option>
+                            <option>Consultation technique</option>
+                            <option>Collaboration</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="id_message">Message</label>
+                        <textarea class="border border-outline-variant bg-surface-container-lowest p-3 rounded-DEFAULT focus:outline-none focus:border-2 focus:border-primary font-data-mono text-data-mono text-on-surface transition-all resize-y" id="id_message" placeholder="Votre message..." rows="6"></textarea>
+                    </div>
+                    <div class="flex justify-end mt-stack-sm">
+                        <button class="bg-primary text-on-primary font-label-caps text-label-caps uppercase px-8 py-3 rounded-DEFAULT hover:bg-surface-tint transition-colors border border-transparent flex items-center gap-2" type="submit">
+                            Transmit Data
+                            <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 font-sans text-[10px] uppercase tracking-tighter text-slate-500 w-full border-t border-slate-300 dark:border-slate-800 py-8 px-10 flex flex-col md:flex-row justify-between items-center gap-4 ml-64 mt-auto">
+    <span>© 2024 Salah Eddine Barki — Technicien Maintenance Industrielle | Portfolio Interactif</span>
+    <div class="flex items-center gap-4">
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Safety Protocols</a>
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Technical Certifications</a>
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="contact.html">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>

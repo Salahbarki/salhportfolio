@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2024-089 · Dépannage hydraulique — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2024-089</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge warn">◆ CURATIF MÉCANIQUE · HYDRAULIQUE</div>
+      <h1>Dépannage hydraulique presse découpe / pliage</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2024-089</strong></span>
+        <span>DATE <strong>2024.04</strong></span>
+        <span>DURATION <strong>03h 20m</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>ST-LAURENT-SUR-SÈVRE · 85</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+        <div>
+
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Symptôme :</strong> Perte brutale de pression en descente rapide vers position pliage. Manomètre principal : chute <span class="mono" style="color:var(--red);">80 → 30 bar</span>. Bruit violent type « coup de bélier » à chaque inversion descente/montée.</p>
+              <p><strong>Impact :</strong> Arrêt machine. Production interrompue depuis 2 h.</p>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Mesures multi-points :</strong> amont filtre = 80 bar ✓ ; amont vérin tige descente = 32 bar ✗ ; circuit montée = 78 bar ✓ → panne localisée circuit descente.</p>
+              <p><strong>Auscultation stéthoscope :</strong> coup de bélier localisé à l'accumulateur hydropneumatique côté montée, synchrone avec inversion cycle.</p>
+              <p><strong>Clapet anti-retour descente :</strong> morceau de joint torique écrasé coincé dans le siège + joint clapet partiellement dégradé (température huile élevée).</p>
+              <p><strong>Température huile :</strong> 68 °C (vs &lt; 55 °C normal). Filtre retour noir saturé → échange thermique dégradé.</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_05a_overview.png" alt="Vue d'ensemble — Presse hydraulique découpe"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Presse hydraulique découpe</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_05b_manometre.png" alt="Manomètre analogique — lecture ~80 bar"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Manomètre analogique — lecture ~80 bar</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_05c_clapet.png" alt="Clapet anti-retour démonté — diag. coup de bélier"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Clapet anti-retour démonté — diag. coup de bélier</span></figcaption>
+            </figure>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>CONSIGNATION</strong> — arrêt moteur pompe au disjoncteur, cadenas + panneau. Vidange 120 L huile bac homologué.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>CLAPET</strong> — dépose complète, nettoyage siège carbure à la pâte à roder (grain fin). Test étanchéité kérosène : 0 goutte / 30 s. Remplacement joints torique + plat. Serrage croisé au couple.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>ACCUMULATEUR</strong> — remplacement complet (vase + précharge). Précharge 65 bar. Contrôle 24 h après : aucune perte.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>FILTRATION</strong> — remplacement filtre retour + aspiration. Huile neuve ISO VG 46. Purge 10 cycles lents sans charge.</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>POMPE</strong> — inspection partielle, jeu palettes 0,12 mm (max 0,15 mm) ✓. Révision programmée dans 6 mois (préventif opportuniste).</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>MISE EN PRESSION</strong> — paliers 20 → 40 → 80 bar, 5 min chacun. Aucune fuite aux raccords. Temp huile après 30 min = 48 °C ✓.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>ESSAIS</strong> — découpe tôle 2 mm, 50 cycles. Pression 80 bar ±2 bar stable. Coups de bélier disparus (stéthoscope + capteur vibration).</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Intervention réalisée en 3h20 (prévision constructeur 7h). Production relancée le jour même. Pression rétablie 80 bar stable. Coups hydrauliques supprimés. Maintenance préventive avancée : remplacement huile + filtres programmés 2 mois en avance. Révision pompe planifiée GMAO.</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Durée</div><div class="metric-value">3h20</div></div>
+                <div class="metric"><div class="metric-label">Prévision</div><div class="metric-value">7h00</div></div>
+                <div class="metric"><div class="metric-label">Pression</div><div class="metric-value">80 bar</div></div>
+                <div class="metric"><div class="metric-label">Temp. huile</div><div class="metric-value">48 °C</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">Presse hydraulique D/P</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">St-Laurent (85)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">Sovireso</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Accumulateur hydropneum.</div><div class="ipart-ref">Précharge 65 bar · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Joints (O-ring + plat)</div><div class="ipart-ref">REF clapet · Qté kit</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Filtres retour + aspiration</div><div class="ipart-ref">REF standard · Qté 2</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Huile ISO VG 46</div><div class="ipart-ref">120 L</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">Manomètres</span>
+              <span class="tag">Stéthoscope</span>
+              <span class="tag">Pâte à roder</span>
+              <span class="tag">Thermomètre</span>
+              <span class="tag">Capteur vibration</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

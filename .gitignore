@@ -1,0 +1,38 @@
+# Secrets / API keys
+generate_images.py
+generate_images_v2.py
+generate_images_v3.py
+generate_images_int07.py
+generate_images_int08.py
+generate_images_int09.py
+generate_images_int10.py
+generate_images_int11.py
+
+# Temp / output binaries
+*.pptx
+*.docx
+*.pdf
+*.zip
+
+# Duplicate images at root (already inside site_v4/img/)
+img_*.png
+img_*.jpg
+image*.png
+image*.jpg
+images*.jpg
+images*.png
+
+# Raw WhatsApp images
+WhatsApp Image*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Node
+node_modules/

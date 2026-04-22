@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TechMaintenance Pro - Intervention Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Work+Sans:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eceeee",
+                    "primary-container": "#1b4f72",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#3a4856",
+                    "primary-fixed": "#cce5ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "surface-dim": "#d8dada",
+                    "on-surface-variant": "#41474e",
+                    "on-secondary-fixed": "#351000",
+                    "tertiary": "#283643",
+                    "on-secondary-container": "#5c2000",
+                    "on-primary-fixed-variant": "#154b6d",
+                    "outline": "#72787f",
+                    "surface": "#f8fafa",
+                    "surface-container-high": "#e6e8e8",
+                    "surface-bright": "#f8fafa",
+                    "primary": "#003857",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f4",
+                    "secondary": "#a23f00",
+                    "surface-tint": "#326286",
+                    "inverse-primary": "#9dcbf4",
+                    "on-primary-fixed": "#001e31",
+                    "tertiary-container": "#3e4d5a",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#9dcbf4",
+                    "on-tertiary-container": "#aebdcd",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-fixed-variant": "#7c2e00",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e1e3e3",
+                    "tertiary-fixed": "#d5e4f5",
+                    "on-error": "#ffffff",
+                    "background": "#f8fafa",
+                    "on-primary-container": "#92c0e9",
+                    "surface-container-highest": "#e1e3e3",
+                    "secondary-fixed-dim": "#ffb595",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#fc7127",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0e1d29",
+                    "inverse-on-surface": "#eff1f1",
+                    "secondary-fixed": "#ffdbcd",
+                    "tertiary-fixed-dim": "#b9c8d8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "margin": "40px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1200px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "h2": ["Inter"],
+                    "data-mono": ["Inter"],
+                    "h3": ["Inter"],
+                    "label-caps": ["Work Sans"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"]
+            },
+            "fontSize": {
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar: Rendered for global brand anchor, but navigation logic reflects sub-page status (no active states) -->
+<header class="flex justify-between items-center w-full px-10 h-16 bg-slate-50 dark:bg-slate-950 border-b border-slate-300 dark:border-slate-800 docked full-width top-0 z-50">
+<div class="flex items-center gap-6">
+<div class="text-xl font-black text-sky-900 dark:text-sky-100 uppercase tracking-widest">
+                TechMaintenance Pro
+            </div>
+<nav class="hidden md:flex gap-4">
+<a class="font-sans tracking-tight uppercase font-bold text-xs text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors px-2 py-1" href="#">Journal</a>
+<a class="font-sans tracking-tight uppercase font-bold text-xs text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors px-2 py-1" href="#">Certifications</a>
+<a class="font-sans tracking-tight uppercase font-bold text-xs text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors px-2 py-1" href="#">CV</a>
+<a class="font-sans tracking-tight uppercase font-bold text-xs text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors px-2 py-1" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 text-sky-900 dark:text-sky-400">
+<span class="material-symbols-outlined cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-1 rounded">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-1 rounded">account_circle</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto p-margin">
+<!-- Contextual Back Action (Sub-page logic) -->
+<div class="mb-stack-lg">
+<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary hover:text-secondary transition-colors border border-outline px-3 py-2 bg-surface-container-lowest" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                RETOUR AUX INTERVENTIONS
+            </a>
+</div>
+<!-- Page Header -->
+<div class="border-b border-outline pb-stack-md mb-stack-lg flex flex-col md:flex-row md:justify-between md:items-end gap-stack-md">
+<div>
+<div class="font-label-caps text-label-caps text-secondary mb-stack-sm flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary block"></span> INCIDENT CRITIQUE RÉSOLU
+                </div>
+<h1 class="font-h1 text-h1 text-primary">Défaillance Système Hydraulique H-402</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-unit">Rapport d'intervention technique #INT-2023-089</p>
+</div>
+<div class="flex flex-col md:text-right gap-unit">
+<div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> 24 Oct 2023
+                </div>
+<div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+<span class="material-symbols-outlined text-[16px]">timer</span> Durée: 04h 30m
+                </div>
+<div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+<span class="material-symbols-outlined text-[16px]">engineering</span> Tech: 4882-MT
+                </div>
+</div>
+</div>
+<!-- 12-Col Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column (Narrative & Process) -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Le Problème -->
+<section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+<div class="p-gutter">
+<h2 class="font-label-caps text-label-caps text-error border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+<span class="material-symbols-outlined text-[18px]">warning</span> Le Problème
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface mb-stack-md">
+                            Chute de pression drastique signalée sur le circuit primaire du compresseur H-402. L'alarme de niveau bas de fluide s'est déclenchée en salle de contrôle à 04:12 AM, entraînant un arrêt d'urgence automatisé de la ligne de production principale pour prévenir la destruction des pompes en aval.
+                        </p>
+<div class="bg-surface p-stack-md border border-outline flex gap-4 items-center">
+<span class="material-symbols-outlined text-error text-[32px]">sensors</span>
+<div class="flex-1">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Relevé Télémétrique Pré-Intervention</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-1">
+<span class="font-data-mono text-data-mono">Pression Circuit Primaire</span>
+<span class="font-data-mono text-data-mono text-error font-bold">12 PSI</span>
+</div>
+<div class="flex justify-between items-center pt-1">
+<span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Valeur Nominale Requise</span>
+<span class="font-data-mono text-data-mono text-on-surface-variant text-sm">120 PSI</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Diagnostic -->
+<section class="bg-surface-container-lowest border border-outline rounded">
+<div class="p-gutter">
+<h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+<span class="material-symbols-outlined text-[18px]">troubleshoot</span> Diagnostic
+                        </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md mb-stack-md">
+<div>
+<p class="font-body-md text-body-md text-on-surface">
+                                    L'inspection visuelle immédiate a confirmé une fuite majeure de fluide hydraulique au niveau de la valve de dérivation haute pression (V-89). L'analyse vibratoire de l'historique des 48 dernières heures montrait des anomalies harmoniques sur la pompe principale.
+                                </p>
+<p class="font-body-md text-body-md text-on-surface mt-stack-sm">
+<strong>Cause racine :</strong> Effet de cavitation prolongé ayant généré des micro-chocs destructeurs, conduisant à la rupture par fatigue mécanique du joint d'étanchéité interne en Viton de la valve sous une contrainte de crête.
+                                </p>
+</div>
+<img alt="Hydraulic Valve Detail" class="w-full h-full object-cover border border-outline min-h-[200px]" data-alt="Close up of a heavy industrial hydraulic manifold block with complex metallic piping and pressure gauges, showing signs of industrial wear and fluid residue, highly detailed technical photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxAttzIARYGA2wgXmMVQbLmn_Jn2WUDkgz_uoaAJ-pSENFekDs-zf9APEefQ_88nbUR47EhZxhyS0SKIsUxsSUC3MNkr8pFr4ghiALz1A6ibZBXI-HI3by99oxUkR1wnK0mJ7_bD1iA9rtwKU-gt-X6NHEB1f_F1JE4db4ukcXRu9QS-ftLmp8V9ycGRgIO9ytcHLXgu9_H3oB4_XwQG8GpzypOqoztTM1Is2CI0sT4jzz-BKO8U_vb4XcT0T-u2HPJAlnvqhSmUO1"/>
+</div>
+</div>
+</section>
+<!-- Solution Apportée -->
+<section class="bg-surface-container-lowest border border-outline rounded">
+<div class="p-gutter">
+<h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+<span class="material-symbols-outlined text-[18px]">build</span> Solution Apportée
+                        </h2>
+<div class="space-y-stack-sm">
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+<span class="font-data-mono text-data-mono text-secondary">01.</span>
+<p class="font-body-md text-body-md text-on-surface">Isolement complet du circuit hydraulique primaire et application stricte de la procédure de consignation (LOTO Tag #8922).</p>
+</div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+<span class="font-data-mono text-data-mono text-secondary">02.</span>
+<p class="font-body-md text-body-md text-on-surface">Purge contrôlée du fluide hydraulique résiduel vers le bac de rétention des matières dangereuses de la zone.</p>
+</div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+<span class="font-data-mono text-data-mono text-secondary">03.</span>
+<p class="font-body-md text-body-md text-on-surface">Démontage structurel de l'ensemble valve V-89 et inspection au magnétoscope des brides de raccordement pour détecter d'éventuelles microfissures.</p>
+</div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+<span class="font-data-mono text-data-mono text-secondary">04.</span>
+<p class="font-body-md text-body-md text-on-surface">Remplacement de la valve défectueuse par un composant neuf certifié (Réf: V-89-MK2) avec de nouveaux joints haute résistance.</p>
+</div>
+<div class="flex gap-3 border-b border-outline-variant pb-stack-sm">
+<span class="font-data-mono text-data-mono text-secondary">05.</span>
+<p class="font-body-md text-body-md text-on-surface">Mise à niveau du fluide hydraulique selon la spécification stricte ISO VG 46.</p>
+</div>
+<div class="flex gap-3">
+<span class="font-data-mono text-data-mono text-secondary">06.</span>
+<p class="font-body-md text-body-md text-on-surface">Test de mise en pression progressive (paliers de 20 PSI) et vérification finale d'étanchéité à l'aide de détecteurs acoustiques à ultrasons.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Résultat -->
+<section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<div class="p-gutter">
+<h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+<span class="material-symbols-outlined text-[18px]">verified</span> Résultat
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface mb-stack-md">
+                            Étanchéité totale confirmée à 150% de la pression de service nominale lors des tests de stress. La remise en route de la ligne de production a été autorisée et effectuée avec succès. Les paramètres vibratoires de la pompe sont revenus dans la tolérance stricte après une recalibration logicielle mineure.
+                        </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-unit">
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary mb-1">power</span>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Uptime</div>
+<div class="font-h3 text-h3 text-primary">100%</div>
+</div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary mb-1">speed</span>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Pression</div>
+<div class="font-h3 text-h3 text-primary">120 PSI</div>
+</div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary mb-1">waves</span>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Vibration</div>
+<div class="font-h3 text-h3 text-primary">Nominale</div>
+</div>
+<div class="bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary mb-1">check_circle</span>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Statut Ligne</div>
+<div class="font-h3 text-h3 text-primary">Active</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column (Technical Data Metadata) -->
+<aside class="lg:col-span-4 space-y-gutter">
+<!-- Équipement Info -->
+<div class="bg-surface-container border border-outline rounded p-gutter">
+<h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Spécifications Équipement</h3>
+<ul class="space-y-stack-sm">
+<li class="flex justify-between border-b border-outline-variant pb-unit">
+<span class="font-body-md text-body-md text-on-surface-variant">Système</span>
+<span class="font-data-mono text-data-mono text-on-surface">Compresseur H-402</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-unit">
+<span class="font-body-md text-body-md text-on-surface-variant">Localisation</span>
+<span class="font-data-mono text-data-mono text-on-surface">Zone Prod B, Niv 2</span>
+</li>
+<li class="flex justify-between border-b border-outline-variant pb-unit">
+<span class="font-body-md text-body-md text-on-surface-variant">Constructeur</span>
+<span class="font-data-mono text-data-mono text-on-surface">Atlas Copco Ind.</span>
+</li>
+<li class="flex justify-between pb-unit">
+<span class="font-body-md text-body-md text-on-surface-variant">Indice Criticité</span>
+<span class="font-data-mono text-data-mono text-error font-bold bg-error-container px-2 py-0.5 border border-error">Tier 1 - Vital</span>
+</li>
+</ul>
+</div>
+<!-- Pièces Remplacées -->
+<div class="bg-surface-container border border-outline rounded p-gutter">
+<h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Inventaire Pièces</h3>
+<div class="space-y-unit">
+<!-- Part Item -->
+<div class="bg-surface-container-lowest border border-outline p-stack-sm flex items-start gap-3">
+<div class="bg-surface p-1.5 border border-outline-variant mt-0.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">settings</span>
+</div>
+<div>
+<div class="font-body-md text-body-md font-bold text-on-surface leading-tight mb-1">Valve Dérivation HP</div>
+<div class="flex justify-between items-center w-full gap-4">
+<span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Réf: V-89-MK2</span>
+<span class="font-data-mono text-data-mono text-on-surface text-sm">Qté: 1</span>
+</div>
+</div>
+</div>
+<!-- Part Item -->
+<div class="bg-surface-container-lowest border border-outline p-stack-sm flex items-start gap-3">
+<div class="bg-surface p-1.5 border border-outline-variant mt-0.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">radio_button_unchecked</span>
+</div>
+<div>
+<div class="font-body-md text-body-md font-bold text-on-surface leading-tight mb-1">Kit Joints Viton® Extreme</div>
+<div class="flex justify-between items-center w-full gap-4">
+<span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Réf: OR-VIT-104-X</span>
+<span class="font-data-mono text-data-mono text-on-surface text-sm">Qté: 1</span>
+</div>
+</div>
+</div>
+<!-- Consumable Item -->
+<div class="bg-surface-container-lowest border border-outline p-stack-sm flex items-start gap-3">
+<div class="bg-surface p-1.5 border border-outline-variant mt-0.5">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">water_drop</span>
+</div>
+<div>
+<div class="font-body-md text-body-md font-bold text-on-surface leading-tight mb-1">Fluide Hydraulique</div>
+<div class="flex justify-between items-center w-full gap-4">
+<span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Spec: ISO VG 46</span>
+<span class="font-data-mono text-data-mono text-on-surface text-sm">12 L</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Outillage Utilisé (Technical Chips) -->
+<div class="bg-surface-container border border-outline rounded p-gutter">
+<h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Matériel Déployé</h3>
+<div class="flex flex-wrap gap-2">
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">build</span>
+<span class="font-label-caps text-label-caps text-primary">Clé Dynamométrique 200Nm</span>
+</div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">radar</span>
+<span class="font-label-caps text-label-caps text-primary">Détecteur Ultrasons</span>
+</div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">lock</span>
+<span class="font-label-caps text-label-caps text-primary">Kit Consignation LOTO</span>
+</div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">cleaning_services</span>
+<span class="font-label-caps text-label-caps text-primary">Pompe Récupération</span>
+</div>
+<div class="border border-outline bg-surface px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">straighten</span>
+<span class="font-label-caps text-label-caps text-primary">Micromètre Précision</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-300 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-8 px-10 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto">
+<div class="font-sans text-[10px] uppercase tracking-tighter text-slate-500">
+            © 2024 Maintenance Professional Portfolio | Precision Industrial Standards
+        </div>
+<div class="flex gap-4">
+<a class="font-sans text-[10px] uppercase tracking-tighter text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Safety Protocols</a>
+<a class="font-sans text-[10px] uppercase tracking-tighter text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Technical Certifications</a>
+<a class="font-sans text-[10px] uppercase tracking-tighter text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Privacy Policy</a>
+</div>
+</footer>
+</body></html>

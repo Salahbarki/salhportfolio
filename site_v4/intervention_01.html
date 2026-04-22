@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2024-001 · Panne encartonneuse — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2024-001</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge crit">◆ CURATIF URGENT · TIER 1</div>
+      <h1>Panne récurrente encartonneuse — Ligne PET</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2024-001</strong></span>
+        <span>DATE <strong>2024.07.15</strong></span>
+        <span>DURATION <strong>00h 45m</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>GRIGNY · 91</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+
+        <div>
+
+          <!-- PROBLEM -->
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Contexte :</strong> Ligne critique approvisionnant la grande distribution. Production 22 h/jour. Tout arrêt &gt; 20 min = risque de rupture de stock client.</p>
+              <p><strong>Symptôme :</strong> Défaut HMI n°402 <span class="mono" style="color:var(--red);">'PRODUIT_COINCÉ_ENTRÉE'</span> toutes les 8–12 min. Accumulation de 15–18 colis rejetés/heure en sortie fardeleuse. Opérateurs forcés de redémarrer manuellement à chaque arrêt.</p>
+            </div>
+          </div>
+
+          <!-- DIAGNOSTIC -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Électrique :</strong> alimentation capteur photoélectrique d'entrée = 24 V stable. Signal logique oscillant anormalement — diode automate clignotante au lieu de fixe.</p>
+              <p><strong>Logiciel (TIA Portal) :</strong> dans le bloc de gestion encartonneuse, le bit de validation produit est conditionné directement par le signal capteur <em>sans</em> temporisation d'antirebond. L'oscillation du faisceau (condensation/buée près de la ligne froide) crée des fronts parasites interprétés comme des produits valides.</p>
+              <p><strong>Mécanique :</strong> jeu butée d'entrée anormalement large (~3 mm vs 0,5 mm). Amortisseur hydraulique usé.</p>
+              <p><strong>Servo :</strong> en mode manuel, le pousseur arrive 2–3 mm en retard par rapport à la consigne.</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_01a_overview.png" alt="Vue d'ensemble — Encartonneuse ligne PET"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Encartonneuse ligne PET</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_01b_sensor.png" alt="Capteur photoélectrique anti-buée à purge d'air"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Capteur photoélectrique anti-buée à purge d'air</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_01c_guide.png" alt="Recalage butée mécanique + amortisseur"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Recalage butée mécanique + amortisseur</span></figcaption>
+            </figure>
+          </div>
+
+          <!-- SOLUTION -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>CONSIGNATION</strong> — arrêt électrique + pneumatique de la zone, condamnateur cadenas, signalisation verticale.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>ÉLECTRIQUE</strong> — remplacement capteur photoélectrique par modèle robuste avec purge d'air intégrée (anti-buée). Câble d'alim remplacé par blindé anti-CEM.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>MÉCANIQUE</strong> — dépose butée, remplacement amortisseur hydraulique, recalage jeu à 0,5 mm (cale étalon), serrage boulonnerie au couple.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>AUTOMATISME</strong> — ajout temporisation antirebond 50 ms sur signal capteur. Recalage décalage servo-pousseur. Validation par mouvements manuels.</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>ESSAIS</strong> — run 45 min à cadence nominale : 2 rejets (vs 12–15 avant). Compteur défaut 402 = 0.</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>GMAO</strong> — création OT récurrent 'Contrôle capteur + butée' tous les 3 mois. Mise à jour gamme de maintenance.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Temps d'arrêt moyen réduit de ~40 min à 8 min (–80 %). Taux de rejets divisé par 5 (17/h → 3/h). Zéro arrêt forcé opérateur pendant les 3 semaines suivantes. Procédure préventive appliquée sur les 3 autres lignes du site.</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">MTTR Avant</div><div class="metric-value">40 min</div></div>
+                <div class="metric"><div class="metric-label">MTTR Après</div><div class="metric-value">8 min</div></div>
+                <div class="metric"><div class="metric-label">Rejets</div><div class="metric-value">–80%</div></div>
+                <div class="metric"><div class="metric-label">Dispo.</div><div class="metric-value">+12%</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDE PANEL -->
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">Encartonneuse / casseuse</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">Grigny (91)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">Coca-Cola EP</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Capteur photoélectrique anti-buée</div><div class="ipart-ref">REF · purge intégrée · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Amortisseur hydraulique</div><div class="ipart-ref">REF · standard industriel · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Câble blindé 5 conducteurs</div><div class="ipart-ref">REF · anti-CEM · Qté 1</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">Clé dynamo.</span>
+              <span class="tag">Multimètre</span>
+              <span class="tag">TIA Portal</span>
+              <span class="tag">Cales étalon</span>
+              <span class="tag">Oscilloscope</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

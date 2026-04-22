@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Technique — Salah Eddine Barki</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --dark: #0f172a;
+  --accent: #f97316;
+  --gray: #f1f5f9;
+  --text: #374151;
+  --muted: #94a3b8;
+  --green: #059669;
+  --green-bg: #f0fdf4;
+  --border: #e2e8f0;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  font-size: 15px;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+/* HEADER */
+header {
+  background: var(--bg);
+  border-bottom: 3px solid var(--accent);
+  padding: 48px 0 32px;
+  text-align: center;
+}
+header h1 { font-size: 2.8rem; font-weight: 300; color: var(--dark); letter-spacing: -1px; }
+header .subtitle { font-size: 1.15rem; color: var(--accent); font-weight: 600; margin: 8px 0; text-transform: uppercase; letter-spacing: 1px; }
+header .name { font-size: 1.6rem; color: var(--dark); font-weight: 700; margin-top: 12px; }
+header .contact { font-size: 0.9rem; color: var(--muted); margin-top: 10px; }
+header .summary {
+  max-width: 780px; margin: 20px auto 0;
+  background: var(--gray);
+  padding: 18px 22px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-align: justify;
+  border: 1px solid var(--border);
+}
+
+/* STATS */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 28px 0; }
+.stat-card {
+  background: var(--gray);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 10px;
+  text-align: center;
+}
+.stat-card .num { font-size: 1.9rem; font-weight: 700; color: var(--accent); }
+.stat-card .lab { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+/* SECTIONS */
+.section { padding: 36px 0; }
+.section-title {
+  font-size: 1.4rem; font-weight: 700; color: var(--dark);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::after {
+  content: "";
+  flex: 1; height: 2px; background: var(--border);
+}
+
+/* COMPETENCES */
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.comp-card {
+  background: var(--gray);
+  border-radius: 10px; padding: 18px;
+  border-left: 4px solid var(--accent);
+}
+.comp-card h3 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.comp-card p { font-size: 0.9rem; color: var(--text); }
+
+/* FICHE */
+.fiche { margin-bottom: 32px; }
+.fiche-header {
+  background: var(--dark);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 10px 10px 0 0;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+}
+.fiche-header h3 { font-size: 1.1rem; font-weight: 600; }
+.fiche-header .meta { font-size: 0.8rem; color: var(--muted); }
+.fiche-header .badge {
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.fiche-body {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 18px;
+}
+.fiche-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 768px) { .fiche-grid { grid-template-columns: 1fr; } }
+
+.fiche-col {
+  background: var(--gray);
+  border-radius: 8px;
+  padding: 14px;
+}
+.fiche-col h4 {
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--accent); margin-bottom: 10px;
+}
+.fiche-col p, .fiche-col li {
+  font-size: 0.88rem; color: var(--text); margin-bottom: 6px;
+}
+.fiche-col ul { list-style: none; padding-left: 0; }
+.fiche-col ul li { position: relative; padding-left: 14px; }
+.fiche-col ul li::before {
+  content: "›"; position: absolute; left: 0; color: var(--accent); font-weight: bold;
+}
+
+.result-box {
+  background: var(--green-bg);
+  border-left: 4px solid var(--green);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* METHODOLOGY */
+.method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.method-card {
+  background: var(--gray);
+  border-radius: 10px; padding: 16px;
+  text-align: center;
+  border-top: 3px solid var(--accent);
+}
+.method-card .step { font-size: 1.6rem; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.method-card h4 { font-size: 0.9rem; color: var(--dark); margin-bottom: 6px; }
+.method-card p { font-size: 0.85rem; color: var(--text); }
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 30px 0; margin-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem; color: var(--muted);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Portfolio Technique</h1>
+    <div class="subtitle">d'Interventions Maintenance Industrielle</div>
+    <div class="name">Salah Eddine Barki</div>
+    <div class="contact">📍 Amiens, France &nbsp;|&nbsp; 📱 +33 6 88 69 07 04 &nbsp;|&nbsp; ✉️ salahbarki.seb@gmail.com</div>
+    <div class="summary">
+      Technicien multitechnique senior (10+ ans) spécialisé en diagnostic avancé sur systèmes automatisés Siemens,
+      maintenance préventive / corrective / curative sur presses injection, lignes agroalimentaire PET / canette,
+      et bancs de test automobile. Expertise couvrant électrotechnique BT, hydraulique (120–200 bar),
+      pneumatique (5–8 bar), mécanique de précision et programmation Ladder (TIA Portal V16 / Step 7).
+      Certifié en consignation LOTO, analyse RCA, et planification GMAO (SAP PM).
+    </div>
+    <div class="stats">
+      <div class="stat-card"><div class="num">10+</div><div class="lab">Années</div></div>
+      <div class="stat-card"><div class="num">142</div><div class="lab">Équipements</div></div>
+      <div class="stat-card"><div class="num">6</div><div class="lab">Fiches phares</div></div>
+      <div class="stat-card"><div class="num">4</div><div class="lab">Pays</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">Compétences & Technologies</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>⚡ Électrotechnique & Automatisme</h3>
+        <p>Siemens S7-1200/1500, TIA Portal V16, Step 7, Ladder/GRAPH, PROFINET, Sinamics V90, câblage BT, schémas IEC, variateurs, servo-moteurs, capteurs inductifs / photoélectriques / encodeurs.</p>
+      </div>
+      <div class="comp-card">
+        <h3>🔧 Mécanique & Fluidique</h3>
+        <p>Presses injection KraussMaffei, lignes PET Krones, hydraulique 80–200 bar (pompes, vérins, distributeurs NG6/NG10, accumulateurs), pneumatique 5–8 bar, transmissions, guidages, roulements.</p>
+      </div>
+      <div class="comp-card">
+        <h3>📊 Méthodes & Management</h3>
+        <p>GMAO SAP PM, planification préventive/corrective, analyse RCA (5 pourquoi, Ishikawa, Pareto), SPC, KPI (MTBF, MTTR, OEE), consignation LOTO ISO 14118, normes HSE.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">Fiches d'Intervention Détaillées</div>
+    <p style="margin-bottom:22px; color:var(--muted); font-size:0.9rem;">
+      Format structuré : Contexte → Diagnostic technique mesuré → Actions détaillées (outillages, couples, références) → Résultats chiffrés.
+    </p>
+
+    <div class="fiche">
+      <div class="fiche-header">
+        <div>
+          <h3>01. Panne Encartonneuse — Ligne PET Coca-Cola</h3>
+          <div class="meta">Coca-Cola Europacific Partners — Grigny (91)</div>
+        </div>
+        <span class="badge">CURATIF URGENT — AUTOMATISME</span>
+      </div>
+      <div class="fiche-body">
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;"><b>Équipement :</b> Encartonneuse Krones Variopac Pro (module couche + compression) — Ligne PET 2L — Cadence nominale 60 000 bph</p>
+        <div class="fiche-grid">
+          <div class="fiche-col">
+            <h4>Diagnostic Technique</h4>
+            <p><b>Contexte :</b> Ligne critique approvisionnant la grande distribution IDF. Production 22h/jour, 6j/7. Toute immobilisation >20 min génère risque de rupture de stock.</p>
+            <p><b>Symptôme :</b> Défaut HMI récurrent n°402 « PRODUIT_COINCÉ_ENTRÉE » toutes les 8–12 min. Accumulation de 15 à 18 colis 
+rejetés/heure en sortie fardeleuse. Opérateurs forcent le redémarrage manuel, ce qui génère des à-coups mécaniques 
+sur le module compression.</p>
+            <p style="white-space:pre-line;">• Mesures électriques : alimentation capteur photoélectrique Sick WT24-2B440 (E0.4) = 23,8 VDC stable. 
+  Signal logique oscillant 0-1-0 en 18–22 ms au niveau de l’entrée digitale CPU S7-1500 (DI 16×24VDC).
+• Analyse programme TIA Portal V16 : dans FC301 (gestion encartonneuse), Network 12, le bit mémoire 
+  M120.4 (VALID_PROD) est conditionné par un front montant sur E0.4 sans temporisation d’antirebond. 
+  L’oscillation physique du faisceau (brouillard/buée) crée des fronts parasites interprétés comme validés.
+• Vérification mécanique : jeu butée amortisseur ACE MC150 à l’entrée produit = 3,2 mm (tolérance 0,5 mm). 
+  Le servo-moteur Kollmorgen AKD (axe pousseur) affiche un offset position de +2,3 mm vs consigne initiale 
+  (paramètre Pn507 = +120 incréments au lieu de +85). Dérive mécanique due à l’amortisseur usé.
+• Analyse des rejets : colis mal formés = produit poussé en biais (offset mécanique + signal instable 
+  = mauvaise synchro pousseur/convoyeur).</p>
+          </div>
+          <div class="fiche-col">
+            <h4>Actions Détaillées</h4>
+            <ul>
+              <li>1. CONSIGNATION : Isolation énergétique LOTO (NF EN ISO 14118) : coupeur-sectionneur Q3 (électrique 400V)</li>
+<li>+ Q7 (pneumatique 6 bar) + condamnateur cadenas. Signalisation verticale.</li>
+<li>2. ÉLECTRIQUE : Remplacement capteur Sick WT24-2B440 par modèle Sick WT27L-2F430 (portée 700 mm,</li>
+<li>antirebond intégré 50 ms, purge d’air intégrée IP69K, raccord M12 5 pôles blindé).</li>
+<li>Temps de réponse <1 ms. Câble remplacé par LappKabel UNITRONIC® Li2YCY (TP) 5×0,25 mm² blindé.</li>
+<li>3. MÉCANIQUE : Dépose butée amortisseur ACE MC150 usée. Pose amortisseur neuf réglé à force 1</li>
+<li>(course 25 mm). Recalage butée d’entrée au jeu de 0,5 mm (calibre à lame 0,5 mm passant, 0,6 mm non passant).</li>
+<li>Serrage boulonnerie M10 classe 8.8 au couple 45 Nm (clé dynamométrique Hazet 5121-3CT).</li>
+<li>4. AUTOMATISME (TIA Portal V16) :</li>
+<li>• Modification FC301 Network 12 : ajout temporisation S_PEXT (TP) de 50 ms sur l’entrée E0.4</li>
+<li>avant validation du bit M120.4.</li>
+<li>• Recalage offset servo Kollmorgen AKD : Pn507 ajusté de +120 à +85 incréments.</li>
+<li>Validation via WorkBench AKD avec oscilloscope intégré (courbe position consigne vs réelle</li>
+<li>sous charge, écart <0,1 mm).</li>
+<li>• Sauvegarde version programme v2.7 sur serveur SVN interne + export PDF du bloc modifié.</li>
+<li>5. ESSAIS : Run continu 45 min à cadence 55 000 bph. Monitoring via HMI Comfort KTP900 :</li>
+<li>compteur rejets passé de 17/15 min à 2/15 min. Aucun arrêt forcé.</li>
+<li>6. GMAO : Création ordre type « CTRL_ENCART_CAPTEUR » périodicité 2 000 h (environ 3 mois).</li>
+<li>Mise à jour plan de maintenance constructeur Krones dans base SAP PM.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="result-box">RÉSULTAT : • MTTR : réduit de 42 min à 8 min moyenne (–81 %).
+• Taux rejet colis : divisé par 4 (17 rejets/h → 4 rejets/h).
+• Zero arrêt forcé opérateur sur les 3 semaines suivantes.
+• Amortisseur et capteur intégrés en stock sécurité classe A.</div>
+      </div>
+    </div>
+
+    <div class="fiche">
+      <div class="fiche-header">
+        <div>
+          <h3>02. Mise en Service Presse Injection + Auxiliaires</h3>
+          <div class="meta">TE Connectivity — Tanger (Maroc)</div>
+        </div>
+        <span class="badge">INSTALLATION & MISE EN ROUTE</span>
+      </div>
+      <div class="fiche-body">
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;"><b>Équipement :</b> Presse injection électrique KraussMaffei CX 120-380 (120 T) + sécheur Motan Luxor CA A 80 + détecteur métal Sesotec RAPID VARIO</p>
+        <div class="fiche-grid">
+          <div class="fiche-col">
+            <h4>Diagnostic Technique</h4>
+            <p><b>Contexte :</b> Relocalisation complète d’une cellule d’injection depuis ancien hall vers nouveau bâtiment de production. Objectif : mise en production J+2 pour contrat client automobile.</p>
+            <p><b>Symptôme :</b> Nouvelle installation. Aucun symptôme. Objectif : démarrage qualité premier jet avec cycle stable <20 s.</p>
+            <p style="white-space:pre-line;">Pas de diagnostic défaut. Analyse pré-installation : plan de pose, alignement géométrique, compatibilité réseaux (hydraulique 120 bar / eau 80 °C / électrique 400V triphasé + T + terre).</p>
+          </div>
+          <div class="fiche-col">
+            <h4>Actions Détaillées</h4>
+            <ul>
+              <li>1. DÉPOSE & TRANSPORT : Dépose outillage (moule 24 cavités connecteurs auto 2,54 mm).</li>
+<li>Vidange partielle circuit thermorégulation. Transport chariot élévateur Jungheinrich EFG 3,5T</li>
+<li>avec fourches 1 800 mm + sangle textile 4T. Contrôle masse totale 4 200 kg.</li>
+<li>2. ANCRAGE : Pose 4 plots antivibratoires Vibrostop Type B (charge 1 500 kg/unité, réduction vibration 85 %).</li>
+<li>Nivellement laser à ±0,2 mm/m. Alignement axe presse vs convoyeur amont à ±1 mm (cordeau + laser).</li>
+<li>3. ÉLECTRIQUE : Raccordement arrivée 400 V AC tri + N + T via câble 5G16 mm² (courant nominal 32 A).</li>
+<li>Mesure terre : Rterre = 0,4 Ω (seuil NFC 15-100 : <1 Ω). Armoire électrique : Siemens S7-1200 CPU 1214C DC/DC/DC</li>
+<li>+ module SM1234 AI/AO. Raccordement bus PROFINET vers HMI KTP700 + variateur servo Sinamics V90.</li>
+<li>4. HYDRAULIQUE (centraux) : Raccordement flexible 3/4" BSP 120 bar. Serrage raccords à 45 Nm.</li>
+<li>Essai pression statique 130 bar (marge 10 %) pendant 10 min. Zero fuite.</li>
+<li>Purge circuit par pompe manuelle (évacuation air) avant mise en pression machine.</li>
+<li>5. THERMORÉGULATION : Circuit eau moule : température 80 °C (côté fixe) et 75 °C (côté mobile).</li>
+<li>Débit contrôlé 8 L/min circuit A et 12 L/min circuit B (débitmètre à palette).</li>
+<li>Circuit refroidissement tour aéroréfrigérant : 20 °C entrée, ΔT = 5 °C.</li>
+<li>6. SÉCHEUR : Mise en service Motan Luxor CA A 80. Objectif point de rosée ≤ –40 °C (granulés PA66 hygroscopique).</li>
+<li>Mesure après 45 min : –42 °C (hygromètre à condensation). Raccordement air chauffé 80 °C vers trémie ST 120.</li>
+<li>Contrôle absence fuite thermique (caméra IR Flir TG165 : Δ max 3 °C).</li>
+<li>7. DÉTECTEUR MÉTAL : Installation Sesotec RAPID VARIO en amont trémie. Réglage sensibilité :</li>
+<li>Fe Ø 0,8 mm / NFe Ø 1,0 mm / AIS Ø 1,2 mm. Validation par 10 tests pièges (morceaux acier/cuivre/alu).</li>
+<li>Taux détection 10/10. Aucun faux positif sur 50 passages granulés vides.</li>
+<li>8. PARAMÉTRAGE CYCLE : Vitesse injection 85 mm/s, pression maintien 650 bar, temps refroidissement 8 s,</li>
+<li>ouverture moule 1,2 s. Premier cycle = réglage coussin 5 mm. Batch validation 500 pièces.</li>
+<li>9. QUALITÉ : Contrôle dimensionnel premier jet au pied à coulisse digital Mitutoyo 500-197-30</li>
+<li>(résolution 0,01 mm). Tolérance connecteur ±0,05 mm. Résultat : 0 pièce hors tolérance sur 500.</li>
+<li>10. DOCUMENTATION : Rédaction PV de recette (Procès-Verbal) signé Production + Qualité + Maintenance.</li>
+<li>Formation 3 opérateurs : démarrage/arrêt, changement référence (temps cible 8 min), lecture alarmes HMI.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="result-box">RÉSULTAT : • Mise en production effective : J+2 (mardi matin, déménagement vendredi soir).
+• Cycle stable : 18,5 s moyenne (objectif <20 s).
+• Zéro défaut qualité sur batch validation 500 pièces (100 % dans tolérance).
+• Procédure mise en service standardisée créée (checklist 42 points) et partagée à l’équipe maintenance 
+  pour réplications futures (2 autres presses relocalisées le trimestre suivant).</div>
+      </div>
+    </div>
+
+    <div class="fiche">
+      <div class="fiche-header">
+        <div>
+          <h3>03. Débogage & Optimisation Programme Siemens S7</h3>
+          <div class="meta">TE Connectivity — Tanger (Maroc)</div>
+        </div>
+        <span class="badge">AUTOMATISME AVANCÉ</span>
+      </div>
+      <div class="fiche-body">
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;"><b>Équipement :</b> Cellule assemblage/connectique — Automate Siemens S7-1200 CPU 1214C DC/DC/DC + HMI KTP700 Basic + servo Sinamics V90</p>
+        <div class="fiche-grid">
+          <div class="fiche-col">
+            <h4>Diagnostic Technique</h4>
+            <p><b>Contexte :</b> Cellule critique assemblage connecteurs automobile. Cadence nominale 220 pièces/heure. Sous-capacité visible sur OEE mensuel (objectif 85 %, réel 72 %).</p>
+            <p><b>Symptôme :</b> Temps de cycle moyen mesuré 28,5 s vs nominal 16,5 s (+12 s, +73 %). 
+Alarme HMI fréquente : E204 « Timeout bras robot zone pick ». Arrêts aléatoires 3–4 fois/heure. 
+Opérateurs redémarrage manuel (perte temps 2 min/arrêt).</p>
+            <p style="white-space:pre-line;">• Connexion TIA Portal V16 via Ethernet (CP 1243-1). Monitoring Online des blocs.
+• Fonction Trace intégrée S7-1200 : temps d’exécution OB1 = 18 ms. Temps exécution FC12 (gestion robot pick-and-place) 
+  = 8,2 s (anormal, devrait être <3,5 s max).
+• Analyse chronologique FC12 (Networks 15–22) : temporisation T37 (TON) réglée à 8 000 ms (8 s). 
+  Bras robot KUKA KR 6 R900 sixx mesuré au chronomètre + suivi signaux E/S : temps cycle pick-and-place 
+  réel = 5 500 ms (5,5 s). Marge sécurité excessive (2,5 s) bloque la suite du cycle.
+• Bit oscillant : M45.2 (SIGNAL_PINCE_OK) alimenté par capteur proximité inductif Balluff BES M08MG1-PSC20B. 
+  Détection instable : oscillation 15–25 ms due à décalage mécanique capteur (jeu support 2,1 mm, spécification 0,3 mm max). 
+  Programme sans temporisation antirebond : bit non stable => FC12 attend validation pince indéfiniment.
+• Programme non optimisé : mouvements bras strictement séquentiels : 
+  (1) attente pince OK → (2) descente → (3) attente prise → (4) montée → (5) attente libération → (6) retour. 
+  Mouvements compatibles non parallélisés (ex: montée bras + translation peuvent être simultanés avec interlocks).</p>
+          </div>
+          <div class="fiche-col">
+            <h4>Actions Détaillées</h4>
+            <ul>
+              <li>1. MÉCANIQUE : Réglage support capteur Balluff BES M08MG1 : réduction jeu à 0,3 mm via taraudage M8</li>
+<li>+ contre-écrou nylstop. Serrage couple 6 Nm (clé dynamométrique micro 1–10 Nm).</li>
+<li>2. PROGRAMMATION TIA PORTAL V16 (modification blocs FC12, FC13) :</li>
+<li>• Network 18 : Remplacement temporisation T37 (TON) 8 000 ms → T37_SÉCURITÉ 6 500 ms</li>
+<li>(mesure bras max 5 800 ms + marge 700 ms).</li>
+<li>• Network 16 : Ajout temporisation antirebond TON sur E0.5 (SIGNAL_PINCE) : 35 ms stable</li>
+<li>avant validation bit M45.2. Supprime l’effet oscillation électromagnétique.</li>
+<li>• Réécriture séquence FC13 (nouveau bloc mouvements parallèles) :</li>
+<li>- Phase 1 : Descente + fermeture pince (si produit présent).</li>
+<li>- Phase 2 : Montée bras + translation latérale simultanées (interlock : translation autorisée</li>
+<li>uniquement si hauteur Z > seuil sécurité 150 mm).</li>
+<li>- Phase 3 : Ouverture pince + dépose + retour origine.</li>
+<li>- Division cycle en 3 phases parallèles via méthode SET/RSET d’étapes (programmation séquentielle structurée).</li>
+<li>• Optimisation code : suppression de 4 temporisations redondantes, gain temps de cycle théorique 2,1 s.</li>
+<li>• Ajout compteur CTU (C1) : comptage cycles machine. Alarme automatique si dérive temps cycle >10 %</li>
+<li>vs moyenne glissante 50 cycles (détection précoce dérive mécanique).</li>
+<li>3. HMI : Création écran diagnostic « TEMPS_CYCLE » affichant temps réel, moyenne glissante,</li>
+<li>graphique trend 4 h, et compteur alarmes E204.</li>
+<li>4. SÉCURITÉ & VERSIONNING : Sauvegarde programme version 2.4 sur serveur SVN + copie locale .ap14.</li>
+<li>Export commentaires détaillés dans chaque Network (nom du concepteur, date, justification modification).</li>
+<li>5. VALIDATION : Run 4 h à cadence max. Monitoring temps cycle via HMI et chronomètre externe.</li>
+<li>Résultats : 16,2 s (min) — 16,8 s (moy) — 17,1 s (max). Aucun arrêt E204.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="result-box">RÉSULTAT : • Temps de cycle : 28,5 s → 16,8 s moyenne (–41 %). Capacité théorique passée de 126 à 214 pièces/heure.
+• OEE cellule : 72 % → 84 % (+12 points de pourcentage).
+• Alarme E204 : fréquence 3,4 arrêts/h → 0 arrêt sur 4 h test, puis 0,2 arrêt/h en production continue (–94 %).
+• Documentation : 14 Networks commentés + nouveau bloc FC13 documenté. Maintenance autonome sur modifications futures.</div>
+      </div>
+    </div>
+
+    <div class="fiche">
+      <div class="fiche-header">
+        <div>
+          <h3>04. RCA Banc de Test Électrique — Ligne Faisceaux</h3>
+          <div class="meta">Kromberg & Schubert — Kénitra (Maroc)</div>
+        </div>
+        <span class="badge">RCA & QUALITÉ</span>
+      </div>
+      <div class="fiche-body">
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;"><b>Équipement :</b> Banc test électrique Komax Alpha 440 — Tests : continuité 4 fils Kelvin, isolation 500 VDC, résistance contact <10 mΩ</p>
+        <div class="fiche-grid">
+          <div class="fiche-col">
+            <h4>Diagnostic Technique</h4>
+            <p><b>Contexte :</b> Ligne faisceaux moteur 32 voies pour client automobile (norme VW 60330 / LV 112-1). Production 2 000 pièces/jour. Just-in-time client : aucun stock tampon.</p>
+            <p><b>Symptôme :</b> Taux rejet test continuité anormal : 12,3 % sur référence stable (batch >5 000 pièces sans changement outillage). 
+Seuil qualité client <2 %. Conséquence : 246 pièces rebutées/jour x coût rebut estimé 18 € = ~4 430 €/jour de perte. 
+Risque blocage ligne just-in-time client.</p>
+            <p style="white-space:pre-line;">• Analyse données SPC (Statistical Process Control) 15 jours : dérive lente résistance contact testée. 
+  Tolérance : <10 mΩ. Valeurs initiales 3–5 mΩ → dérive progressive 8–12 mΩ → >10 mΩ (rebut).
+• Analyse Pareto défauts sur 342 rebut : 68 % liés aux pins de contact du banc (connecteur adaptateur 32 voies), 
+  22 % câbles piquage usés, 10 % autres (mauvaise insertion opérateur).
+• Inspection visuelle pins : oxydation noire (CuO) sur 14 des 32 pins. Cause racine : absence de nettoyage 
+  pins dans la gamme préventive (dernier nettoyage non documenté depuis 8 mois). 
+  Fumées de soudure étain-flux (colophane) aspirées partiellement : hotte extraction débit mesuré 80 m³/h 
+  (norme 120 m³/h min). Filtre charbon saturé.
+• Mesure micro-ohmètre Fluke 1507 : pins oxydés = 15–45 mΩ. Pins neufs de rechange = <2 mΩ.
+• Analyse huile/contact : présence résidus flux isolant sur 6 pins (contamination électrique).</p>
+          </div>
+          <div class="fiche-col">
+            <h4>Actions Détaillées</h4>
+            <ul>
+              <li>1. ARRÊT & CONSIGNATION : Arrêt immédiat ligne test (LOTO électrique banc 24 VDC + 500 VDC isolation).</li>
+<li>Signalisation. Isolation batch produit depuis dernière validation qualité OK (rebut contrôlé 1 200 pièces,</li>
+<li>retri manuel 94 % bonnes, 6 % rebut confirmé).</li>
+<li>2. REMPLACEMENT CONNECTEUR ADAPTATEUR : Dépose jeu pins contact usés 32 voies. Pose connecteur neuf</li>
+<li>référence constructeur Komax (p/n 100.456.32). Serrage couple bague verrouillage 2,5 Nm.</li>
+<li>3. RÉGLAGE MÉCANIQUE : Vérin de mise en position banc : réglage pression air 3,2 bar → 4,0 bar.</li>
+<li>Contrôle à la jauge analogique (4,0 ±0,1 bar). Vérification non-déformation embout mâle-femelle</li>
+<li>(pas de marquage plastique après 50 insertions tests).</li>
+<li>4. MAINTENANCE EXTRACTION : Remplacement filtre charbon actif hotte (dimensions 500×300×50 mm,</li>
+<li>classe F7). Révision ventilateur centrifuge : nettoyage roue, graissage paliers.</li>
+<li>Mesure débit post-intervention : 130 m³/h (>norme 120). Ajout hotte aspirante mobile Plymovent en renfort</li>
+<li>ponctuel sur poste soudure amont.</li>
+<li>5. MODIFICATION GMAO / PROCÉDURES :</li>
+<li>• Nouvelle gamme préventive : nettoyage pins test à la brosse fibre de verre + isopropanol 99 %</li>
+<li>— fréquence bi-hebdomadaire (toutes les 2 semaines) au lieu de trimestriel.</li>
+<li>• Ajout contrôle qualité mensuel : mesure micro-ohmètre sur 5 pins aléatoires. Seuil <5 mΩ.</li>
+<li>• Création fiche réflexe : si dérive SPC >6 mΩ sur 3 mesures consécutives → arrêt immédiat + contrôle pins.</li>
+<li>• Formation 2 opérateurs + 1 technicien maintenance à la nouvelle procédure.</li>
+<li>6. CONTRÔLE ATTRIBUTAIRE : Mise en place test gabarit 32/32 pins tous les matins avant démarrage</li>
+<li>(détection précoce oxydation ou déformation).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="result-box">RÉSULTAT : • Taux rejet test continuité : 12,3 % → 1,1 % moyenne sur 30 jours. Stabilisé sous seuil client 2 %.
+• Économie : ~220 pièces/jour sauvées x 18 € x 220 jours/an = ~870 000 €/an de rebut évité 
+  (réduction drastique rebut + retri inutile).
+• Procédure RCA formalisée (fiche 5 pourquoi + Ishikawa) partagée aux 4 lignes test du site 
+  (Kromberg + 3 sous-traitants internes).
+• Temps contrôle qualité départ : réduit de 25 min/batch à 10 min/batch (test plus fiable, moins de retest).</div>
+      </div>
+    </div>
+
+    <div class="fiche">
+      <div class="fiche-header">
+        <div>
+          <h3>05. Dépannage Hydraulique Presse Découpe / Pliage</h3>
+          <div class="meta">Sovireso — Saint-Laurent-sur-Sèvre (85)</div>
+        </div>
+        <span class="badge">CURATIF MÉCANIQUE</span>
+      </div>
+      <div class="fiche-body">
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;"><b>Équipement :</b> Presse hydraulique découpe/pliage AMADA HFE 80-25 — Vérin double effet Ø100/Ø70 mm — Centrale 80 bar / 25 L/min — Distributeur 4/3 voies NG10 proportionnel</p>
+        <div class="fiche-grid">
+          <div class="fiche-col">
+            <h4>Diagnostic Technique</h4>
+            <p><b>Contexte :</b> Machine unique sur site pour découpe tôlerie fine (acier DC01 0,8–2 mm, inox 1,4301 1–1,5 mm). Pas de remplaçant. Production programme client 480 pièces/jour.</p>
+            <p><b>Symptôme :</b> Perte brutale de pression lors de la descente rapide vers position pliage. 
+Pression manomètre principal : chute de 80 bar à 32 bar. Bruit violent type « coup de bélier » à chaque inversion 
+descente/montée. Arrêt machine. Production interrompue depuis 2 h.</p>
+            <p style="white-space:pre-line;">• Mesures manomètres multi-points (WIKA 0–160 bar, classe 1,0) :
+  - P pompe (amont filtre) : 80 bar stable.
+  - P ligne descente (amont vérin tige) : 32 bar (anormal, devrait être 78–80 bar).
+  - P ligne montée (amont vérin fond) : 78 bar (normal).
+  → Panne localisée sur circuit descente (clapet anti-retour ou fuite interne vérin).
+
+• Auscultation + stéthoscope mécanique : coup de bélier localisé accumulateur hydropneumatique 
+  HAB 1-330 (bladder) côté montée. Fréquence bruit synchrone avec inversion cycle.
+
+• Démontage clapet anti-retour hydraulique NG25 (ligne descente) : présence éclat joint torique NBR 90SH 
+  Ø12×2 mm coincé dans le siège clapet (corps étranger). Joint dégradé par huile surchauffée : 
+  température huile mesurée 68 °C (normale exploitation <55 °C). Cause surchauffe : filtre retour saturé 
+  => pompe travaille en dépression/cavitation.
+
+• Contrôle accumulateur HAB 1-330 : précharge azote mesurée 12 bar (normale constructeur 65 bar). 
+  Membrane bladder fissurée visible lors démontage contrôle (huile dans précharge gaz).
+
+• Analyse huile : viscosité 32 cSt → 28 cSt (dégradation polymère). Indice contamination NAS 10 
+  (seuil acceptable NAS 8). Filtre retour 25 µm saturé (contamination ferreuse usure pompe à palettes).</p>
+          </div>
+          <div class="fiche-col">
+            <h4>Actions Détaillées</h4>
+            <ul>
+              <li>1. CONSIGNATION ÉNERGÉTIQUE : Coupure moteur pompe (disjoncteur magnétothermique 32 A).</li>
+<li>Condamnateur cadenas + panneau « Ne pas démarrer — Maintenance ». Vidange huile 120 L</li>
+<li>dans récipient homologué UN 1H2. Neutralisation absorbent si résidus sol.</li>
+<li>2. CLAPET ANTI-RETOUR NG25 : Dépose complète. Nettoyage siège en carbure de tungstène</li>
+<li>par rodage à la pâte à roder (grain 600). Contrôle étanchéité au kérosène (0 goutte/30 s).</li>
+<li>Remplacement joint torique NBR 90SH Ø12×2 mm (parker) + joint plat cuivre anneau NG25.</li>
+<li>Remontage : serrage croisé vis M10 classe 12.9 au couple 35 Nm (clé dynamométrique 3/8").</li>
+<li>3. ACCUMULATEUR HAB 1-330 : Remplacement complet (vase + précharge). Précharge azote vérifiée</li>
+<li>au manomètre de contrôle à 65 bar (6,5 MPa). Contrôle re-étanchéité 24 h après (perte 0 bar).</li>
+<li>4. FILTRATION : Remplacement filtre retour 25 µm (MP Filtri MR2503A10A). Remplacement filtre aspiration</li>
+<li>100 µm. Remplissage huile neuve Shell Tellus S2 MX 46 (ISO VG 46) 120 L. Purge par cycles lents</li>
+<li>sans charge (10 cycles montée/descente vitesse 10 %).</li>
+<li>5. CONTRÔLE POMPE : Démontage inspection palettes (pompe à palettes Denison T6C).</li>
+<li>Jeu latéral mesuré 0,12 mm (tolérance constructeur 0,15 mm max) => acceptable mais programmée</li>
+<li>révision T4 dans 6 mois (préventif opportuniste).</li>
+<li>6. MISE EN PRESSION : Montée progressive par paliers : 0 → 20 bar (5 min) → 40 bar (5 min) → 80 bar (5 min).</li>
+<li>Contrôle fuites aux raccords : 0 fuite (papier absorbant 10 min). Contrôle température huile après 30 min : 48 °C (OK).</li>
+<li>7. ESSAIS SOUS CHARGE : Découpe tôle acier DC01 2 mm, 50 cycles continus.</li>
+<li>Pression mesurée stable 80 ±2 bar sur l’ensemble du cycle (descente + effort + montée).</li>
+<li>Disparition complète des coups de bélier (auscultation + capteur vibration portable SKF CMAS 100-SL : <2 mm/s).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="result-box">RÉSULTAT : • Temps d’intervention : 3 h 20 (prévision constructeur 1 journée = 7 h). Production relancée même journée.
+• Pression rétablie : 80 bar stable ±2 bar sur cycle complet descente/montée/pliage.
+• Disparition totale à-coups hydrauliques => réduction vibration structure, allongement durée de vie vérins + tuyauterie.
+• Maintenance préventive avancée : remplacement huile + filtres programmés avec marge de 2 mois (préventif opportuniste 
+  intégré à la gamme annuelle). Révision pompe T4 programmée en planning SAP PM.</div>
+      </div>
+    </div>
+
+    <div class="fiche">
+      <div class="fiche-header">
+        <div>
+          <h3>06. Planification Maintenance Annuelle & Pilotage GMAO</h3>
+          <div class="meta">TE Connectivity — Tanger (Maroc)</div>
+        </div>
+        <span class="badge">PLANIFICATION & FIABILITÉ</span>
+      </div>
+      <div class="fiche-body">
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;"><b>Équipement :</b> Site industriel complet : 142 équipements référencés (injection, assemblage, test, utilités, bâtiment)</p>
+        <div class="fiche-grid">
+          <div class="fiche-col">
+            <h4>Diagnostic Technique</h4>
+            <p><b>Contexte :</b> Site de 450 personnes, production 24/5. Objectif groupe TE : taux réalisation maintenance préventive >90 % et réduction arrêts imprévus de 25 % sur l’exercice.</p>
+            <p><b>Symptôme :</b> Taux réalisation maintenance préventive année N : 68 % (233/342 OT planifiés). 
+Arrêts imprévus représentent 23 % du temps disponible production. Coût maintenance en croissance +12 % vs budget. 
+MTBF moyen site 420 h (benchmark industrie connectique 650 h).</p>
+            <p style="white-space:pre-line;">• Analyse data GMAO (SAP PM) + supervision (WinCC V7.5) sur 12 mois :
+  - 342 OT préventifs planifiés, 233 réalisés (68 %), 109 reportés.
+  - Pareto causes reports : 45 % conflit production (pas de fenêtre machine disponible), 
+    30 % pièces détachées non disponibles (délai approvisionnement 5–7 j), 
+    15 % sous-traitant spécialisé indisponible, 10 % autres.
+
+• Absence classification criticité équipements : tous les équipements traités avec même priorité 
+  (pas de matrice ABC). Conséquence : un compresseur d’air (critique) et un éclairage bureau (non critique) 
+  avaient la même fréquence de préventif.
+
+• Analyse MTBF/MTTR par famille : presses injection MTBF 380 h (faible), bancs test MTBF 620 h (moyen), 
+  utilités MTBF 850 h (bon). Pas de plan d’action spécifique sur presses.</p>
+          </div>
+          <div class="fiche-col">
+            <h4>Actions Détaillées</h4>
+            <ul>
+              <li>1. COLLECTE & ANALYSE DATA : Export GMAO (OT, OT réalisés, reports, coûts). Export supervision WinCC</li>
+<li>(arrêts, codes défauts, durées). Croisement Excel Power Query + tableau de bord Power BI simplifié.</li>
+<li>2. MATRICE CRITICITÉ ABC (méthode RCM simplifiée) :</li>
+<li>• Classe A (20 équipements, 14 %) : critique production + sécurité + environnement.</li>
+<li>→ Préventif mensuel/bimestriel. Stock pièces critiques local (capteurs, vannes, joints).</li>
+<li>• Exemples : presses injection, compresseur air 8 bar, tour aéroréfrigérant principal.</li>
+<li>• Classe B (45 équipements, 32 %) : important mais remplaçable.</li>
+<li>→ Préventif trimestriel. Approvisionnement pièces sous 48 h.</li>
+<li>• Classe C (77 équipements, 54 %) : standard / non critique.</li>
+<li>→ Préventif semestriel/annuel. Maintenance curative à la demande.</li>
+<li>3. PLANNING ANNUEL INTÉGRÉ : Élaboration planning 12 mois dans SAP PM avec fenêtres fixes</li>
+<li>négociées avec production : samedi matin (4 h), arrêts planifiés trimestriels (8 h),</li>
+<li>vacances annuelles (grandes révisions). Réduction conflits production de 45 % à 8 %.</li>
+<li>4. APPROVISIONNEMENT PIÈCES : Négociation fournisseurs locaux (Siemens, Festo, Parker).</li>
+<li>Création stock sécurité classe A (consommables : capteurs inductifs, photoelectriques, vannes 5/2,</li>
+<li>joints toriques standards). Délai moyen pièces critiques : 5 j → 2 j.</li>
+<li>5. SOUS-TRAITANCE : Regroupement interventions par lot (thermographie, étalonnage instruments,</li>
+<li>révision pompes spécialisées). Appel d’offres 3 fournisseurs. Réduction coûts sous-traitance : –18 %.</li>
+<li>6. PILOTAGE KPI : Tableau de bord mensuel affiché maintenance + production :</li>
+<li>- Taux réalisation préventif (%).</li>
+<li>- MTBF (h) et MTTR (min) par classe.</li>
+<li>- Coût maintenance / tonne produit (€/t).</li>
+<li>- Top 3 pannes du mois + actions en cours.</li>
+<li>7. PROJETS D’AMÉLIORATION : Élaboration et soumission 5 projets CAPEX/OPEX :</li>
+<li>remplacement 2 variateurs obsolètes, mise en place vibration monitoring sur 3 groupes critiques,</li>
+<li>formation interne automatisme (3 techniciens). 3/5 validés et réalisés en interne.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="result-box">RÉSULTAT : • Taux réalisation préventif : 68 % → 94 % (année N+1). Objectif groupe 90 % dépassé.
+• Arrêts imprévus : –28 % vs année N (production gagne 340 h/an disponibles).
+• MTBF site : 420 h → 610 h (+45 %), rapproché benchmark industrie.
+• Coûts maintenance : –15 % sous-traitants (achats groupés) + –8 % pièces (stock optimisé + négociation).
+• 3 projets amélioration réalisés en interne avec ROI <18 mois.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">Méthodologie d'Intervention</div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="step">1</div>
+        <h4>SÉCURISATION</h4>
+        <p>Consignation LOTO (ISO 14118). EPI. Signalisation de zone.</p>
+      </div>
+      <div class="method-card">
+        <div class="step">2</div>
+        <h4>DIAGNOSTIC MESURÉ</h4>
+        <p>Bar, V, °C, mm, ms. Aucune hypothèse sans mesure.</p>
+      </div>
+      <div class="method-card">
+        <div class="step">3</div>
+        <h4>RCA</h4>
+        <p>5 pourquoi, Ishikawa, Pareto. Cause physique + systémique.</p>
+      </div>
+      <div class="method-card">
+        <div class="step">4</div>
+        <h4>INTERVENTION CIBLÉE</h4>
+        <p>Procédure pas à pas, outillages, couples, références.</p>
+      </div>
+      <div class="method-card">
+        <div class="step">5</div>
+        <h4>VALIDATION</h4>
+        <p>Essais charge, mesures A/A, GMAO, formation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>Salah Eddine Barki</strong> — Technicien de Maintenance Industrielle<br>
+    📱 +33 6 88 69 07 04 &nbsp;|&nbsp; ✉️ salahbarki.seb@gmail.com &nbsp;|&nbsp; 📍 Amiens, France
+  </div>
+</footer>
+
+</body>
+</html>

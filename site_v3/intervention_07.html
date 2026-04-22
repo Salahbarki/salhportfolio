@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Panne résolution variateur de fréquence — Convoyeur principal — TechMaintenance Pro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #fbfbfb;
+  --surface: #f5f6f8;
+  --surface-2: #ecedf1;
+  --surface-3: #e2e4e9;
+  --text: #1c1c1c;
+  --text-secondary: #5a5d66;
+  --text-muted: #8e9199;
+  --header-bg: #3e496e;
+  --header-text: #ffffff;
+  --accent: #b9bdca;
+  --accent-2: #ecedf1;
+  --urgent: #c45c3e;
+  --urgent-bg: #fdf2ef;
+  --normal: #3e496e;
+  --normal-bg: #f0f1f5;
+  --border: #e2e4e9;
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+/* TOP BAR */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  background: var(--header-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 100;
+}
+.topbar-brand {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--header-text);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.topbar-nav {
+  display: flex;
+  gap: 28px;
+}
+.topbar-nav a {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.topbar-nav a:hover, .topbar-nav a.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 56px; left: 0; bottom: 0;
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid var(--border);
+  padding: 24px 0;
+  z-index: 90;
+}
+.sidebar-profile {
+  padding: 0 24px 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.sidebar-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.sidebar-title {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  font-weight: 500;
+}
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 12px;
+}
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.12s;
+}
+.sidebar-nav a:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.sidebar-nav a.active {
+  background: var(--header-bg);
+  color: #fff;
+  font-weight: 600;
+}
+.sidebar-nav a svg {
+  width: 18px; height: 18px;
+  opacity: 0.7;
+}
+.sidebar-footer {
+  padding: 16px 24px 0;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+.sidebar-footer a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--header-bg);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.sidebar-footer a:hover {
+  background: var(--surface-3);
+}
+
+/* MAIN */
+.main {
+  margin-left: 240px;
+  margin-top: 56px;
+  min-height: calc(100vh - 56px);
+  padding: 32px;
+}
+
+/* INTERVENTION DETAIL */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--header-bg);
+  margin-bottom: 24px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.back-link:hover { background: var(--surface); }
+
+.int-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.int-type {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--urgent);
+  margin-bottom: 10px;
+}
+.int-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+}
+.int-id {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-family: 'SF Mono', monospace;
+}
+.int-meta-right {
+  text-align: right;
+}
+.int-meta-right div {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.int-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.panel-header h2 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+.panel-body {
+  padding: 20px;
+}
+.panel-body p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.panel-body p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.problem-panel .panel-header { background: var(--urgent-bg); }
+.problem-panel .panel-header h2 { color: var(--urgent); }
+.result-panel .panel-header { background: var(--normal-bg); }
+.result-panel .panel-header h2 { color: var(--normal); }
+
+.action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.action-item {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.action-item:last-child { border-bottom: none; padding-bottom: 0; }
+.action-num {
+  font-family: 'SF Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--urgent);
+  min-width: 28px;
+}
+.action-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.metric-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.metric-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.metric-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--header-bg);
+}
+
+/* RIGHT SIDEBAR PANELS */
+.side-panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.side-panel h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.side-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.side-row:last-child { border-bottom: none; }
+.side-label { color: var(--text-secondary); }
+.side-value {
+  color: var(--text);
+  font-weight: 600;
+  font-family: 'SF Mono', monospace;
+  font-size: 12px;
+}
+
+.piece-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+}
+.piece-icon {
+  width: 32px; height: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.piece-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.piece-ref {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'SF Mono', monospace;
+  margin-top: 2px;
+}
+
+.tool-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0 6px 6px 0;
+}
+
+/* FOOTER */
+.footer {
+  margin-left: 240px;
+  padding: 24px 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.footer a {
+  color: var(--text-muted);
+  margin-left: 20px;
+  font-size: 12px;
+}
+.footer a:hover { color: var(--text); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .footer { margin-left: 0; }
+  .int-grid { grid-template-columns: 1fr; }
+}
+
+/* === Block-style typography refinement === */
+body { font-size: 13px; font-weight: 400; letter-spacing: -0.003em; }
+.topbar-brand { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; }
+.topbar-nav a { font-size: 11px; font-weight: 500; }
+.sidebar-name { font-size: 13px; font-weight: 500; }
+.sidebar-title { font-size: 11px; font-weight: 400; }
+.sidebar-nav a { font-size: 12px; font-weight: 400; }
+.sidebar-nav a.active { font-weight: 500; }
+.sidebar-footer a { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; }
+.back-link { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; }
+.int-header h1 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+.int-type { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; }
+.int-id { font-size: 12px; }
+.int-meta-right div { font-size: 11px; }
+.panel-header h2 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; }
+.panel-body p { font-size: 12px; line-height: 1.7; }
+.action-num { font-size: 11px; font-weight: 500; }
+.action-text { font-size: 12px; }
+.metric-label { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; }
+.metric-value { font-size: 18px; font-weight: 500; }
+.side-panel h3 { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; }
+.side-row { font-size: 12px; }
+.side-label { font-size: 12px; }
+.side-value { font-size: 11px; font-weight: 500; }
+.piece-name { font-size: 12px; font-weight: 500; }
+.piece-ref { font-size: 10px; }
+.tool-tag { font-size: 10px; font-weight: 500; }
+.footer, .footer a { font-size: 11px; }
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">TechMaintenance Pro</div>
+  <nav class="topbar-nav">
+    <a href="index.html" class="">Accueil</a>
+    <a href="journal.html" class="active">Journal</a>
+    <a href="contact.html" class="">Contact</a>
+  </nav>
+</div>
+
+
+<aside class="sidebar">
+  <div class="sidebar-profile">
+    <div class="sidebar-name">Salah Eddine Barki</div>
+    <div class="sidebar-title">Technicien de Maintenance Industrielle</div>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" class="">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      Overview
+    </a>
+    <a href="journal.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Interventions
+    </a>
+    <a href="index.html#certifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Certifications
+    </a>
+    <a href="contact.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Contact
+    </a>
+  </nav>
+  <div class="sidebar-footer" style="margin-top:auto;">
+    <a href="contact.html">Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+<a href="journal.html" class="back-link">← Retour aux interventions</a>
+
+<div class="int-header">
+  <div>
+    <div class="int-type">CURATIF URGENT</div>
+    <h1>Panne résolution variateur de fréquence — Convoyeur principal</h1>
+    <div class="int-id">Rapport d'intervention technique #INT-2024-007</div>
+  </div>
+  <div class="int-meta-right">
+    <div>📅 12 Sep 2024</div>
+    <div>⏱ 02h 15m</div>
+    <div>🔧 Tech: 4882-MT</div>
+  </div>
+</div>
+
+<div class="int-grid">
+  <div>
+    <div class="panel problem-panel">
+      <div class="panel-header"><h2>⚠ Le Problème</h2></div>
+      <div class="panel-body">
+        <p><strong>Contexte :</strong> Ligne de production agroalimentaire fonctionnant 20h/jour. Convoyeur principal de 45m alimentant 3 lignes d'embouteillage secondaires. Arrêt total de la production sur les 3 lignes.</p>
+        <p><strong>Symptôme :</strong> Défaut variateur de fréquence F0001 'Overcurrent' au démarrage du convoyeur principal. Tentative de redémarrage automatique échoue après 3 essais. Moteur 37kW triphasé ne tourne pas. LED variateur clignote rouge F0001. Production arrêtée depuis 1h30.</p>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:14px 16px;border-radius:var(--radius);display:flex;gap:14px;align-items:center;margin-top:12px;">
+          <span style="font-size:22px;">📡</span>
+          <div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px;">Équipement concerné</div>
+            <div style="font-size:13px;color:var(--text);font-weight:600;">Variateur Siemens G120 + Moteur 37kW — Convoyeur principal ligne PET</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel">
+      <div class="panel-header"><h2>🔍 Diagnostic</h2></div>
+      <div class="panel-body">
+        <p>Vérification électrique : mesure résistance stator entre phases U-V, V-W, W-U = 0,8 Ω stable (valeur nominale 0,75 Ω). Isolation phase-terre > 500 MΩ. Moteur non défectueux électriquement.<br><br>Vérification mécanique : roue libre du réducteur bloquée en rotation manuelle. Démontrage du carter réducteur : roulement à rouleaux coniques de sortie d'arbre brûlé (température > 120°C mesurée). Graisse complètement noircie et desséchée. Engrenage secondaire présente des micro-piqûres sur les flancs de denture.<br><br>Analyse variateur : paramètre P0640 (limite courant) réglé à 150% du nominal. Au démarrage, le moteur tente d'accélérer mais le réducteur bloqué provoque un appel de courant immédiat > limite → F0001. Historique défauts variateur : 47 occurrences F0001 sur les 30 derniers jours, jamais investiguées (opérateurs redémarraient manuellement jusqu'à ce que ça passe).</p>
+      </div>
+    </div>
+    
+    <div class="panel">
+      <div class="panel-header"><h2>🔧 Solution Apportée</h2></div>
+      <div class="panel-body">
+        <div class="action-list">
+<div class="action-item"><span class="action-num">01.</span><span class="action-text">CONSIGNATION : Arrêt électrique général ligne. Condamnateur cadenas sur sectionneur moteur. Signalisation de zone maintenance. Vérification tension 0V aux bornes moteur.</span></div><div class="action-item"><span class="action-num">02.</span><span class="action-text">DÉMONTAGE : Dépose du moteur 37kW + réducteur complet du convoyeur. Manutention palan 500kg. Pose sur banc de travail mécanique.</span></div><div class="action-item"><span class="action-num">03.</span><span class="action-text">RÉPARATION RÉDUCTEUR : Remplacement du roulement à rouleaux coniques de sortie (SKF 30217). Nettoyage complet des carters et des engrenages. Regraissage avec graisse haute température SKF LGHP 2. Contrôle du jeu d'engrenages avec cales : 0,15 mm (tolérance OK).</span></div><div class="action-item"><span class="action-num">04.</span><span class="action-text">RÉINSTALLATION : Remontage moteur + réducteur. Alignement laser moteur-réducteur-réducteur-convoyeur. Tolérance angulaire < 0,05 mm/m. Serrage des pieds au couple avec clé dynamométrique 85 Nm.</span></div><div class="action-item"><span class="action-num">05.</span><span class="action-text">RÉGLAGE VARIATEUR : Réinitialisation des défauts. Vérification paramètres : rampes accélération/décélération rallongées de 5s à 8s pour réduire l'appel de courant. Activation fonction 'Flying restart' pour redémarrage en rotation libre. Activation 'Motor holding brake' pour freinage contrôlé à l'arrêt.</span></div><div class="action-item"><span class="action-num">06.</span><span class="action-text">ESSAIS : Démarrage à vide convoyeur. Vitesse nominale 1,2 m/s atteinte en 8s. Courant moteur 42A nominal (mesuré 38A stable). Marche en charge 2h sans défaut. Monitoring température réducteur : 48°C stable.</span></div><div class="action-item"><span class="action-num">07.</span><span class="action-text">GMAO : Création ordre de travail préventif 'Graissage réducteur convoyeur principal' tous les 6 mois. Mise à jour paramètres variateur dans la documentation technique site. Formation opérateurs sur signification F0001 (ne plus redémarrer aveuglément).</span></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="panel result-panel">
+      <div class="panel-header"><h2>✓ Résultat</h2></div>
+      <div class="panel-body">
+        <p>Production redémarrée après 2h15 d'arrêt. Zero redémarrage forcé depuis la réparation. Température réducteur stable à 45–50°C en fonctionnement continu. Courant moteur nominal respecté. Durée de vie réducteur estimée rétablie à nominale (10+ ans).</p>
+        <div class="metrics-grid">
+<div class="metric-box"><div class="metric-label">Arrêt Total</div><div class="metric-value">2h15</div></div><div class="metric-box"><div class="metric-label">Temp. Réducteur</div><div class="metric-value">48°C</div></div><div class="metric-box"><div class="metric-label">Courant Moteur</div><div class="metric-value">38A</div></div><div class="metric-box"><div class="metric-label">Dispo. Ligne</div><div class="metric-value">+100%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <aside>
+    <div class="side-panel">
+      <h3>Spécifications Équipement</h3>
+      <div class="side-row"><span class="side-label">Système</span><span class="side-value">Variateur G120 + Moteur 37kW</span></div>
+      <div class="side-row"><span class="side-label">Localisation</span><span class="side-value">Grigny (91)</span></div>
+      <div class="side-row"><span class="side-label">Entreprise</span><span class="side-value">Coca-Cola Europacific Partners</span></div>
+      <div class="side-row"><span class="side-label">Criticité</span><span class="side-value" style="color:var(--urgent);">Tier 1 — Vital</span></div>
+    </div>
+    
+    <div class="side-panel">
+      <h3>Inventaire Pièces</h3>
+
+        <div class="piece-item">
+          <div class="piece-icon">⚙</div>
+          <div>
+            <div class="piece-name">Roulement à rouleaux coniques SKF 30217</div>
+            <div class="piece-ref">Réf: SKF 30217 | Qté: 1</div>
+          </div>
+        </div>
+        <div class="piece-item">
+          <div class="piece-icon">⚙</div>
+          <div>
+            <div class="piece-name">Graisse haute température SKF LGHP 2</div>
+            <div class="piece-ref">Réf: SKF LGHP 2/1 | Qté: 1 kg</div>
+          </div>
+        </div>
+        <div class="piece-item">
+          <div class="piece-icon">⚙</div>
+          <div>
+            <div class="piece-name">Joint SPI carter réducteur</div>
+            <div class="piece-ref">Réf: Standard industriel | Qté: 2</div>
+          </div>
+        </div>
+    </div>
+    
+    <div class="side-panel">
+      <h3>Matériel Déployé</h3>
+      <div style="display:flex;flex-wrap:wrap;">
+<span class="tool-tag">🔧 Clé dynamométrique</span><span class="tool-tag">🔧 Multimètre</span><span class="tool-tag">🔧 Palan 500kg</span><span class="tool-tag">🔧 Laser alignment</span><span class="tool-tag">🔧 StarterSoft G120</span>
+      </div>
+    </div>
+  </aside>
+</div>
+
+</main>
+
+<footer class="footer">
+  <span>© 2024 Salah Eddine Barki — Technicien Maintenance Industrielle</span>
+  <div>
+    <a href="index.html">Accueil</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

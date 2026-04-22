@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Intervention Detail — TechMaintenance Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-container": "#eceeee",
+                    "primary-container": "#1b4f72",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#3a4856",
+                    "primary-fixed": "#cce5ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "surface-dim": "#d8dada",
+                    "on-surface-variant": "#41474e",
+                    "on-secondary-fixed": "#351000",
+                    "tertiary": "#283643",
+                    "on-secondary-container": "#5c2000",
+                    "on-primary-fixed-variant": "#154b6d",
+                    "outline": "#72787f",
+                    "surface": "#f8fafa",
+                    "surface-container-high": "#e6e8e8",
+                    "surface-bright": "#f8fafa",
+                    "primary": "#003857",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f4",
+                    "secondary": "#a23f00",
+                    "surface-tint": "#326286",
+                    "inverse-primary": "#9dcbf4",
+                    "on-primary-fixed": "#001e31",
+                    "tertiary-container": "#3e4d5a",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#9dcbf4",
+                    "on-tertiary-container": "#aebdcd",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-fixed-variant": "#7c2e00",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e1e3e3",
+                    "tertiary-fixed": "#d5e4f5",
+                    "on-error": "#ffffff",
+                    "background": "#f8fafa",
+                    "on-primary-container": "#92c0e9",
+                    "surface-container-highest": "#e1e3e3",
+                    "secondary-fixed-dim": "#ffb595",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#fc7127",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0e1d29",
+                    "inverse-on-surface": "#eff1f1",
+                    "secondary-fixed": "#ffdbcd",
+                    "tertiary-fixed-dim": "#b9c8d8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "margin": "40px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1200px",
+                    "stack-lg": "32px"
+                },
+                "fontFamily": {
+                    "h2": ["Inter"],
+                    "data-mono": ["Inter"],
+                    "h3": ["Inter"],
+                    "label-caps": ["Work Sans"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"]
+                },
+                "fontSize": {
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                }
+            }
+        }
+    }
+</script>
+</head>
+
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+    
+<!-- TopAppBar -->
+<header class="bg-slate-50 dark:bg-slate-950 font-sans tracking-tight uppercase font-bold text-xs docked full-width top-0 border-b border-slate-300 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-10 h-16 fixed z-50 pl-64">
+    <div class="flex items-center gap-6">
+        <span class="text-xl font-black text-sky-900 dark:text-sky-100 uppercase tracking-widest">TechMaintenance Pro</span>
+        <nav class="hidden md:flex items-center gap-6 ml-8">
+            <a class="text-sky-900 dark:text-sky-400 border-b-2 border-sky-900 dark:border-sky-400 pb-1 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors opacity-80 duration-75" href="journal.html">Journal</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html#certifications">Certifications</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="contact.html">CV & Contact</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html">Accueil</a>
+        </nav>
+    </div>
+    <div class="flex items-center gap-4 text-sky-900 dark:text-sky-400">
+        <button class="hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-2 rounded-DEFAULT"><span class="material-symbols-outlined">settings</span></button>
+        <button class="hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-2 rounded-DEFAULT"><span class="material-symbols-outlined">account_circle</span></button>
+    </div>
+</header>
+
+    
+<!-- SideNavBar -->
+<aside class="bg-slate-100 dark:bg-slate-900 font-sans text-sm font-medium tracking-wide fixed left-0 top-0 h-screen border-r w-64 border-slate-300 dark:border-slate-800 flat no shadows flex flex-col h-full py-6 z-40 pt-20">
+    <div class="px-6 pb-6 border-b border-slate-300 dark:border-slate-800 mb-4 flex flex-col gap-2">
+        <span class="text-lg font-bold text-sky-900 dark:text-sky-100">Salah Eddine Barki</span>
+        <span class="text-xs text-slate-500">ID: 4882-MT</span>
+        <div class="w-12 h-12 rounded-full border-2 border-sky-900 dark:border-sky-400 mt-2 bg-sky-100 flex items-center justify-center text-sky-900 font-bold text-lg">SB</div>
+    </div>
+    <nav class="flex flex-col flex-grow">
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="index.html"><span class="material-symbols-outlined">dashboard</span> Overview</a>
+        <a class="bg-sky-900 text-white dark:bg-sky-400 dark:text-slate-950 rounded-none border-l-4 border-orange-500 font-bold scale-95 duration-100 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="journal.html"><span class="material-symbols-outlined">build</span> Interventions</a>
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="#"><span class="material-symbols-outlined">architecture</span> Schematics</a>
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="#"><span class="material-symbols-outlined">description</span> Documentation</a>
+    </nav>
+    <div class="px-4 py-4">
+        <a href="contact.html" class="block w-full bg-slate-200 text-sky-900 py-2 text-xs font-bold uppercase tracking-wider hover:bg-slate-300 transition-colors border border-slate-300 text-center">Download CV</a>
+    </div>
+    <div class="border-t border-slate-300 dark:border-slate-800 mt-auto pt-4 flex flex-col">
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="contact.html"><span class="material-symbols-outlined">settings_input_component</span> Contact</a>
+        <span class="px-4 py-3 flex items-center gap-3 text-slate-400"><span class="material-symbols-outlined">logout</span> Logout</span>
+    </div>
+</aside>
+
+    <main class="ml-64 mt-16 flex-grow p-margin bg-surface">
+        <!-- Contextual Back Action -->
+        <div class="mb-stack-lg">
+            <a href="journal.html" class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary hover:text-secondary transition-colors border border-outline px-3 py-2 bg-surface-container-lowest">
+                <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                RETOUR AUX INTERVENTIONS
+            </a>
+        </div>
+        <!-- Page Header -->
+        <div class="border-b border-outline pb-stack-md mb-stack-lg flex flex-col md:flex-row md:justify-between md:items-end gap-stack-md" id="page-header">
+            <div>
+                <div class="font-label-caps text-label-caps text-secondary mb-stack-sm flex items-center gap-2">
+                    <span class="w-2 h-2 bg-secondary block"></span> <span id="type-badge">...</span>
+                </div>
+                <h1 class="font-h1 text-h1 text-primary" id="int-title">...</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mt-unit" id="int-id">...</p>
+            </div>
+            <div class="flex flex-col md:text-right gap-unit">
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">calendar_today</span> <span id="int-date">...</span>
+                </div>
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">timer</span> Durée: <span id="int-duree">...</span>
+                </div>
+                <div class="font-data-mono text-data-mono text-on-surface-variant flex items-center md:justify-end gap-2">
+                    <span class="material-symbols-outlined text-[16px]">engineering</span> Tech: <span id="int-tech">...</span>
+                </div>
+            </div>
+        </div>
+        <!-- 12-Col Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+            <!-- Left Column (Narrative & Process) -->
+            <div class="lg:col-span-8 space-y-gutter">
+                <!-- Le Problème -->
+                <section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-error border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">warning</span> Le Problème
+                        </h2>
+                        <p class="font-body-md text-body-md text-on-surface mb-stack-md" id="int-symptome">...</p>
+                        <div class="bg-surface p-stack-md border border-outline flex gap-4 items-center">
+                            <span class="material-symbols-outlined text-error text-[32px]">sensors</span>
+                            <div class="flex-1">
+                                <div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">Contexte Opérationnel</div>
+                                <div class="flex justify-between items-center border-b border-outline-variant pb-1">
+                                    <span class="font-data-mono text-data-mono">Équipement</span>
+                                    <span class="font-data-mono text-data-mono text-error font-bold" id="int-equip-short">...</span>
+                                </div>
+                                <div class="flex justify-between items-center pt-1">
+                                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Site</span>
+                                    <span class="font-data-mono text-data-mono text-on-surface-variant text-sm" id="int-lieu">...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Diagnostic -->
+                <section class="bg-surface-container-lowest border border-outline rounded">
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">troubleshoot</span> Diagnostic
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md mb-stack-md">
+                            <div>
+                                <p class="font-body-md text-body-md text-on-surface" id="int-diagnostic">...</p>
+                            </div>
+                            <div class="bg-surface-container-low border border-outline-variant p-stack-md flex flex-col items-center justify-center text-center">
+                                <span class="material-symbols-outlined text-primary text-[48px] mb-2">psychology</span>
+                                <div class="font-label-caps text-label-caps text-on-surface-variant">Méthode RCA</div>
+                                <div class="font-data-mono text-data-mono text-primary mt-1">5 Pourquoi + Pareto + Ishikawa</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Solution Apportée -->
+                <section class="bg-surface-container-lowest border border-outline rounded">
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">build</span> Solution Apportée
+                        </h2>
+                        <div class="space-y-stack-sm" id="int-actions">
+                        </div>
+                    </div>
+                </section>
+                <!-- Résultat -->
+                <section class="bg-surface-container-lowest border border-outline rounded relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                    <div class="p-gutter">
+                        <h2 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md flex items-center gap-2 uppercase">
+                            <span class="material-symbols-outlined text-[18px]">verified</span> Résultat
+                        </h2>
+                        <p class="font-body-md text-body-md text-on-surface mb-stack-md" id="int-resultat">...</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-unit" id="int-metriques">
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Right Column (Technical Data Metadata) -->
+            <aside class="lg:col-span-4 space-y-gutter">
+                <!-- Équipement Info -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Spécifications Équipement</h3>
+                    <ul class="space-y-stack-sm">
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Système</span>
+                            <span class="font-data-mono text-data-mono text-on-surface" id="meta-equip">...</span>
+                        </li>
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Localisation</span>
+                            <span class="font-data-mono text-data-mono text-on-surface" id="meta-lieu">...</span>
+                        </li>
+                        <li class="flex justify-between border-b border-outline-variant pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Entreprise</span>
+                            <span class="font-data-mono text-data-mono text-on-surface" id="meta-entreprise">...</span>
+                        </li>
+                        <li class="flex justify-between pb-unit">
+                            <span class="font-body-md text-body-md text-on-surface-variant">Indice Criticité</span>
+                            <span class="font-data-mono text-data-mono text-error font-bold bg-error-container px-2 py-0.5 border border-error">Tier 1 - Vital</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Pièces Remplacées -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Inventaire Pièces</h3>
+                    <div class="space-y-unit" id="int-pieces">
+                    </div>
+                </div>
+                <!-- Outillage -->
+                <div class="bg-surface-container border border-outline rounded p-gutter">
+                    <h3 class="font-label-caps text-label-caps text-primary border-b border-outline-variant pb-stack-sm mb-stack-md uppercase">Matériel Déployé</h3>
+                    <div class="flex flex-wrap gap-2" id="int-outillage">
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 font-sans text-[10px] uppercase tracking-tighter text-slate-500 w-full border-t border-slate-300 dark:border-slate-800 py-8 px-10 flex flex-col md:flex-row justify-between items-center gap-4 ml-64 mt-auto">
+    <span>© 2024 Salah Eddine Barki — Technicien Maintenance Industrielle | Portfolio Interactif</span>
+    <div class="flex items-center gap-4">
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Safety Protocols</a>
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Technical Certifications</a>
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="contact.html">Contact</a>
+    </div>
+</footer>
+
+    <script src="data.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const fiche = FICHES.find(f => f.num === id) || FICHES[0];
+        
+        document.getElementById('type-badge').textContent = fiche.type;
+        document.getElementById('int-title').textContent = fiche.titre;
+        document.getElementById('int-id').textContent = 'Rapport d'intervention technique #' + fiche.id;
+        document.getElementById('int-date').textContent = fiche.date;
+        document.getElementById('int-duree').textContent = fiche.duree;
+        document.getElementById('int-tech').textContent = fiche.tech;
+        document.getElementById('int-symptome').textContent = fiche.symptome;
+        document.getElementById('int-equip-short').textContent = fiche.equip.substring(0, 40) + '...';
+        document.getElementById('int-lieu').textContent = fiche.lieu;
+        document.getElementById('int-diagnostic').innerHTML = fiche.diagnostic.replace(/\n/g, '<br><br>');
+        document.getElementById('int-resultat').textContent = fiche.resultat;
+        document.getElementById('meta-equip').textContent = fiche.equip.substring(0, 50) + '...';
+        document.getElementById('meta-lieu').textContent = fiche.lieu;
+        document.getElementById('meta-entreprise').textContent = fiche.entreprise;
+        
+        // Actions
+        const actionsDiv = document.getElementById('int-actions');
+        fiche.actions.forEach((action, i) => {
+            const div = document.createElement('div');
+            div.className = 'flex gap-3 border-b border-outline-variant pb-stack-sm';
+            div.innerHTML = '<span class="font-data-mono text-data-mono text-secondary shrink-0">' + String(i+1).padStart(2, '0') + '.</span><p class="font-body-md text-body-md text-on-surface">' + action + '</p>';
+            actionsDiv.appendChild(div);
+        });
+        
+        // Métriques
+        const metriquesDiv = document.getElementById('int-metriques');
+        fiche.metriques.forEach(m => {
+            const div = document.createElement('div');
+            div.className = 'bg-surface p-stack-sm border border-outline flex flex-col justify-center items-center text-center';
+            div.innerHTML = '<span class="material-symbols-outlined text-primary mb-1">' + m.icon + '</span><div class="font-label-caps text-label-caps text-on-surface-variant mb-unit">' + m.label + '</div><div class="font-h3 text-h3 text-primary">' + m.value + '</div>';
+            metriquesDiv.appendChild(div);
+        });
+        
+        // Pièces
+        const piecesDiv = document.getElementById('int-pieces');
+        fiche.pieces.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'bg-surface-container-lowest border border-outline p-stack-sm flex items-start gap-3';
+            div.innerHTML = '<div class="bg-surface p-1.5 border border-outline-variant mt-0.5"><span class="material-symbols-outlined text-on-surface-variant text-[18px]">settings</span></div><div><div class="font-body-md text-body-md font-bold text-on-surface leading-tight mb-1">' + p.name + '</div><div class="flex justify-between items-center w-full gap-4"><span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Réf: ' + p.ref + '</span><span class="font-data-mono text-data-mono text-on-surface text-sm">Qté: ' + p.qty + '</span></div></div>';
+            piecesDiv.appendChild(div);
+        });
+        
+        // Outillage
+        const outillageDiv = document.getElementById('int-outillage');
+        fiche.outillage.forEach(o => {
+            const div = document.createElement('div');
+            div.className = 'border border-outline bg-surface px-2 py-1 flex items-center gap-1';
+            div.innerHTML = '<span class="material-symbols-outlined text-[14px] text-primary">build</span><span class="font-label-caps text-label-caps text-primary">' + o + '</span>';
+            outillageDiv.appendChild(div);
+        });
+    </script>
+</body>
+</html>

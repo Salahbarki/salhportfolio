@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Journal — TechMaintenance Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+</style>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-container": "#eceeee",
+                    "primary-container": "#1b4f72",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#3a4856",
+                    "primary-fixed": "#cce5ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3131",
+                    "surface-dim": "#d8dada",
+                    "on-surface-variant": "#41474e",
+                    "on-secondary-fixed": "#351000",
+                    "tertiary": "#283643",
+                    "on-secondary-container": "#5c2000",
+                    "on-primary-fixed-variant": "#154b6d",
+                    "outline": "#72787f",
+                    "surface": "#f8fafa",
+                    "surface-container-high": "#e6e8e8",
+                    "surface-bright": "#f8fafa",
+                    "primary": "#003857",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f4",
+                    "secondary": "#a23f00",
+                    "surface-tint": "#326286",
+                    "inverse-primary": "#9dcbf4",
+                    "on-primary-fixed": "#001e31",
+                    "tertiary-container": "#3e4d5a",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#9dcbf4",
+                    "on-tertiary-container": "#aebdcd",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-fixed-variant": "#7c2e00",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e1e3e3",
+                    "tertiary-fixed": "#d5e4f5",
+                    "on-error": "#ffffff",
+                    "background": "#f8fafa",
+                    "on-primary-container": "#92c0e9",
+                    "surface-container-highest": "#e1e3e3",
+                    "secondary-fixed-dim": "#ffb595",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#fc7127",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#0e1d29",
+                    "inverse-on-surface": "#eff1f1",
+                    "secondary-fixed": "#ffdbcd",
+                    "tertiary-fixed-dim": "#b9c8d8"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "margin": "40px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1200px",
+                    "stack-lg": "32px"
+                },
+                "fontFamily": {
+                    "h2": ["Inter"],
+                    "data-mono": ["Inter"],
+                    "h3": ["Inter"],
+                    "label-caps": ["Work Sans"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"]
+                },
+                "fontSize": {
+                    "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "data-mono": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                }
+            }
+        }
+    }
+</script>
+</head>
+
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+    
+<!-- TopAppBar -->
+<header class="bg-slate-50 dark:bg-slate-950 font-sans tracking-tight uppercase font-bold text-xs docked full-width top-0 border-b border-slate-300 dark:border-slate-800 flat no shadows flex justify-between items-center w-full px-10 h-16 fixed z-50 pl-64">
+    <div class="flex items-center gap-6">
+        <span class="text-xl font-black text-sky-900 dark:text-sky-100 uppercase tracking-widest">TechMaintenance Pro</span>
+        <nav class="hidden md:flex items-center gap-6 ml-8">
+            <a class="text-sky-900 dark:text-sky-400 border-b-2 border-sky-900 dark:border-sky-400 pb-1 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors opacity-80 duration-75" href="journal.html">Journal</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html#certifications">Certifications</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="contact.html">CV & Contact</a>
+            <a class=" text-slate-500 dark:text-slate-400 hover:text-sky-800 dark:hover:text-sky-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors" href="index.html">Accueil</a>
+        </nav>
+    </div>
+    <div class="flex items-center gap-4 text-sky-900 dark:text-sky-400">
+        <button class="hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-2 rounded-DEFAULT"><span class="material-symbols-outlined">settings</span></button>
+        <button class="hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors p-2 rounded-DEFAULT"><span class="material-symbols-outlined">account_circle</span></button>
+    </div>
+</header>
+
+    
+<!-- SideNavBar -->
+<aside class="bg-slate-100 dark:bg-slate-900 font-sans text-sm font-medium tracking-wide fixed left-0 top-0 h-screen border-r w-64 border-slate-300 dark:border-slate-800 flat no shadows flex flex-col h-full py-6 z-40 pt-20">
+    <div class="px-6 pb-6 border-b border-slate-300 dark:border-slate-800 mb-4 flex flex-col gap-2">
+        <span class="text-lg font-bold text-sky-900 dark:text-sky-100">Salah Eddine Barki</span>
+        <span class="text-xs text-slate-500">ID: 4882-MT</span>
+        <div class="w-12 h-12 rounded-full border-2 border-sky-900 dark:border-sky-400 mt-2 bg-sky-100 flex items-center justify-center text-sky-900 font-bold text-lg">SB</div>
+    </div>
+    <nav class="flex flex-col flex-grow">
+        <a class="text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="index.html"><span class="material-symbols-outlined">dashboard</span> Overview</a>
+        <a class="bg-sky-900 text-white dark:bg-sky-400 dark:text-slate-950 rounded-none border-l-4 border-orange-500 font-bold scale-95 duration-100 px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3" href="journal.html"><span class="material-symbols-outlined">build</span> Interventions</a>
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="#"><span class="material-symbols-outlined">architecture</span> Schematics</a>
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="#"><span class="material-symbols-outlined">description</span> Documentation</a>
+    </nav>
+    <div class="px-4 py-4">
+        <a href="contact.html" class="block w-full bg-slate-200 text-sky-900 py-2 text-xs font-bold uppercase tracking-wider hover:bg-slate-300 transition-colors border border-slate-300 text-center">Download CV</a>
+    </div>
+    <div class="border-t border-slate-300 dark:border-slate-800 mt-auto pt-4 flex flex-col">
+        <a class="px-4 py-3 hover:bg-slate-200 dark:hover:bg-slate-800 flex items-center gap-3 text-slate-600 dark:text-slate-400" href="contact.html"><span class="material-symbols-outlined">settings_input_component</span> Contact</a>
+        <span class="px-4 py-3 flex items-center gap-3 text-slate-400"><span class="material-symbols-outlined">logout</span> Logout</span>
+    </div>
+</aside>
+
+    <main class="ml-64 mt-16 flex-grow p-margin bg-surface">
+        <div class="mb-stack-lg border-b border-outline-variant pb-stack-md flex justify-between items-end">
+            <div>
+                <h1 class="font-h1 text-h1 text-primary tracking-tight">Journal of Interventions</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-stack-sm max-w-2xl">Official log of technical maintenance procedures, repairs, and system calibrations across active industrial sectors.</p>
+            </div>
+            <span class="font-data-mono text-data-mono text-on-surface-variant">6 ENTRIES</span>
+        </div>
+        <div class="grid grid-cols-12 gap-gutter">
+            <!-- Sidebar Filters -->
+            <aside class="col-span-12 md:col-span-3 lg:col-span-2 space-y-stack-md">
+                <div class="bg-surface-container-low border border-outline-variant p-4 rounded-DEFAULT">
+                    <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-stack-md border-b border-outline-variant pb-2">SYSTEM CATEGORY</h3>
+                    <div class="space-y-stack-sm">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 border border-outline bg-surface group-hover:border-primary flex items-center justify-center"><span class="material-symbols-outlined text-[12px] text-primary opacity-0 group-hover:opacity-100">check</span></div>
+                            <span class="font-data-mono text-data-mono text-on-surface">Hydraulics</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 border border-primary bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-[12px] text-on-primary">check</span></div>
+                            <span class="font-data-mono text-data-mono text-primary font-bold">Electrical</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 border border-outline bg-surface group-hover:border-primary flex items-center justify-center"><span class="material-symbols-outlined text-[12px] text-primary opacity-0 group-hover:opacity-100">check</span></div>
+                            <span class="font-data-mono text-data-mono text-on-surface">Pneumatics</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 border border-outline bg-surface group-hover:border-primary flex items-center justify-center"><span class="material-symbols-outlined text-[12px] text-primary opacity-0 group-hover:opacity-100">check</span></div>
+                            <span class="font-data-mono text-data-mono text-on-surface">Automatisme</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="bg-surface-container-low border border-outline-variant p-4 rounded-DEFAULT">
+                    <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-stack-md border-b border-outline-variant pb-2">STATUS</h3>
+                    <div class="space-y-stack-sm">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 border border-outline bg-surface group-hover:border-primary flex items-center justify-center"></div>
+                            <span class="font-data-mono text-data-mono text-on-surface flex items-center gap-2"><div class="w-2 h-2 bg-secondary"></div> Active</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 border border-outline bg-surface group-hover:border-primary flex items-center justify-center"></div>
+                            <span class="font-data-mono text-data-mono text-on-surface flex items-center gap-2"><div class="w-2 h-2 bg-primary"></div> Resolved</span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+            <!-- Cards Grid -->
+            <div class="col-span-12 md:col-span-9 lg:col-span-10 grid grid-cols-1 xl:grid-cols-2 gap-gutter">
+                
+            <article class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT relative overflow-hidden flex flex-col group hover:border-primary transition-colors duration-200">
+                <div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <header class="flex justify-between items-start mb-stack-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined  text-secondary text-[20px]">warning</span>
+                            <span class="font-data-mono text-data-mono text-on-surface-variant">15 Juil 2024 // 00h 45m</span>
+                        </div>
+                        <div class="font-label-caps text-label-caps text-primary border border-outline-variant bg-surface-container-low px-2 py-1 uppercase">CURATIF URGENT</div>
+                    </header>
+                    <h2 class="font-h3 text-h3 text-primary mb-stack-sm group-hover:text-surface-tint transition-colors">Panne récurrente encartonneuse — Ligne PET</h2>
+                    <p class="font-body-md text-body-md text-on-surface mb-stack-md flex-grow">Défaut HMI n°402 'PRODUIT_COINCÉ_ENTRÉE' toutes les 8–12 min. Accumulation de 15–18 colis rejetés/heure en sortie fardeleuse. Opérateurs forcés de redémarrer ma...</p>
+                    <div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+                        <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Coca-Cola Europacific Partners — Grigny (91)</span>
+                        <a href="intervention.html?id=01" class="font-label-caps text-label-caps text-primary hover:text-secondary flex items-center gap-1 transition-colors">
+                            View Full Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT relative overflow-hidden flex flex-col group hover:border-primary transition-colors duration-200">
+                <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <header class="flex justify-between items-start mb-stack-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined filled text-primary text-[20px]">check_circle</span>
+                            <span class="font-data-mono text-data-mono text-on-surface-variant">Juin 2023 // 02j 00h</span>
+                        </div>
+                        <div class="font-label-caps text-label-caps text-primary border border-outline-variant bg-surface-container-low px-2 py-1 uppercase">INSTALLATION</div>
+                    </header>
+                    <h2 class="font-h3 text-h3 text-primary mb-stack-sm group-hover:text-surface-tint transition-colors">Mise en service presse injection + auxiliaires</h2>
+                    <p class="font-body-md text-body-md text-on-surface mb-stack-md flex-grow">Aucun — Nouvelle installation. Objectif : démarrage qualité premier jet, cycle stable <20 secondes....</p>
+                    <div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+                        <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">TE Connectivity — Tanger (Maroc)</span>
+                        <a href="intervention.html?id=02" class="font-label-caps text-label-caps text-primary hover:text-secondary flex items-center gap-1 transition-colors">
+                            View Full Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT relative overflow-hidden flex flex-col group hover:border-primary transition-colors duration-200">
+                <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <header class="flex justify-between items-start mb-stack-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined filled text-primary text-[20px]">check_circle</span>
+                            <span class="font-data-mono text-data-mono text-on-surface-variant">Mars 2023 // 04h 30m</span>
+                        </div>
+                        <div class="font-label-caps text-label-caps text-primary border border-outline-variant bg-surface-container-low px-2 py-1 uppercase">AUTOMATISME</div>
+                    </header>
+                    <h2 class="font-h3 text-h3 text-primary mb-stack-sm group-hover:text-surface-tint transition-colors">Débogage & optimisation programme automate</h2>
+                    <p class="font-body-md text-body-md text-on-surface mb-stack-md flex-grow">Temps de cycle mesuré au chronomètre : 28–30 s au lieu des 16–17 s nominaux. Alarme HMI fréquente 'Timeout bras robot zone pick'. Arrêts 3–4 fois par heure. Opé...</p>
+                    <div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+                        <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">TE Connectivity — Tanger (Maroc)</span>
+                        <a href="intervention.html?id=03" class="font-label-caps text-label-caps text-primary hover:text-secondary flex items-center gap-1 transition-colors">
+                            View Full Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT relative overflow-hidden flex flex-col group hover:border-primary transition-colors duration-200">
+                <div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <header class="flex justify-between items-start mb-stack-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined  text-secondary text-[20px]">warning</span>
+                            <span class="font-data-mono text-data-mono text-on-surface-variant">Nov 2022 // 01j 00h</span>
+                        </div>
+                        <div class="font-label-caps text-label-caps text-primary border border-outline-variant bg-surface-container-low px-2 py-1 uppercase">RCA & QUALITÉ</div>
+                    </header>
+                    <h2 class="font-h3 text-h3 text-primary mb-stack-sm group-hover:text-surface-tint transition-colors">Analyse cause racine — Banc de test électrique</h2>
+                    <p class="font-body-md text-body-md text-on-surface mb-stack-md flex-grow">Taux de rejet test continuité anormal : 12% sur une même référence produite depuis plusieurs jours sans changement d'outillage. Normalement stable autour de 1–2...</p>
+                    <div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+                        <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Kromberg & Schubert — Kénitra (Maroc)</span>
+                        <a href="intervention.html?id=04" class="font-label-caps text-label-caps text-primary hover:text-secondary flex items-center gap-1 transition-colors">
+                            View Full Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT relative overflow-hidden flex flex-col group hover:border-primary transition-colors duration-200">
+                <div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <header class="flex justify-between items-start mb-stack-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined  text-secondary text-[20px]">warning</span>
+                            <span class="font-data-mono text-data-mono text-on-surface-variant">Avr 2024 // 03h 20m</span>
+                        </div>
+                        <div class="font-label-caps text-label-caps text-primary border border-outline-variant bg-surface-container-low px-2 py-1 uppercase">CURATIF MÉCANIQUE</div>
+                    </header>
+                    <h2 class="font-h3 text-h3 text-primary mb-stack-sm group-hover:text-surface-tint transition-colors">Dépannage hydraulique presse découpe / pliage</h2>
+                    <p class="font-body-md text-body-md text-on-surface mb-stack-md flex-grow">Perte brutale de pression lors de la descente rapide vers position pliage. Manomètre principal : chute de 80 bar à ~30 bar. Bruit violent type 'coup de bélier' ...</p>
+                    <div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+                        <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">Sovireso — Saint-Laurent-sur-Sèvre (85)</span>
+                        <a href="intervention.html?id=05" class="font-label-caps text-label-caps text-primary hover:text-secondary flex items-center gap-1 transition-colors">
+                            View Full Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT relative overflow-hidden flex flex-col group hover:border-primary transition-colors duration-200">
+                <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <header class="flex justify-between items-start mb-stack-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined filled text-primary text-[20px]">check_circle</span>
+                            <span class="font-data-mono text-data-mono text-on-surface-variant">Jan–Déc 2023 // 12 mois</span>
+                        </div>
+                        <div class="font-label-caps text-label-caps text-primary border border-outline-variant bg-surface-container-low px-2 py-1 uppercase">PLANIFICATION</div>
+                    </header>
+                    <h2 class="font-h3 text-h3 text-primary mb-stack-sm group-hover:text-surface-tint transition-colors">Planification maintenance annuelle & pilotage GMAO</h2>
+                    <p class="font-body-md text-body-md text-on-surface mb-stack-md flex-grow">Taux réalisation maintenance préventive année N : 68% (233 ordres de travail réalisés sur 342 planifiés). Les arrêts imprévus représentent 23% du temps de produ...</p>
+                    <div class="mt-auto border-t border-outline-variant pt-4 flex justify-between items-center">
+                        <span class="font-data-mono text-data-mono text-on-surface-variant text-sm">TE Connectivity — Tanger (Maroc)</span>
+                        <a href="intervention.html?id=06" class="font-label-caps text-label-caps text-primary hover:text-secondary flex items-center gap-1 transition-colors">
+                            View Full Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        
+            </div>
+        </div>
+    </main>
+    
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 font-sans text-[10px] uppercase tracking-tighter text-slate-500 w-full border-t border-slate-300 dark:border-slate-800 py-8 px-10 flex flex-col md:flex-row justify-between items-center gap-4 ml-64 mt-auto">
+    <span>© 2024 Salah Eddine Barki — Technicien Maintenance Industrielle | Portfolio Interactif</span>
+    <div class="flex items-center gap-4">
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Safety Protocols</a>
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="#">Technical Certifications</a>
+        <a class="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors" href="contact.html">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>
