@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2022-017 · RCA Banc de test — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2022-017</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge crit">◆ RCA &amp; QUALITÉ · TIER 1</div>
+      <h1>Analyse cause racine — Banc de test électrique</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2022-017</strong></span>
+        <span>DATE <strong>2022.11</strong></span>
+        <span>DURATION <strong>01j 00h</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>KÉNITRA · MA</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+        <div>
+
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Symptôme :</strong> Taux de rejet test continuité anormal : <span class="mono" style="color:var(--red);">12 %</span> sur une même référence produite depuis plusieurs jours sans changement d'outillage (vs 1–2 % habituel).</p>
+              <p><strong>Conséquence :</strong> 240+ pièces rebutées/jour. Risque blocage ligne client automobile.</p>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic (Pareto + Ishikawa + 5 Pourquoi)</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Analyse data 15 jours :</strong> dérive lente résistance continuité. Tolérance &lt; 10 mΩ ; départ 3–5 mΩ → dérive 8–12 mΩ → dépassement = rebut.</p>
+              <p><strong>Pareto des rebuts (342 pièces) :</strong> ~2/3 broches de contact (pins) oxydées, ~1/4 câbles de piquage usés, reste divers.</p>
+              <p><strong>Inspection :</strong> 14/32 pins présentent oxydation CuO noire visible. Dernier nettoyage documenté &gt; 6 mois. Hotte extraction fumées de soudure amont saturée : débit 80 m³/h (vs 120 min).</p>
+              <p><strong>Cause racine :</strong> vapeurs de soudure non extraites + absence gamme nettoyage pins = oxydation progressive des contacts du banc.</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_04a_overview.png" alt="Vue d'ensemble — Banc de test électrique"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Banc de test électrique</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_04b_connecteur.png" alt="Connecteur 32 pins — oxydation des contacts"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Connecteur 32 pins — oxydation des contacts</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_04c_ohmmetre.png" alt="Contrôle de continuité à l'ohmmètre"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Contrôle de continuité à l'ohmmètre</span></figcaption>
+            </figure>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>ARRÊT &amp; TRI</strong> — consignation 24 V + 500 V isolation. Retri manuel du batch depuis dernière validation : 94 % bons au contrôle micro-ohmètre portable.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>CONNECTEUR</strong> — dépose pins oxydés, pose connecteur adaptateur neuf (ref constructeur), serrage bagues.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>RÉGLAGE MÉCA</strong> — pression air vérin 3,2 → 4,0 bar ±0,1. Test 50 insertions : aucune marque plastique.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>EXTRACTION</strong> — filtre charbon neuf, nettoyage roue ventilo, graissage paliers. Débit remonté à 130 m³/h. Hotte mobile d'appoint sur poste soudure amont.</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>GAMME GMAO</strong> — nettoyage pins brosse fibre de verre + IPA toutes les 2 semaines. Contrôle mensuel micro-ohmètre 5 pins aléatoires, seuil alerte &lt; 5 mΩ.</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>FORMATION</strong> — fiche réflexe opérateur : dérive &gt; 6 mΩ sur 3 tests consécutifs → arrêt + appel maintenance. Formation 2 op. + 1 tech.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>CONTRÔLE DÉPART</strong> — test gabarit 32/32 pins tous les matins avant démarrage.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Taux de rejet : 12,3 % → 1,1 % stable sur 30 jours. ~220 pièces/jour sauvées. Procédure RCA formalisée partagée aux 4 lignes test + sous-traitants. Contrôle qualité départ : 25 min → 10 min/batch.</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Rejet avant</div><div class="metric-value">12.3%</div></div>
+                <div class="metric"><div class="metric-label">Rejet après</div><div class="metric-value">1.1%</div></div>
+                <div class="metric"><div class="metric-label">Pièces/jour</div><div class="metric-value">+220</div></div>
+                <div class="metric"><div class="metric-label">Temps QC</div><div class="metric-value">–60%</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">Banc test continuité/iso</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">Kénitra (MA)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">Kromberg &amp; Schubert</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Connecteur adaptateur 32 pins</div><div class="ipart-ref">REF constructeur · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Filtre charbon hotte</div><div class="ipart-ref">REF standard · Qté 1</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">Micro-ohmètre</span>
+              <span class="tag">Débitmètre</span>
+              <span class="tag">Pareto / Ishikawa</span>
+              <span class="tag">Brosse fibre verre</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

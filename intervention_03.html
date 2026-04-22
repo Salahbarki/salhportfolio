@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2023-038 · Débogage automate — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2023-038</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge">◆ AUTOMATISME · OPTIMISATION</div>
+      <h1>Débogage &amp; optimisation programme automate</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2023-038</strong></span>
+        <span>DATE <strong>2023.03</strong></span>
+        <span>DURATION <strong>04h 30m</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>TANGER · MA</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+        <div>
+
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Symptôme :</strong> Temps de cycle au chronomètre <span class="mono" style="color:var(--red);">28–30 s</span> au lieu des 16–17 s nominaux. Alarme HMI fréquente <span class="mono" style="color:var(--red);">'Timeout bras robot zone pick'</span>. Arrêts 3–4 fois par heure. Opérateurs obligés de redémarrer manuellement (~2 min chaque fois).</p>
+              <p><strong>Impact :</strong> capacité effective ~126 pièces/h vs cible 214 pièces/h. OEE cellule 72 %.</p>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Connexion en ligne TIA Portal. Monitoring blocs programme.</p>
+              <p><strong>Temporisation</strong> bloc gestion robot = 8 s ; mouvement réel mesuré = 5,5 s → temporisation trop conservative, bloque le cycle.</p>
+              <p><strong>Bit 'pince OK'</strong> : capteur de proximité clignote au lieu d'être fixe. Support desserré (jeu 2 mm) → détection intermittente → programme attend indéfiniment.</p>
+              <p><strong>Séquencement</strong> : phases exécutées en série alors que certaines sont parallélisables (descente + fermeture pince ; montée + translation).</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_03a_cell.png" alt="Vue d'ensemble — Cellule robotisée"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Cellule robotisée</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_03b_s7.png" alt="Automate Siemens S7 — bloc de gestion"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Automate Siemens S7 — bloc de gestion</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_03c_servo.png" alt="Servo-pousseur — réglage du décalage"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Servo-pousseur — réglage du décalage</span></figcaption>
+            </figure>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>MÉCANIQUE</strong> — resserrage support capteur, écrou nylstop anti-desserrage. Signal 'pince OK' désormais stable.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>TIA PORTAL</strong> — temporisation 8 s → 6,5 s (marge 1 s). Antirebond 35 ms sur signal capteur.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>OPTIMISATION</strong> — réécriture bloc mouvements : parallélisation phases compatibles avec interlock hauteur. Suppression tempos redondantes.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>SURVEILLANCE</strong> — compteur cycles + alarme auto si temps moyen &gt; +10 % nominal (détection précoce dérive).</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>HMI</strong> — écran diagnostic 'Temps de cycle' : valeur réelle, moyenne glissante 50 cycles, nb alarmes.</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>DOC</strong> — sauvegarde serveur site, commentaires date/nature/nom, export papier pour classeur maintenance.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>VALIDATION</strong> — run 4 h cadence max : 16,2–17,1 s (moy 16,8 s). 0 alarme 'Timeout'.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Temps de cycle : 28,5 s → 16,8 s (–41 %). Capacité : ~126 → 214 pièces/h. OEE : 72 % → 84 % (+12 pts). Alarme 'Timeout' : 3–4/h → &lt;1/h. Formation interne réalisée pour maintenance autonome.</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Cycle avant</div><div class="metric-value">28.5 s</div></div>
+                <div class="metric"><div class="metric-label">Cycle après</div><div class="metric-value">16.8 s</div></div>
+                <div class="metric"><div class="metric-label">OEE</div><div class="metric-value">+12 pts</div></div>
+                <div class="metric"><div class="metric-label">Capacité</div><div class="metric-value">+70%</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">Cellule assemblage</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">Tanger (MA)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">TE Connectivity</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Écrou nylstop M6</div><div class="ipart-ref">REF · anti-desserrage · Qté 1</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">TIA Portal</span>
+              <span class="tag">Chronomètre</span>
+              <span class="tag">Multimètre</span>
+              <span class="tag">Clé dynamo.</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

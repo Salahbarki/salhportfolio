@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Journal — TM·PRO / 4882</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> OPERATIONAL</span>
+    <span class="status-pill">LOG · 11 ENTRIES</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <!-- JOURNAL HEADER (dark strip) -->
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge">// FIELD LOG · 2022–2024</div>
+      <h1>Journal des interventions</h1>
+      <div class="int-hero-meta">
+        <span>ENTRIES <strong>11</strong></span>
+        <span>RESOLVED <strong>10</strong></span>
+        <span>ACTIVE <strong>01</strong></span>
+        <span>SECTORS <strong>04</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="log-grid">
+
+        <aside class="log-filters">
+          <div class="filter-block">
+            <h4>// Catégorie</h4>
+            <label class="filter-opt"><input type="checkbox" data-group="cat" data-value="electrique"/> Électrique</label>
+            <label class="filter-opt"><input type="checkbox" data-group="cat" data-value="hydraulique"/> Hydraulique</label>
+            <label class="filter-opt"><input type="checkbox" data-group="cat" data-value="pneumatique"/> Pneumatique</label>
+            <label class="filter-opt"><input type="checkbox" data-group="cat" data-value="automatisme"/> Automatisme</label>
+          </div>
+          <div class="filter-block">
+            <h4>// Statut</h4>
+            <label class="filter-opt"><input type="checkbox" data-group="statut" data-value="resolu"/> Résolu</label>
+            <label class="filter-opt"><input type="checkbox" data-group="statut" data-value="actif"/> Actif</label>
+          </div>
+          <div class="filter-block">
+            <h4>// Secteur</h4>
+            <label class="filter-opt"><input type="checkbox" data-group="secteur" data-value="agro"/> Agroalimentaire</label>
+            <label class="filter-opt"><input type="checkbox" data-group="secteur" data-value="auto"/> Automobile</label>
+            <label class="filter-opt"><input type="checkbox" data-group="secteur" data-value="metal"/> Métallurgie</label>
+          </div>
+          <button type="button" class="filter-reset" id="filter-reset">× Réinitialiser</button>
+          <div class="filter-count" id="filter-count">11 / 11 résultats</div>
+        </aside>
+
+        <div id="log-list">
+
+          <div class="log-empty" id="log-empty">// Aucune intervention ne correspond aux filtres sélectionnés.</div>
+
+          <article class="log-card crit" data-cat="electrique automatisme" data-statut="resolu" data-secteur="agro">
+            <div class="log-thumb"><img src="img/img_01a_overview.png" alt="Encartonneuse PET"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2024.07.15</span><span class="sep"></span><span>00h 45m</span><span class="sep"></span><span>INT-2024-001</span>
+                </div>
+                <span class="log-type crit">Curatif Urgent</span>
+              </div>
+              <h3>Panne récurrente encartonneuse — Ligne PET</h3>
+              <p>Défaut HMI n°402 'PRODUIT_COINCÉ_ENTRÉE' toutes les 8–12 min. Accumulation de 15–18 colis rejetés/heure en sortie fardeleuse. Intervention capteur + correction programme automate Siemens S7 + recalage butée mécanique.</p>
+              <div class="log-foot">
+                <span>COCA-COLA EUROPACIFIC PARTNERS · GRIGNY (91)</span>
+                <a href="intervention_01.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card" data-cat="electrique hydraulique automatisme" data-statut="resolu" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_02a_overview.png" alt="Presse injection 120 t"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2023.06</span><span class="sep"></span><span>02j 00h</span><span class="sep"></span><span>INT-2023-042</span>
+                </div>
+                <span class="log-type ok">Installation</span>
+              </div>
+              <h3>Mise en service presse injection + auxiliaires</h3>
+              <p>Nouvelle installation. Relocalisation dans un nouveau hall. Transport, nivellement laser, raccordements électriques / hydrauliques / eau de refroidissement, sécheur granulés PA66, détecteur métal, paramétrage cycle, recette.</p>
+              <div class="log-foot">
+                <span>TE CONNECTIVITY · TANGER (MAROC)</span>
+                <a href="intervention_02.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card" data-cat="automatisme electrique" data-statut="resolu" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_03a_cell.png" alt="Automate Siemens"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2023.03</span><span class="sep"></span><span>04h 30m</span><span class="sep"></span><span>INT-2023-038</span>
+                </div>
+                <span class="log-type ok">Automatisme</span>
+              </div>
+              <h3>Débogage &amp; optimisation programme automate</h3>
+              <p>Temps de cycle 28–30 s au lieu de 16–17 s nominaux. Alarme HMI 'Timeout bras robot' 3–4 arrêts/h. Analyse TIA Portal, ajustement temporisations, parallélisation phases, ajout monitoring cycle + HMI.</p>
+              <div class="log-foot">
+                <span>TE CONNECTIVITY · TANGER (MAROC)</span>
+                <a href="intervention_03.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card crit" data-cat="electrique pneumatique" data-statut="resolu" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_04a_overview.png" alt="Banc de test"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2022.11</span><span class="sep"></span><span>01j 00h</span><span class="sep"></span><span>INT-2022-017</span>
+                </div>
+                <span class="log-type crit">RCA &amp; Qualité</span>
+              </div>
+              <h3>Analyse cause racine — Banc de test électrique</h3>
+              <p>Taux de rejet test continuité anormal : 12 % (vs 1–2 % habituel) = 240+ pièces rebutées/jour. Analyse Pareto + Ishikawa : oxydation pins, vérin vieilli, filtration hotte saturée. Remplacement + procédure préventive.</p>
+              <div class="log-foot">
+                <span>KROMBERG &amp; SCHUBERT · KÉNITRA (MAROC)</span>
+                <a href="intervention_04.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card warn" data-cat="hydraulique" data-statut="resolu" data-secteur="metal">
+            <div class="log-thumb"><img src="img/img_05a_overview.png" alt="Presse hydraulique"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2024.04</span><span class="sep"></span><span>03h 20m</span><span class="sep"></span><span>INT-2024-089</span>
+                </div>
+                <span class="log-type warn">Curatif Mécanique</span>
+              </div>
+              <h3>Dépannage hydraulique presse découpe / pliage</h3>
+              <p>Perte brutale de pression descente rapide : 80→30 bar. Coup de bélier. Diagnostic clapet anti-retour + accumulateur + filtration. Remise en service le jour même, économie 4 h vs prévision constructeur.</p>
+              <div class="log-foot">
+                <span>SOVIRESO · SAINT-LAURENT-SUR-SÈVRE (85)</span>
+                <a href="intervention_05.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card" data-cat="automatisme" data-statut="actif" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_06a_room.png" alt="Plan GMAO"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2023.01–12</span><span class="sep"></span><span>12 mois</span><span class="sep"></span><span>INT-2023-015</span>
+                </div>
+                <span class="log-type ok">Planification</span>
+              </div>
+              <h3>Planification maintenance annuelle &amp; pilotage GMAO</h3>
+              <p>Site 142 équipements. Préventif 68 % → 94 %. Arrêts imprévus –28 %. MTBF +45 %. Classification ABC, stock pièces critiques, tableau de bord KPI, 3 projets d'amélioration interne.</p>
+              <div class="log-foot">
+                <span>TE CONNECTIVITY · TANGER (MAROC)</span>
+                <a href="intervention_06.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card crit" data-cat="electrique" data-statut="resolu" data-secteur="agro">
+            <div class="log-thumb"><img src="img/img_07a_overview.png" alt="Convoyeur principal 45 m"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2024.09.12</span><span class="sep"></span><span>02h 15m</span><span class="sep"></span><span>INT-2024-091</span>
+                </div>
+                <span class="log-type crit">Curatif Urgent</span>
+              </div>
+              <h3>Panne résolution variateur de fréquence — Convoyeur principal</h3>
+              <p>Défaut variateur Siemens G120 F0001 'Overcurrent' au démarrage. Moteur 37 kW ne tourne pas. Diagnostic : roulement réducteur brûlé, graisse desséchée, 47 défauts ignorés sur 30 j. Remplacement roulement SKF 30217, regraissage, alignement laser, réglage variateur.</p>
+              <div class="log-foot">
+                <span>COCA-COLA EUROPACIFIC PARTNERS · GRIGNY (91)</span>
+                <a href="intervention_07.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card crit" data-cat="electrique" data-statut="resolu" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_08a_overview.png" alt="Presse injection Engel 280T"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2024.10.03</span><span class="sep"></span><span>03h 30m</span><span class="sep"></span><span>INT-2024-102</span>
+                </div>
+                <span class="log-type crit">Curatif Urgent</span>
+              </div>
+              <h3>Panne collier chauffage — Presse injection Engel 280T</h3>
+              <p>Alarme 'ZONE 2 TEMP LOW' sur écran Engel. Température chute 290→185 °C. Couple vis dépasse sécurité → arrêt. Collier céramique zone 2 circuit ouvert, câble jonction brûlé. Remplacement 600W/230V, réétalonnage PID, nettoyage bourrage PA66.</p>
+              <div class="log-foot">
+                <span>AUTOMOTIVE SUPPLIER · AMIENS (80)</span>
+                <a href="intervention_08.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card crit" data-cat="electrique" data-statut="resolu" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_09a_overview.png" alt="Presse injection Engel 280T"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2024.10.28</span><span class="sep"></span><span>01h 15m</span><span class="sep"></span><span>INT-2024-110</span>
+                </div>
+                <span class="log-type crit">Curatif Urgent</span>
+              </div>
+              <h3>Panne capteur fermeture moule — Engel 280T</h3>
+              <p>Alarme 'MOULD NOT LOCKED' sur écran Engel. Capteur inductif M12 fin de course fermeture déréglé par vibrations, air-gap 2,3 mm (nominal 1 mm). Amortisseur toggle usé. Réalignement, réglage 1,0 mm, frein fileté, remplacement amortisseur.</p>
+              <div class="log-foot">
+                <span>AUTOMOTIVE SUPPLIER · AMIENS (80)</span>
+                <a href="intervention_09.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card crit" data-cat="electrique automatisme" data-statut="resolu" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_10a_overview.png" alt="Machine assemblage connecteurs Tanger"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2024.11.08</span><span class="sep"></span><span>02h 00m</span><span class="sep"></span><span>INT-2024-115</span>
+                </div>
+                <span class="log-type crit">Curatif Urgent</span>
+              </div>
+              <h3>Panne I/O — Perte de communication esclave — Assemblage connecteurs</h3>
+              <p>Alarme HMI 'Perte de communication esclave station 3'. Arrêt total machine. Câble I/O sectionné dans chemin de câble articulé → court-circuit 24 V → bobine électrovanne 12 Ω → fusion voie Q3 module ET200S. Remplacement câble PUR, bobine, module DO, récupération Profinet.</p>
+              <div class="log-foot">
+                <span>TE CONNECTIVITY · TANGER (MA)</span>
+                <a href="intervention_10.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="log-card crit" data-cat="automatisme electrique" data-statut="resolu" data-secteur="auto">
+            <div class="log-thumb"><img src="img/img_11a_overview.png" alt="Armoire S7-1200 cellule assemblage Tanger"/></div>
+            <div class="log-body">
+              <div class="log-card-head">
+                <div class="log-meta">
+                  <span>2024.11.15</span><span class="sep"></span><span>01h 30m</span><span class="sep"></span><span>INT-2024-118</span>
+                </div>
+                <span class="log-type crit">Curatif Urgent</span>
+              </div>
+              <h3>Panne S7-1200 — Batterie RTC faible + perte données recettes</h3>
+              <p>CPU STOP rouge clignotant, HMI 'PLC Not Ready'. Batterie RTC CR1025 à 2,1 V (nominale 3 V). Perte données retentives DB10 recettes après coupure secteur. Programme plante sur accès DB vide. Remplacement pile, restauration recettes depuis Micro-SD.</p>
+              <div class="log-foot">
+                <span>TE CONNECTIVITY · TANGER (MA)</span>
+                <a href="intervention_11.html">Détail →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var inputs = document.querySelectorAll('.log-filters input[type="checkbox"][data-group]');
+  var cards  = document.querySelectorAll('#log-list .log-card');
+  var count  = document.getElementById('filter-count');
+  var empty  = document.getElementById('log-empty');
+  var reset  = document.getElementById('filter-reset');
+
+  function getChecked(group) {
+    var out = [];
+    inputs.forEach(function (i) {
+      if (i.dataset.group === group && i.checked) out.push(i.dataset.value);
+    });
+    return out;
+  }
+
+  function tokensMatch(tokens, wanted) {
+    if (wanted.length === 0) return true;
+    for (var i = 0; i < wanted.length; i++) {
+      if (tokens.indexOf(wanted[i]) !== -1) return true;
+    }
+    return false;
+  }
+
+  function apply() {
+    var cat = getChecked('cat');
+    var st  = getChecked('statut');
+    var sec = getChecked('secteur');
+    var shown = 0;
+    cards.forEach(function (card) {
+      var ct = (card.dataset.cat || '').split(/\s+/);
+      var ss = (card.dataset.statut || '').split(/\s+/);
+      var sc = (card.dataset.secteur || '').split(/\s+/);
+      var ok = tokensMatch(ct, cat) && tokensMatch(ss, st) && tokensMatch(sc, sec);
+      card.classList.toggle('hidden', !ok);
+      if (ok) shown++;
+    });
+    var total = cards.length;
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    count.textContent = pad(shown) + ' / ' + pad(total) + ' résultats';
+    empty.classList.toggle('show', shown === 0);
+  }
+
+  inputs.forEach(function (i) { i.addEventListener('change', apply); });
+  reset.addEventListener('click', function () {
+    inputs.forEach(function (i) { i.checked = false; });
+    apply();
+  });
+  apply();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2024-115 · Panne I/O assemblage connecteurs — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2024-115</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge crit">◆ CURATIF URGENT · TIER 1</div>
+      <h1>Panne I/O — Perte de communication esclave — Machine assemblage connecteurs</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2024-115</strong></span>
+        <span>DATE <strong>2024.11.08</strong></span>
+        <span>DURATION <strong>02h 00m</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>TANGER · MA</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+
+        <div>
+
+          <!-- PROBLEM -->
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Contexte :</strong> Ligne assemblage connecteurs automotive 32 broches. Production 180 pièces/heure, cycle 20 s. Poste 3 : serrage pince + insertion broches.</p>
+              <p><strong>Symptôme :</strong> Arrêt total machine. Alarme <span class="mono" style="color:var(--red);">'Perte de communication esclave station 3'</span> sur HMI Siemens TP1200. Tous les actionneurs station 3 passent en sécurité. Production arrêtée sur toute la ligne (pas de by-pass possible).</p>
+            </div>
+          </div>
+
+          <!-- DIAGNOSTIC -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Étape 1 — HMI / Automate :</strong> CPU S7-1500 OK (RUN). Périphérie Profinet : esclave ET200SP station 3 en défaut. LED interface IM151-3 <span class="mono" style="color:var(--red);">SF rouge</span> + <span class="mono">BF rouge</span> clignotant. Perte de communication cyclique I/O sur 12 modules.</p>
+              <p><strong>Étape 2 — Armoire station 3 :</strong> alimentation 24 V secteur OK (23,8 V mesuré). Alimentation 24 V charge capteurs/actionneurs : <strong>0,3 V</strong> (court-circuit total). Disjoncteur 24 V 6 A déclenché. Tentative réarmage → re-déclenchement immédiat.</p>
+              <p><strong>Étape 3 — Recherche CC :</strong> isolement voie par voie avec multimètre. Voie Q3 (sortie 24 V bobine électrovanne serrage pince) : <strong>12 Ω</strong> vers 0 V (nominale bobine = 350 Ω). Déconnexion câble bobine → court-circuit persiste dans câble.</p>
+              <p><strong>Étape 4 — Traçage câble :</strong> câble I/O station 3 (10 m, 12×0,5 mm² + 4×1 mm²) passe dans chemin de câble articulé portique 4 axes. À l'articulation coude (zone de flexion permanente) : gaine PUR extérieure entaillée sur 3 cm, conducteurs visibles. Deux conducteurs 1 mm² (L+ 24 V et 0 V bobine) écrasés/cisaillés entre les maillons du chemin de câble — contact direct métal → court-circuit franc 24 V.</p>
+              <p><strong>Étape 5 — Conséquence en chaîne :</strong> court-circuit 24 V a surintensité la voie Q3 du module DO ET200SP (8DO 24 VDC/0,5 A) → fusion interne transistor de sortie + plombe voie. L'automate détecte défaut de charge sur Q3 puis coupe l'alim secteur du groupe I/O (sécurité intégrée) → perte totale communication esclave.</p>
+              <p><strong>Étape 6 — Électrovanne :</strong> isolement bobine électrovanne mesurée : 12 Ω (au lieu de 350 Ω). Bobine humide/carbonisée interne (condensation entrée par évent de la bobine, usure joint torique). Non la cause initiale, mais endommagée par le CC.</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_10a_overview.png" alt="Vue d'ensemble — Machine assemblage connecteurs station 3 Tanger"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Machine assemblage connecteurs station 3 Tanger</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_10b_cable.png" alt="Câble I/O sectionné dans chemin de câble articulé"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Câble I/O sectionné dans chemin de câble articulé</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_10c_io.png" alt="Carte ET200SP station 3 — LED SF rouge + module DO Q3 grillé"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Carte ET200SP station 3 — LED SF rouge + module DO Q3 grillé (photo terrain)</span></figcaption>
+            </figure>
+          </div>
+
+          <!-- SOLUTION -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>CONSIGNATION</strong> — arrêt électrique général ligne assemblage. Condamnateur cadenas secteur 400 V principal + 24 V dédié station 3. Signalisation maintenance 4 postes. Vérification 0 V aux bornes.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>TRAÇAGE CÂBLE</strong> — ouverture chemin de câble articulé au niveau de l'articulation coude (zone flexion max). Identification tronçon endommagé : 3 cm d'entaille + cisaillement conducteurs L+/0 V. Marquage des autres conducteurs sains.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>REMPLACEMENT CÂBLE</strong> — dépose tronçon abîmé (3,5 m). Pose câble neuf 12×0,5 mm² + 4×1 mm², gaine PUR robotique haute flexion (5 millions de cycles nominale). Routage dans chemin de câble neuf avec rayon de courbure > 75 mm (spécification constructeur chemin de câble). Séparation L+ et 0 V dans nappes distinctes pour éviter CC réciproque.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>REMPLACEMENT BOBINE</strong> — dépose électrovanne serrage pince. Remplacement bobine 24 VDC 350 Ω neuve + joint torique Viton. Test isolation bobine : 52 MΩ (OK > 50 MΩ). Test alimentation bobine seule : 68 mA nominale, température stabilisée 42 °C.</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>REMPLACEMENT MODULE I/O</strong> — dépose module DO 8×24 VDC/0,5 A (réf. 6ES7 132-4BF00-0AA0) voie Q3 grillée. Pose module neuf. Vérification configuration : adresse Profinet fixe (IP 192.168.1.23), même paramètres, pas de réadressage nécessaire (remplacement hot-swappable ET200SP).</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>RÉCUPÉRATION COMMUNICATION</strong> — réarmage disjoncteur 24 V. LED IM151-3 : SF éteinte, BF éteinte, ON vert fixe. Diagnostic TIA Portal : esclave station 3 reconnu, 12 modules OK, 0 défaut. Test forcé I/O : toutes les 64 entrées et 48 sorties validées une par une.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>ESSAIS PRODUCTION</strong> — démarrage cycle automatique. 50 pièces consécutives station 3 sans arrêt. Temps cycle 20 s nominal. Monitoring température bobine : 38 °C stable. Monitoring courant Q3 : 68 mA stable. Zéro perte communication sur 4 h de production.</div></div>
+                <div class="step"><div class="step-num">08.</div><div class="step-body"><strong>GMAO</strong> — création OT préventif 'Inspection chemin de câble station 3' tous les 6 mois (vérification gaine, rayon de flexion, fixation). Stock sécurité : 1 bobine électrovanne + 1 module DO ET200SP. Formation opérateurs : alarme 'Perte communication' = ne pas redémarrer aveuglément, appeler maintenance.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Ligne redémarrée après 2 h d'arrêt (vs 6 h prévision constructeur pour diagnostic + déplacement pièces). Zéro perte communication depuis le redémarrage sur 4 h de production. 180 pièces/heure rétablies. Économie vs appel constructeur Siemens + sous-traitant câblage : <strong>~2 800 €</strong> (déplacement 400 km Tanger-Casablanca + main d'œuvre spécialisée + majoration urgence week-end).</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Arrêt Total</div><div class="metric-value">2h00</div></div>
+                <div class="metric"><div class="metric-label">Com. Rétablie</div><div class="metric-value">100%</div></div>
+                <div class="metric"><div class="metric-label">Prod.</div><div class="metric-value">180/h</div></div>
+                <div class="metric"><div class="metric-label">Économie</div><div class="metric-value">2.8k€</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDE PANEL -->
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">Assemblage connecteurs 32 br.</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">Tanger (MA)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">TE Connectivity</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Câble I/O 12×0,5 + 4×1 mm² PUR</div><div class="ipart-ref">REF · 3,5 m · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Bobine électrovanne 24 VDC 350 Ω</div><div class="ipart-ref">REF · serrage pince · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Module DO ET200SP 8DO 24VDC/0,5A</div><div class="ipart-ref">REF · 6ES7 132-4BF00 · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Joint torique Viton bobine</div><div class="ipart-ref">REF · standard · Qté 1</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">Multimètre</span>
+              <span class="tag">Pinces ampérmétriques</span>
+              <span class="tag">TIA Portal</span>
+              <span class="tag">Testeur I/O</span>
+              <span class="tag">Thermomètre IR</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

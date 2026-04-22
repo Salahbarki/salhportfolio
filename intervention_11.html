@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2024-118 · Panne S7-1200 batterie RTC — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2024-118</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge crit">◆ CURATIF URGENT · TIER 1</div>
+      <h1>Panne S7-1200 — Batterie RTC faible + perte données recettes</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2024-118</strong></span>
+        <span>DATE <strong>2024.11.15</strong></span>
+        <span>DURATION <strong>01h 30m</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>TANGER · MA</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+
+        <div>
+
+          <!-- PROBLEM -->
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Contexte :</strong> Cellule robotisée assemblage connecteurs 16 broches. Production 220 pièces/heure, pilotée par automate Siemens S7-1200 CPU 1214C DC/DC/DC + KTP700 Basic HMI.</p>
+              <p><strong>Symptôme :</strong> Arrêt total cellule au démarrage matinal. LED CPU <span class="mono" style="color:var(--red);">STOP rouge clignotant</span>. HMI affiche <span class="mono" style="color:var(--red);">'PLC Not Ready'</span>. Aucune commande I/O ne répond. Production bloquée, 3 opérateurs sans poste.</p>
+            </div>
+          </div>
+
+          <!-- DIAGNOSTIC -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Étape 1 — CPU S7-1200 :</strong> alimentation 24 V OK (23,9 V). LED <span class="mono" style="color:var(--red);">STOP fixe</span> + <span class="mono">MAINT jaune</span> clignotant. LED SF éteinte (pas d'erreur hardware). Diagnostic TIA Portal via Ethernet : CPU en STOP, pas de défaut système visible.</p>
+              <p><strong>Étape 2 — Analyse programme :</strong> bloc d'organisation OB1 en erreur. Détail : accès DB10 (recettes paramètres serrage pince) avec index hors plage. DB10 vide — 0 octet. Le programme tente de lire l'enregistrement recette N°5 (index 4) dans une DB vide → erreur d'accès → OB1 plante → CPU passe STOP.</p>
+              <p><strong>Étape 3 — Historique :</strong> vérification horloge CPU : date affichée <span class="mono">01.01.2012 00:00:00</span> (valeur usine par défaut). La date/heure réelle a été perdue. La DB10 est une <em>retain variable</em> (stockée en RAM + sauvegardée par batterie RTC). La batterie interne CR1025 est à <strong>2,1 V</strong> (nominale 3,0 V, seuil critique 2,5 V). Perte de la batterie = perte des données retentives + horodatage au redémarrage après coupure secteur (maintenance nocturne sur alim 24 V commune).</p>
+              <p><strong>Étape 4 — Cause racine :</strong> coupure 24 V secteur pour maintenance voisinage la nuit précédente (2 h). Au redémarrage matinal, batterie RTC épuisée n'a pas maintenu les données retentives. La DB recettes a été initialisée vide (0 octet) au lieu de contenir les 12 enregistrements de paramètres de serrage. Le programme au démarrage lit l'enregistrement actif → index hors plage → plantage OB1 → STOP.</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_11a_overview.png" alt="Vue d'ensemble — Armoire S7-1200 cellule assemblage Tanger"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Armoire S7-1200 cellule assemblage Tanger</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_11b_cpu.png" alt="CPU S7-1200 1214C — LED STOP rouge + batterie RTC faible"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>CPU S7-1200 1214C — LED STOP rouge + batterie RTC faible</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_11c_hmi.png" alt="HMI KTP700 — Alarme PLC Not Ready"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>HMI KTP700 — Alarme PLC Not Ready</span></figcaption>
+            </figure>
+          </div>
+
+          <!-- SOLUTION -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>CONSIGNATION</strong> — arrêt électrique cellule assemblage. Condamnateur cadenas sur alimentation 24 V CPU + actionneurs. Signalisation maintenance 3 postes. Vérification 0 V aux bornes.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>DIAGNOSTIC TIA PORTAL</strong> — connexion Ethernet CPU (IP 192.168.1.10). Diagnostic en ligne : OB1 erreur, DB10 vide 0 octet. Historique diagnostic : dernière erreur "Area error when reading global DB" à 06:12 (heure par défaut CPU). Horloge CPU confirmée 01.01.2012. Tension batterie diagnostic système : 2,1 V.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>REMPLACEMENT BATTERIE</strong> — dépose couvercle frontal CPU S7-1200. Extraction pile CR1025 usagée (2,1 V mesuré au multimètre). Pose pile neuve CR1025 lithium 3 V (date fabrication < 6 mois). Reset bit diagnostic batterie faible dans TIA Portal. LED MAINT jaune éteinte.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>RÉCUPÉRATION RECETTES</strong> — la DB10 a été sauvegardée sur carte Micro-SD 4 Go insérée dans le CPU (fonction S7-1200 archivage automatique). Export DB10 depuis carte SD via TIA Portal. Restauration DB10 avec les 12 enregistrements de recettes (paramètres serrage pince : force, temps, position). Vérification taille DB : 384 octets (OK).</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>RÉGLAGE HORLOGE</strong> — synchronisation horloge CPU avec PC portable TIA Portal (heure réseau NTP). Date/heure correctes affichées. Activation bit retentivité pour DB10 confirmée (retain = true).</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>TEST PROGRAMME</strong> — compilation complète, téléchargement OB1 + DB10 + FB paramètres dans CPU. Passage CPU en mode RUN. LED RUN vert fixe, STOP éteinte, MAINT éteinte. Test pas à pas OB1 : lecture DB10 index 4 (recette N°5) → valeur lue correcte 850 N.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>ESSAIS PRODUCTION</strong> — redémarrage cycle automatique. 50 pièces consécutives sans arrêt. Paramètres serrage pince correctement appliqués (force 850 N, temps 2,3 s). HMI affiche 'PLC Ready' vert. Zéro alarme sur 3 h de production.</div></div>
+                <div class="step"><div class="step-num">08.</div><div class="step-body"><strong>GMAO</strong> — création OT préventif 'Remplacement batterie RTC S7-1200' tous les 24 mois (durée de vie nominale pile CR1025 en continu). Stock sécurité : 3 piles CR1025. Formation opérateurs : alarme 'PLC Not Ready' = vérifier LED CPU avant tout redémarrage. Documentation : procédure sauvegarde DB sur Micro-SD vérifiée mensuellement.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Cellule redémarrée après 1 h 30 d'arrêt (vs 4–6 h pour diagnostic constructeur + reprogrammation). Zéro rebut depuis redémarrage. Production 220 pièces/heure rétablie. Coût intervention : pile CR1025 2 € + 1 h 30 main d'œuvre. Économie vs appel constructeur Siemens : <strong>~1 800 €</strong> (déplacement Tanger-Casablanca + diagnostic + reprogrammation).</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Arrêt Total</div><div class="metric-value">1h30</div></div>
+                <div class="metric"><div class="metric-label">CPU RUN</div><div class="metric-value">100%</div></div>
+                <div class="metric"><div class="metric-label">Prod.</div><div class="metric-value">220/h</div></div>
+                <div class="metric"><div class="metric-label">Économie</div><div class="metric-value">1.8k€</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDE PANEL -->
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">S7-1200 CPU 1214C</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">Tanger (MA)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">TE Connectivity</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Pile CR1025 lithium 3 V</div><div class="ipart-ref">REF · RTC CPU · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Carte Micro-SD 4 Go</div><div class="ipart-ref">REF · backup S7-1200 · Qté 1</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">TIA Portal V17</span>
+              <span class="tag">Multimètre</span>
+              <span class="tag">Câble Ethernet</span>
+              <span class="tag">Lecteur Micro-SD</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

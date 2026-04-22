@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INT-2024-102 · Panne collier chauffage Engel 280T — TM·PRO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="brand"><span class="brand-mark"></span> TM—PRO / 4882</div>
+    <nav class="topbar-nav">
+      <a href="index.html">01 · Overview</a>
+      <a href="journal.html" class="active">02 · Journal</a>
+      <a href="contact.html">03 · Contact</a>
+    </nav>
+  </div>
+  <div class="topbar-right">
+    <span class="status-pill"><span class="pulse"></span> FIELD LOG</span>
+    <span class="status-pill">INT-2024-102</span>
+  </div>
+</header>
+
+<aside class="sidebar">
+  <div class="side-id">
+    <div class="side-id-code">OP-4882-MT · TECH-SR</div>
+    <div class="side-id-name">Salah Eddine Barki</div>
+    <div class="side-id-role">Maintenance Industrielle</div>
+  </div>
+  <nav class="sidenav">
+    <a href="index.html"><span class="num">01</span> Overview</a>
+    <a href="journal.html" class="active"><span class="num">02</span> Interventions</a>
+    <a href="contact.html"><span class="num">03</span> Contact</a>
+  </nav>
+  <div class="side-footer">
+    <a href="contact.html" class="side-cta">↓ Télécharger CV</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="int-hero dark">
+    <div class="container">
+      <div class="int-type-badge crit">◆ CURATIF URGENT · TIER 1</div>
+      <h1>Panne collier chauffage — Presse injection Engel 280T</h1>
+      <div class="int-hero-meta">
+        <span>ID <strong>INT-2024-102</strong></span>
+        <span>DATE <strong>2024.10.03</strong></span>
+        <span>DURATION <strong>03h 30m</strong></span>
+        <span>TECH <strong>4882-MT</strong></span>
+        <span>SITE <strong>AMIENS · 80</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <a href="journal.html" class="back-link">← Retour au journal</a>
+
+      <div class="int-grid">
+
+        <div>
+
+          <!-- PROBLEM -->
+          <div class="ipanel">
+            <div class="ipanel-head crit">
+              <span class="mk">!</span>
+              <h3>// Le Problème</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Contexte :</strong> Production continue de pièces techniques PA66+GF30 pour automotive. Cycle nominal 28 s, 250 pièces/heure. Pression 1400 bar, température cylindre 280–300 °C.</p>
+              <p><strong>Symptôme :</strong> Alarme <span class="mono" style="color:var(--red);">'ZONE 2 TEMP LOW'</span> sur écran presse Engel. Température zone 2 chute de 290 °C à 185 °C en 8 min. Couple vis dépasse 85 % nominal → sécurité couple déclenche l'arrêt. Matière semi-fondue bourre la vis/cylindre. Production arrêtée, 45 pièces en rebuts.</p>
+            </div>
+          </div>
+
+          <!-- DIAGNOSTIC -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">?</span>
+              <h3>// Diagnostic</h3>
+            </div>
+            <div class="ipanel-body">
+              <p><strong>Électrique :</strong> mesure résistance collier chauffage zone 2 (centre cylindre) = circuit ouvert (∞ Ω). Valeur nominale 88 Ω (600 W / 230 V). Collier céramique fissuré sur 120° de circonférence. Jonction câble/collier carbonisée (sur isolation PVC standard au lieu de silicone haute température).</p>
+              <p><strong>Thermique :</strong> rupture collier zone 2 crée un gradient thermique : zone 1 (amont) 295 °C, zone 2 (centre) 185 °C, zone 3 (tête) 300 °C. PA66 non suffisamment fondu → vis force sur matière solide → couple anormal → arrêt sécurité.</p>
+              <p><strong>Historique :</strong> collier zone 2 jamais remplacé depuis mise en service (4 ans). Durée de vie nominale céramique industrielle : 2–3 ans en continu à 300 °C.</p>
+            </div>
+          </div>
+
+          <!-- TECHNICAL FIGURES -->
+          <div class="tech-figs">
+            <figure class="tech-fig">
+              <img src="img/img_08a_overview.png" alt="Vue d'ensemble — Presse injection Engel 280T ligne automotive"/>
+              <figcaption><span class="fig-tag">FIG. 01</span><span>Vue d'ensemble — Presse injection Engel 280T ligne automotive</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_08b_collier.png" alt="Collier chauffage céramique fissuré — rupture zone 2"/>
+              <figcaption><span class="fig-tag">FIG. 02</span><span>Collier chauffage céramique fissuré — rupture zone 2</span></figcaption>
+            </figure>
+            <figure class="tech-fig">
+              <img src="img/img_08c_cylindre.png" alt="Cylindre plastification — 3 zones chauffe + thermocouples"/>
+              <figcaption><span class="fig-tag">FIG. 03</span><span>Cylindre plastification — 3 zones chauffe + thermocouples</span></figcaption>
+            </figure>
+          </div>
+
+          <!-- SOLUTION -->
+          <div class="ipanel">
+            <div class="ipanel-head">
+              <span class="mk">✓</span>
+              <h3>// Solution apportée</h3>
+            </div>
+            <div class="ipanel-body">
+              <div class="steps">
+                <div class="step"><div class="step-num">01.</div><div class="step-body"><strong>CONSIGNATION</strong> — arrêt électrique presse, condamnateur sur sectionneur principal, signalisation maintenance, refroidissement cylindre à 80 °C avant intervention.</div></div>
+                <div class="step"><div class="step-num">02.</div><div class="step-body"><strong>DÉPOSE COLIER</strong> — démontage carter isolant zone 2, dépose collier céramique fissuré. Mesure d'origine : Ø intérieur 85 mm, largeur 60 mm, 600 W / 230 V. Nettoyage surface cylindre au dissolvant + grattoir.</div></div>
+                <div class="step"><div class="step-num">03.</div><div class="step-body"><strong>RÉPARATION CÂBLE</strong> — remplacement câble alimentation collier par câble silicone haute température 250 °C, section 2,5 mm² avec gaine fibre de verre. Sertissage cosse cuivre étamé haute température. Protection thermique à la jonction.</div></div>
+                <div class="step"><div class="step-num">04.</div><div class="step-body"><strong>POSE NEUF</strong> — installation collier neuf céramique 600 W / 230 V, Ø 85 mm × 60 mm. Serrage progressif des brides inox (évite déformation cylindre). Centrage ± 2 mm sur zone. Repose carter isolant minéral.</div></div>
+                <div class="step"><div class="step-num">05.</div><div class="step-body"><strong>NETTOYAGE VIS/CYLINDRE</strong> — chauffe douce à 150 °C pour ramollir PA66 bourrée. Retrait manuel résidus solides. Nettoyage rodage cylindre avec pâte spéciale. Vérification jeu vis/cylindre : 0,25 mm (tolérance OK).</div></div>
+                <div class="step"><div class="step-num">06.</div><div class="step-body"><strong>RÉGLAGE PID</strong> — réétalonnage thermocouple zone 2 (type K, compensation 0 °C). Réglage PID : P=12, I=180 s, D=45 s. Montée en température contrôlée 20 °C/min jusqu'à 290 °C. Stabilisation vérifiée ± 2 °C.</div></div>
+                <div class="step"><div class="step-num">07.</div><div class="step-body"><strong>ESSAIS</strong> — cycle injection à vide (sans moule) : température zones 1/2/3 stabilisées 295/290/300 °C. Cycle avec moule : 50 coups consécutifs sans alarme. Poids pièce OK (142,3 g ± 0,5 g). Temps cycle 28 s nominal.</div></div>
+                <div class="step"><div class="step-num">08.</div><div class="step-body"><strong>GMAO</strong> — création OT préventif 'Contrôle collier chauffage + thermocouple' tous les 12 mois. Mise à jour stock sécurité : 1 collier zone 2 + 1 thermocouple type K en local. Remplacement systématique collier tous les 3 ans.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="ipanel">
+            <div class="ipanel-head ok">
+              <span class="mk">→</span>
+              <h3>// Résultat mesuré</h3>
+            </div>
+            <div class="ipanel-body">
+              <p>Production redémarrée après 3 h 30. Zéro rebut depuis le redémarrage sur 4 h de production (vs 45 pièces rebutées pendant la panne). Température zone 2 stabilisée ± 2 °C autour de 290 °C. Temps cycle nominal 28 s rétabli. Économie vs appel constructeur Engel estimée à 4 800 € (déplacement + main d'œuvre spécialisée + majoration urgence).</p>
+              <div class="metric-grid">
+                <div class="metric"><div class="metric-label">Arrêt Total</div><div class="metric-value">3h30</div></div>
+                <div class="metric"><div class="metric-label">Temp. Zone 2</div><div class="metric-value">290°C</div></div>
+                <div class="metric"><div class="metric-label">Cycle</div><div class="metric-value">28s</div></div>
+                <div class="metric"><div class="metric-label">Économie</div><div class="metric-value">4.8k€</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDE PANEL -->
+        <aside>
+          <div class="ispec">
+            <h4>// Spécifications</h4>
+            <div class="ispec-row"><span class="ispec-label">Système</span><span class="ispec-val">Engel 280T injection</span></div>
+            <div class="ispec-row"><span class="ispec-label">Localisation</span><span class="ispec-val">Amiens (80)</span></div>
+            <div class="ispec-row"><span class="ispec-label">Entreprise</span><span class="ispec-val">Automotive Supplier</span></div>
+            <div class="ispec-row"><span class="ispec-label">Criticité</span><span class="ispec-val crit">TIER 1 · VITAL</span></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Inventaire pièces</h4>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Collier chauffage céramique 600W/230V</div><div class="ipart-ref">REF · Ø85×60 mm · Qté 1</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Câble silicone haute température 2,5mm²</div><div class="ipart-ref">REF · 250°C · Qté 2 m</div></div></div>
+            <div class="ipart"><div class="ipart-mk">⚙</div><div><div class="ipart-name">Thermocouple type K zone 2</div><div class="ipart-ref">REF · Ø6×150 mm · Qté 1</div></div></div>
+          </div>
+
+          <div class="ispec">
+            <h4>// Outillage déployé</h4>
+            <div class="itools">
+              <span class="tag">Multimètre</span>
+              <span class="tag">Pinces ampérmétriques</span>
+              <span class="tag">Clé dynamo.</span>
+              <span class="tag">Thermomètre IR</span>
+              <span class="tag">Outil démontage collier</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>// © 2024 · SALAH EDDINE BARKI · OP-4882-MT</span>
+  <div class="footer-links">
+    <a href="index.html">Overview</a>
+    <a href="journal.html">Journal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
