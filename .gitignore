@@ -15,12 +15,12 @@ generate_images_int11.py
 *.zip
 
 # Duplicate images at root (already inside site_v4/img/)
-img_*.png
-img_*.jpg
-image*.png
-image*.jpg
-images*.jpg
-images*.png
+/img_*.png
+/img_*.jpg
+/image*.png
+/image*.jpg
+/images*.jpg
+/images*.png
 
 # Raw WhatsApp images
 WhatsApp Image*
